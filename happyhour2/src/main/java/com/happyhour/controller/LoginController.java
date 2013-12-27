@@ -1,6 +1,8 @@
 package com.happyhour.controller;
 
 import org.apache.log4j.Logger;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,9 +58,5 @@ public class LoginController {
 		return "redirect:/uncaughtException";
 	}
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(){
-		return "/index";
-	}
 	
 }
