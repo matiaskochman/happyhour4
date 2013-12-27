@@ -33,4 +33,39 @@ public class UsuarioServiceImpl implements UsuarioService ,UserDetailsService{
         return authUser;
 	}
 
+
+	public Usuario findUsuariosByUserNameEquals(String username) {
+	    Usuario usuario = Usuario.findUsuariosByUserNameEquals(username).getSingleResult();
+
+		return usuario;
+	}
+
+    public long countAllUsuarios() {
+        return Usuario.countUsuarios();
+    }
+    
+    public void deleteUsuario(Usuario usuario) {
+        usuario.remove();
+    }
+    
+    public Usuario findUsuario(Long id) {
+        return Usuario.findUsuario(id);
+    }
+    
+    public List<Usuario> findAllUsuarios() {
+        return Usuario.findAllUsuarios();
+    }
+    
+    public List<Usuario> findUsuarioEntries(int firstResult, int maxResults) {
+        return Usuario.findUsuarioEntries(firstResult, maxResults);
+    }
+    
+    public void saveUsuario(Usuario usuario) {
+        usuario.persist();
+    }
+    
+    public Usuario updateUsuario(Usuario usuario) {
+        return usuario.merge();
+    }
+
 }

@@ -72,3 +72,7 @@ field date --fieldName creationTimeStamp --type java.util.Date
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-04 08:52:10
 selenium test --controller ~.controller.PromotionRequestController
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-04 11:08:13
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-27 11:16:26
+focus --class ~.entity.Usuario
+finder list 
+finder add --finderName findUsuariosByUserNameEquals
