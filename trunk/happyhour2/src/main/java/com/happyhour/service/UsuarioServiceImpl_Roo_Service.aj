@@ -15,32 +15,5 @@ privileged aspect UsuarioServiceImpl_Roo_Service {
     
     declare @type: UsuarioServiceImpl: @Transactional;
     
-    public long UsuarioServiceImpl.countAllUsuarios() {
-        return Usuario.countUsuarios();
-    }
-    
-    public void UsuarioServiceImpl.deleteUsuario(Usuario usuario) {
-        usuario.remove();
-    }
-    
-    public Usuario UsuarioServiceImpl.findUsuario(Long id) {
-        return Usuario.findUsuario(id);
-    }
-    
-    public List<Usuario> UsuarioServiceImpl.findAllUsuarios() {
-        return Usuario.findAllUsuarios();
-    }
-    
-    public List<Usuario> UsuarioServiceImpl.findUsuarioEntries(int firstResult, int maxResults) {
-        return Usuario.findUsuarioEntries(firstResult, maxResults);
-    }
-    
-    public void UsuarioServiceImpl.saveUsuario(Usuario usuario) {
-        usuario.persist();
-    }
-    
-    public Usuario UsuarioServiceImpl.updateUsuario(Usuario usuario) {
-        return usuario.merge();
-    }
     
 }
