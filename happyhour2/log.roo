@@ -71,8 +71,21 @@ field date --fieldName creationTimeStamp --type java.util.Date
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-03 13:31:04
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-04 08:52:10
 selenium test --controller ~.controller.PromotionRequestController
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-04 11:08:13
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-27 11:16:26
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-07 14:02:38
 focus --class ~.entity.Usuario
-finder list 
-finder add --finderName findUsuariosByUserNameEquals
+// [failed] field set --type ~.entity.BusinessEstablishment --fieldName businessEstablishmentList 
+// [failed] field set --type ~.entity.BusinessEstablishment --fieldName businessEstablishmentList 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-07 14:12:02
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-07 14:12:11
+focus --class ~.entity.Usuario
+// [failed] field set --fieldName businessEstablishmentList --type ~.entity.BusinessEstablishment
+// [failed] field boolean isAdministrator 
+focus --class ~.entity.Usuario
+// [failed] field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-07 14:30:40
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-07 14:31:16
+focus --class ~.entity.Usuario
+// [failed] field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment
+// [failed] field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-08 15:30:10
+finder add --finderName findUsuariosByUserNameEquals// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-28 10:33:47

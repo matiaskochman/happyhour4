@@ -52,6 +52,11 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         //b1.setUsuario(u1);
         b1.persist();
         
+        Usuario a = Usuario.findUsuariosByUserNameEquals("a").getSingleResult();
+        
+        a.setBusinessEstablishment(b1);
+        a.persist();
+        
         PromotionDescription p1 = new PromotionDescription();
         p1.setDescription("promo1");
         //p1.setBusinessEstablishment(b1);

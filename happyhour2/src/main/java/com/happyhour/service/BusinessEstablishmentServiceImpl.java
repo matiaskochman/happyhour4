@@ -3,6 +3,8 @@ package com.happyhour.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.Usuario;
@@ -33,7 +35,16 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
     }
     
     public void saveBusinessEstablishment(BusinessEstablishment businessEstablishment) {
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName(); //get logged in username
+
+		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
+		
         businessEstablishment.persist();
+        
+        usuario.setBusinessEstablishment(businessEstablishment);
+        
+        usuarioService.saveUsuario(usuario);
     }
     
     public BusinessEstablishment updateBusinessEstablishment(BusinessEstablishment businessEstablishment) {
@@ -46,6 +57,19 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		
 		return null;
+	}
+
+	@Override
+	public List<BusinessEstablishment> findBusinessEstablishmentEntriesByUser(int firstResult, int maxResults) {
+		
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName(); 
+
+		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
+		
+		List<BusinessEstablishment> list = BusinessEstablishment.findBusinessEstablishmentEntriesByUser(usuario, firstResult, maxResults);
+	    
+		return list;
 	}
     
 	
