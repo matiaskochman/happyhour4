@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.Usuario;
 
@@ -64,10 +65,17 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
 		
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String username = auth.getName(); 
-
+	    List<BusinessEstablishment> list = null;
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
-		
-		List<BusinessEstablishment> list = BusinessEstablishment.findBusinessEstablishmentEntriesByUser(usuario, firstResult, maxResults);
+		Authority authority = null;
+		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		if(auth.getAuthorities().contains(authority)){
+			
+			list = BusinessEstablishment.findBusinessEstablishmentEntries(firstResult, maxResults);
+		}else{
+			
+			list = BusinessEstablishment.findBusinessEstablishmentEntriesByUser(usuario, firstResult, maxResults);
+		}
 	    
 		return list;
 	}

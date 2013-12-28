@@ -30,6 +30,9 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         a1.setRoleName("ROLE_ADMIN");
         a1.persist();
         
+        Authority a2 = new Authority();
+        a2.setRoleName("ROLE_USER");
+        a2.persist();
         
         Usuario u1 = new Usuario();
         u1.setUserName("a");
@@ -44,18 +47,26 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         u2.setPassword("b");
         u2.setEmail("b");
         u2.setEnabled(true);
-        u2.getRolesList().add(a1);
+        u2.getRolesList().add(a2);
         u2.persist();
         
         BusinessEstablishment b1 = new BusinessEstablishment();
         b1.setName("les vendanges");
         //b1.setUsuario(u1);
         b1.persist();
+
+        BusinessEstablishment b2 = new BusinessEstablishment();
+        b2.setName("cafe l'industrie");
+        //b1.setUsuario(u1);
+        b2.persist();
         
         Usuario a = Usuario.findUsuariosByUserNameEquals("a").getSingleResult();
-        
         a.setBusinessEstablishment(b1);
         a.persist();
+
+        Usuario b = Usuario.findUsuariosByUserNameEquals("b").getSingleResult();
+        b.setBusinessEstablishment(b2);
+        b.persist();
         
         PromotionDescription p1 = new PromotionDescription();
         p1.setDescription("promo1");
