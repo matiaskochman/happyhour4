@@ -49,4 +49,5 @@ privileged aspect Usuario_Roo_JavaBean {
         this.rolesList = rolesList;
     }
     
+    
 }
