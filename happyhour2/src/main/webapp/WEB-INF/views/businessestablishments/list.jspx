@@ -6,6 +6,7 @@
         <table:table data="${businessestablishments}" id="l_com_happyhour_entity_BusinessEstablishment" path="/businessestablishments" z="S3sO+yecIDzcuna4oqmgpkXsQHo=">
             <table:column id="c_com_happyhour_entity_BusinessEstablishment_name" property="name" z="AFULbqsXKk+M85wJG79t9L6715I="/>
             <table:column id="c_com_happyhour_entity_BusinessEstablishment_promotionInstanceList" property="promotionInstanceList" z="1gq2rTOCo9s3hazvuW9l5P9QzOM="/>
+            <table:column id="c_com_happyhour_entity_BusinessEstablishment_promotionDescriptionList" property="promotionDescriptionList" z="25T/Pu2zLGjxy6NTP6wBSn7uozM="/>
         </table:table>
     </page:list>
 </div>

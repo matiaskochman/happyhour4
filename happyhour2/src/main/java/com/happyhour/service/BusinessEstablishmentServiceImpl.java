@@ -53,11 +53,11 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
     }
 
 	@Override
-	public List<BusinessEstablishment> findUserBusinessEstablishments(String username) {
+	public BusinessEstablishment findUserBusinessEstablishments(String username) {
 		
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		
-		return null;
+		return usuario.getBusinessEstablishment();
 	}
 
 	@Override
@@ -78,6 +78,6 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
 	    
 		return list;
 	}
-    
+
 	
 }
