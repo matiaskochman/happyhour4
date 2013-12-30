@@ -63,13 +63,12 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
 	@Override
 	public List<BusinessEstablishment> findBusinessEstablishmentEntriesByUser(int firstResult, int maxResults) {
 		
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String username = auth.getName(); 
+	    String username = usuarioService.getLoggedUserName(); 
 	    List<BusinessEstablishment> list = null;
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority authority = null;
 		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
-		if(auth.getAuthorities().contains(authority)){
+		if(usuarioService.getLoggedUserAuthorities().contains(authority)){
 			
 			list = BusinessEstablishment.findBusinessEstablishmentEntries(firstResult, maxResults);
 		}else{
