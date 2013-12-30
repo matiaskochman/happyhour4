@@ -4,6 +4,7 @@
 package com.happyhour.entity;
 
 import com.happyhour.entity.BusinessEstablishment;
+import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import java.util.Set;
 
@@ -23,6 +24,14 @@ privileged aspect BusinessEstablishment_Roo_JavaBean {
     
     public void BusinessEstablishment.setPromotionInstanceList(Set<PromotionInstance> promotionInstanceList) {
         this.promotionInstanceList = promotionInstanceList;
+    }
+    
+    public Set<PromotionDescription> BusinessEstablishment.getPromotionDescriptionList() {
+        return this.promotionDescriptionList;
+    }
+    
+    public void BusinessEstablishment.setPromotionDescriptionList(Set<PromotionDescription> promotionDescriptionList) {
+        this.promotionDescriptionList = promotionDescriptionList;
     }
     
 }
