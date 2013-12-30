@@ -3,9 +3,6 @@
 
 package com.happyhour.service;
 
-import com.happyhour.entity.Usuario;
-import com.happyhour.service.UsuarioServiceImpl;
-import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

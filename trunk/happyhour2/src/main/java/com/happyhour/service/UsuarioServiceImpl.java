@@ -3,7 +3,9 @@ package com.happyhour.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,6 +35,19 @@ public class UsuarioServiceImpl implements UsuarioService ,UserDetailsService{
         return authUser;
 	}
 
+	public String getLoggedUserName() {
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName(); 
+		return username;
+	}
+
+
+	@Override
+	public List<Authority> getLoggedUserAuthorities() {
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    
+		return (List<Authority>) auth.getAuthorities();
+	}
 
 	public Usuario findUsuariosByUserNameEquals(String username) {
 	    Usuario usuario = Usuario.findUsuariosByUserNameEquals(username).getSingleResult();
@@ -67,5 +82,6 @@ public class UsuarioServiceImpl implements UsuarioService ,UserDetailsService{
     public Usuario updateUsuario(Usuario usuario) {
         return usuario.merge();
     }
+
 
 }
