@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<link href="http://localhost:8080/" rel="selenium.base"/>
+<title>Selenium test for PromotionRequestController</title>
+</head>
+<body>
+    <table border="1" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <td colspan="3" rowspan="1">Selenium test for PromotionRequestController</td>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+                    <td>open</td>
+                    <td>http://localhost:8080/happyhour2/promotionrequests?form&amp;lang=fr_FR</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>_promoId_id</td>
+                    <td>somePromoId1</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>_businessEstablishmentId_id</td>
+                    <td>someBusinessEstablishmentId1</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>_clientTelephone_id</td>
+                    <td>someClientTelephone1</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>_token_id</td>
+                    <td>someToken1</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>_creationTimeStamp_id</td>
+                    <td>4 déc. 2013</td>
+                </tr>
+                <tr>
+                    <td>clickAndWait</td>
+                    <td>//input[@id = 'proceed']</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>verifyText</td>
+                    <td>_s_com_happyhour_entity_PromotionRequest_promoId_promoId_id</td>
+                    <td>somePromoId1</td>
+                </tr>
+                <tr>
+                    <td>verifyText</td>
+                    <td>_s_com_happyhour_entity_PromotionRequest_businessEstablishmentId_businessEstablishmentId_id</td>
+                    <td>someBusinessEstablishmentId1</td>
+                </tr>
+                <tr>
+                    <td>verifyText</td>
+                    <td>_s_com_happyhour_entity_PromotionRequest_clientTelephone_clientTelephone_id</td>
+                    <td>someClientTelephone1</td>
+                </tr>
+                <tr>
+                    <td>verifyText</td>
+                    <td>_s_com_happyhour_entity_PromotionRequest_token_token_id</td>
+                    <td>someToken1</td>
+                </tr>
+                <tr>
+                    <td>verifyText</td>
+                    <td>_s_com_happyhour_entity_PromotionRequest_creationTimeStamp_creationTimeStamp_id</td>
+                    <td>4 déc. 2013</td>
+                </tr>
+            </tbody>
+    </table>
+</body>
+</html>
