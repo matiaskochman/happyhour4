@@ -14,5 +14,6 @@ public interface PromotionDescriptionService {
     public abstract List<PromotionDescription> findPromotionDescriptionEntries(int firstResult, int maxResults);    
     public abstract void savePromotionDescription(PromotionDescription promotionDescription);    
     public abstract PromotionDescription updatePromotionDescription(PromotionDescription promotionDescription);    
+    public List<PromotionDescription> findPromotionDescriptionEntriesByUser(int firstResult, int maxResults);
 	
 }
