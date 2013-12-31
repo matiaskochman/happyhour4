@@ -73,7 +73,8 @@ public class PromotionInstanceController {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("promotioninstances", promotionInstanceService.findPromotionInstanceEntries(firstResult, sizeNo));
+            //uiModel.addAttribute("promotioninstances", promotionInstanceService.findPromotionInstanceEntries(firstResult, sizeNo));
+            uiModel.addAttribute("promotioninstances", promotionInstanceService.findPromotionInstanceEntriesByUser(firstResult, sizeNo));
             float nrOfPages = (float) promotionInstanceService.countAllPromotionInstances() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
