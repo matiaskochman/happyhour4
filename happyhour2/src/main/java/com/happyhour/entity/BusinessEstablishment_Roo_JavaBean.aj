@@ -7,7 +7,6 @@ import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import java.util.List;
-import java.util.Set;
 
 privileged aspect BusinessEstablishment_Roo_JavaBean {
     
@@ -19,11 +18,11 @@ privileged aspect BusinessEstablishment_Roo_JavaBean {
         this.name = name;
     }
     
-    public Set<PromotionInstance> BusinessEstablishment.getPromotionInstanceList() {
+    public List<PromotionInstance> BusinessEstablishment.getPromotionInstanceList() {
         return this.promotionInstanceList;
     }
     
-    public void BusinessEstablishment.setPromotionInstanceList(Set<PromotionInstance> promotionInstanceList) {
+    public void BusinessEstablishment.setPromotionInstanceList(List<PromotionInstance> promotionInstanceList) {
         this.promotionInstanceList = promotionInstanceList;
     }
     
