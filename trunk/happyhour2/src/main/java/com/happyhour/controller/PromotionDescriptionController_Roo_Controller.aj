@@ -48,7 +48,6 @@ privileged aspect PromotionDescriptionController_Roo_Controller {
         return "promotiondescriptions/show";
     }
     
-    
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String PromotionDescriptionController.update(@Valid PromotionDescription promotionDescription, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
