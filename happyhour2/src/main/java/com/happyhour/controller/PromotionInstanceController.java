@@ -1,9 +1,7 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
-
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionDescriptionService;
@@ -30,19 +27,19 @@ import com.happyhour.service.PromotionRequestService;
 @RooWebScaffold(path = "promotioninstances", formBackingObject = PromotionInstance.class)
 @RooWebJson(jsonObject = PromotionInstance.class)
 public class PromotionInstanceController {
-	
+
     @Autowired
     PromotionInstanceService promotionInstanceService;
-    
+
     @Autowired
     BusinessEstablishmentService businessEstablishmentService;
-    
+
     @Autowired
     PromotionDescriptionService promotionDescriptionService;
-    
+
     @Autowired
     PromotionRequestService promotionRequestService;
-    
+
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid PromotionInstance promotionInstance, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -53,13 +50,13 @@ public class PromotionInstanceController {
         promotionInstanceService.savePromotionInstance(promotionInstance);
         return "redirect:/promotioninstances/" + encodeUrlPathSegment(promotionInstance.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new PromotionInstance());
         return "promotioninstances/create";
     }
-    
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
@@ -67,7 +64,7 @@ public class PromotionInstanceController {
         uiModel.addAttribute("itemId", id);
         return "promotioninstances/show";
     }
-    
+
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -83,7 +80,7 @@ public class PromotionInstanceController {
         addDateTimeFormatPatterns(uiModel);
         return "promotioninstances/list";
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid PromotionInstance promotionInstance, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -94,13 +91,13 @@ public class PromotionInstanceController {
         promotionInstanceService.updatePromotionInstance(promotionInstance);
         return "redirect:/promotioninstances/" + encodeUrlPathSegment(promotionInstance.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, promotionInstanceService.findPromotionInstance(id));
         return "promotioninstances/update";
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         PromotionInstance promotionInstance = promotionInstanceService.findPromotionInstance(id);
@@ -110,11 +107,11 @@ public class PromotionInstanceController {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/promotioninstances";
     }
-    
+
     void addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("promotionInstance_promotionvaliddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
-    
+
     void populateEditForm(Model uiModel, PromotionInstance promotionInstance) {
         uiModel.addAttribute("promotionInstance", promotionInstance);
         addDateTimeFormatPatterns(uiModel);
@@ -122,7 +119,7 @@ public class PromotionInstanceController {
         uiModel.addAttribute("promotiondescriptions", promotionDescriptionService.findAllPromotionDescriptions());
         uiModel.addAttribute("promotionrequests", promotionRequestService.findAllPromotionRequests());
     }
-    
+
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -130,8 +127,8 @@ public class PromotionInstanceController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
-	
 }

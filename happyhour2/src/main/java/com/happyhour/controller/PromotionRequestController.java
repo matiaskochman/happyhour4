@@ -2,10 +2,8 @@ package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
-
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.exception.BusinessException;
 import com.happyhour.service.PromotionRequestService;
@@ -33,34 +30,31 @@ import com.happyhour.service.PromotionRequestService;
 @RooWebScaffold(path = "promotionrequests", formBackingObject = PromotionRequest.class)
 @RooWebJson(jsonObject = PromotionRequest.class)
 public class PromotionRequestController {
-	
+
     @Autowired
     PromotionRequestService promotionRequestService;
-    
+
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJson(@RequestBody String json) {
-    	
         HttpHeaders headers = new HttpHeaders();
         PromotionRequest promotionRequest = PromotionRequest.fromJsonToPromotionRequest(json);
         promotionRequest.setCreationTimeStamp(new Date());
-        try{
-        	promotionRequestService.createToken(promotionRequest);
-        	promotionRequestService.savePromotionRequest(promotionRequest);
-        	headers.add("Content-Type", "application/json");
+        try {
+            promotionRequestService.createToken(promotionRequest);
+            promotionRequestService.savePromotionRequest(promotionRequest);
+            headers.add("Content-Type", "application/json");
             headers.add("token", promotionRequest.getToken());
-	    } catch (BusinessException e) {
-	        e.printStackTrace();
-	        e.getMessage();
-	        return new ResponseEntity<String>(e.getMessage(), headers, HttpStatus.I_AM_A_TEAPOT);
-	    } catch (RuntimeException e) {
-	        e.printStackTrace();
-	        e.getMessage();
-	    }
-        
+        } catch (BusinessException e) {
+            e.printStackTrace();
+            e.getMessage();
+            return new ResponseEntity<String>(e.getMessage(), headers, HttpStatus.I_AM_A_TEAPOT);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            e.getMessage();
+        }
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
-	
-    
+
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -71,20 +65,20 @@ public class PromotionRequestController {
         promotionRequestService.savePromotionRequest(promotionRequest);
         return "redirect:/promotionrequests/" + encodeUrlPathSegment(promotionRequest.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new PromotionRequest());
         return "promotionrequests/create";
     }
-    
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("promotionrequest", promotionRequestService.findPromotionRequest(id));
         uiModel.addAttribute("itemId", id);
         return "promotionrequests/show";
     }
-    
+
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -98,7 +92,7 @@ public class PromotionRequestController {
         }
         return "promotionrequests/list";
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -109,13 +103,13 @@ public class PromotionRequestController {
         promotionRequestService.updatePromotionRequest(promotionRequest);
         return "redirect:/promotionrequests/" + encodeUrlPathSegment(promotionRequest.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, promotionRequestService.findPromotionRequest(id));
         return "promotionrequests/update";
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         PromotionRequest promotionRequest = promotionRequestService.findPromotionRequest(id);
@@ -125,11 +119,11 @@ public class PromotionRequestController {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/promotionrequests";
     }
-    
+
     void populateEditForm(Model uiModel, PromotionRequest promotionRequest) {
         uiModel.addAttribute("promotionRequest", promotionRequest);
     }
-    
+
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -137,11 +131,11 @@ public class PromotionRequestController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
-	
-	
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> showJson(@PathVariable("id") Long id) {
@@ -153,7 +147,7 @@ public class PromotionRequestController {
         }
         return new ResponseEntity<String>(promotionRequest.toJson(), headers, HttpStatus.OK);
     }
-    
+
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> listJson() {
@@ -162,17 +156,17 @@ public class PromotionRequestController {
         List<PromotionRequest> result = promotionRequestService.findAllPromotionRequests();
         return new ResponseEntity<String>(PromotionRequest.toJsonArray(result), headers, HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJsonArray(@RequestBody String json) {
-        for (PromotionRequest promotionRequest: PromotionRequest.fromJsonArrayToPromotionRequests(json)) {
+        for (PromotionRequest promotionRequest : PromotionRequest.fromJsonArrayToPromotionRequests(json)) {
             promotionRequestService.savePromotionRequest(promotionRequest);
         }
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<String> updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
@@ -183,7 +177,7 @@ public class PromotionRequestController {
         }
         return new ResponseEntity<String>(headers, HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<String> deleteFromJson(@PathVariable("id") Long id) {
         PromotionRequest promotionRequest = promotionRequestService.findPromotionRequest(id);
@@ -195,6 +189,4 @@ public class PromotionRequestController {
         promotionRequestService.deletePromotionRequest(promotionRequest);
         return new ResponseEntity<String>(headers, HttpStatus.OK);
     }
-    
-    
 }

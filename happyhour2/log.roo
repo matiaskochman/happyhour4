@@ -95,3 +95,60 @@ finder add findAuthoritysByRoleNameEquals
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-30 15:29:17
 focus --class ~.entity.BusinessEstablishment
 field set --type ~.entity.PromotionDescription --fieldName promotionDescriptionList 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-30 16:18:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-31 10:05:12
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-31 10:55:15
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-06 09:15:09
+entity jpa --class ~.entity.PromotionInstanceProcessed
+field reference --type ~.entity.PromotionDescription --fieldName promotionDescription --fetch 
+field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment --fetch 
+field date --type java.util.Date --fieldName promotionValidDate
+field number --type java.lang.Integer --fieldName maxClientsAllowed 
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionInstanceProcessed --fieldName promotionInstanceProcessedList --fetch 
+focus --class ~.entity.PromotionRequestProcessed
+web mvc controller ~.controller.PromotionRequestProcessedController
+service type --interface ~.service.PromoRequestProcessedService --entity ~.entity.PromotionRequestProcessed
+focus --class ~.entity.PromotionInstanceProcessed
+web mvc controller --class ~.controller.PromotionInstanceProcessedController
+service type --interface ~.service.PromotionInstanceProcessedService --entity ~.entity.PromotionInstanceProcessed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-06 11:52:59
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 08:55:20
+web mvc all --package com.happyhour.controller
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+web mvc all --package com.happyhour.controller
+web mvc all --package com.happyhour.controller
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 09:24:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 09:24:29
+web mvc all --package com.happyhour.controller
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+web mvc all --package com.happyhour.controller
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+web mvc all --package com.happyhour.controller
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 09:49:34
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 13:01:03
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+web mvc all --package com.happyhour.controller
+focus --class ~.entity.PromotionRequestProcessed
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
