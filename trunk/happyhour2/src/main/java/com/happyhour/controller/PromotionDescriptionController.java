@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.happyhour.entity.PromotionDescription;
 
 @RequestMapping("/promotiondescriptions")
@@ -13,7 +12,7 @@ import com.happyhour.entity.PromotionDescription;
 @RooWebScaffold(path = "promotiondescriptions", formBackingObject = PromotionDescription.class)
 @RooWebJson(jsonObject = PromotionDescription.class)
 public class PromotionDescriptionController {
-	
+
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -28,5 +27,4 @@ public class PromotionDescriptionController {
         }
         return "promotiondescriptions/list";
     }
-	
 }

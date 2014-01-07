@@ -4,21 +4,12 @@
 package com.happyhour.controller;
 
 import com.happyhour.controller.UsuarioController;
-import com.happyhour.entity.Authority;
-import com.happyhour.entity.Usuario;
-import java.io.UnsupportedEncodingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriUtils;
-import org.springframework.web.util.WebUtils;
+import com.happyhour.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 privileged aspect UsuarioController_Roo_Controller {
     
+    @Autowired
+    UsuarioService UsuarioController.usuarioService;
     
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_happyhour_entity_PromotionRequestProcessed" object="${promotionrequestprocessed}" path="/promotionrequestprocesseds" z="mv/MFy7QkW80KBvR+a0v4xNm3L8=">
+        <field:display field="promoId" id="s_com_happyhour_entity_PromotionRequestProcessed_promoId" object="${promotionrequestprocessed}" z="VAPeb9y1S/DyPNZ4YB7qOyShjKQ="/>
+        <field:display field="businessEstablishmentId" id="s_com_happyhour_entity_PromotionRequestProcessed_businessEstablishmentId" object="${promotionrequestprocessed}" z="xBHUZz3jt3KNV8pLp40dXc5urS8="/>
+        <field:display field="clientTelephone" id="s_com_happyhour_entity_PromotionRequestProcessed_clientTelephone" object="${promotionrequestprocessed}" z="i9xak2BpxCIzY/idUhatrbauE3U="/>
+        <field:display field="token" id="s_com_happyhour_entity_PromotionRequestProcessed_token" object="${promotionrequestprocessed}" z="QqTe0zeyUTPiX97ZVeXDZS0ZIhc="/>
+        <field:display date="true" dateTimePattern="${promotionRequestProcessed_creationtimestamp_date_format}" field="creationTimeStamp" id="s_com_happyhour_entity_PromotionRequestProcessed_creationTimeStamp" object="${promotionrequestprocessed}" z="msAItNYcd5M0nYV7nqeWl6osLCo="/>
+    </page:show>
+</div>

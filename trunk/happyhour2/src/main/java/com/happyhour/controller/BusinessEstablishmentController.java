@@ -1,9 +1,7 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
-
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionInstanceService;
@@ -28,13 +25,13 @@ import com.happyhour.service.PromotionInstanceService;
 @RooWebScaffold(path = "businessestablishments", formBackingObject = BusinessEstablishment.class)
 @RooWebJson(jsonObject = BusinessEstablishment.class)
 public class BusinessEstablishmentController {
-	
+
     @Autowired
     BusinessEstablishmentService businessEstablishmentService;
-    
+
     @Autowired
     PromotionInstanceService promotionInstanceService;
-    
+
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid BusinessEstablishment businessEstablishment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -42,27 +39,24 @@ public class BusinessEstablishmentController {
             return "businessestablishments/create";
         }
         uiModel.asMap().clear();
-        
         businessEstablishmentService.saveBusinessEstablishment(businessEstablishment);
         return "redirect:/businessestablishments/" + encodeUrlPathSegment(businessEstablishment.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
-    	
-    	BusinessEstablishment businessEstablishment = new BusinessEstablishment();
-	    
+        BusinessEstablishment businessEstablishment = new BusinessEstablishment();
         populateEditForm(uiModel, businessEstablishment);
         return "businessestablishments/create";
     }
-    
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("businessestablishment", businessEstablishmentService.findBusinessEstablishment(id));
         uiModel.addAttribute("itemId", id);
         return "businessestablishments/show";
     }
-    
+
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -77,7 +71,7 @@ public class BusinessEstablishmentController {
         }
         return "businessestablishments/list";
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid BusinessEstablishment businessEstablishment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -88,13 +82,13 @@ public class BusinessEstablishmentController {
         businessEstablishmentService.updateBusinessEstablishment(businessEstablishment);
         return "redirect:/businessestablishments/" + encodeUrlPathSegment(businessEstablishment.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, businessEstablishmentService.findBusinessEstablishment(id));
         return "businessestablishments/update";
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(id);
@@ -104,12 +98,12 @@ public class BusinessEstablishmentController {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/businessestablishments";
     }
-    
+
     void populateEditForm(Model uiModel, BusinessEstablishment businessEstablishment) {
         uiModel.addAttribute("businessEstablishment", businessEstablishment);
         uiModel.addAttribute("promotioninstances", promotionInstanceService.findAllPromotionInstances());
     }
-    
+
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -117,8 +111,8 @@ public class BusinessEstablishmentController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
-	
 }

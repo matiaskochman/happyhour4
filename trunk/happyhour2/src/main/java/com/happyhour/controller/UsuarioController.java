@@ -1,12 +1,9 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.Usuario;
-
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +19,7 @@ import org.springframework.web.util.WebUtils;
 @Controller
 @RooWebScaffold(path = "usuarios", formBackingObject = Usuario.class)
 public class UsuarioController {
+
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -32,20 +30,20 @@ public class UsuarioController {
         usuario.persist();
         return "redirect:/usuarios/" + encodeUrlPathSegment(usuario.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new Usuario());
         return "usuarios/create";
     }
-    
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("usuario", Usuario.findUsuario(id));
         uiModel.addAttribute("itemId", id);
         return "usuarios/show";
     }
-    
+
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -59,7 +57,7 @@ public class UsuarioController {
         }
         return "usuarios/list";
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -70,13 +68,13 @@ public class UsuarioController {
         usuario.merge();
         return "redirect:/usuarios/" + encodeUrlPathSegment(usuario.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, Usuario.findUsuario(id));
         return "usuarios/update";
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         Usuario usuario = Usuario.findUsuario(id);
@@ -86,12 +84,12 @@ public class UsuarioController {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/usuarios";
     }
-    
+
     void populateEditForm(Model uiModel, Usuario usuario) {
         uiModel.addAttribute("usuario", usuario);
         uiModel.addAttribute("authoritys", Authority.findAllAuthoritys());
     }
-    
+
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -99,8 +97,8 @@ public class UsuarioController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
-	
 }
