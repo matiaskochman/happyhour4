@@ -152,3 +152,10 @@ field string --fieldName businessEstablishmentId
 field string --fieldName clientTelephone
 field string --fieldName token
 field date --type java.util.Date --fieldName creationTimeStamp
+entity jpa --class ~.entity.PromotionInstanceProcessed
+field reference --type ~.entity.PromotionDescription --fieldName promotionDescription 
+web mvc all --package com.happyhour.controller
+focus --class ~.entity.PromotionInstanceProcessed
+field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment 
+field date --type java.util.Date --fieldName promotionValidDate
+field number --type java.lang.Integer --fieldName maxClientsAllowed
