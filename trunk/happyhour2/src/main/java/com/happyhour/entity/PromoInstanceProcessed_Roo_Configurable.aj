@@ -3,11 +3,11 @@
 
 package com.happyhour.entity;
 
-import com.happyhour.entity.PromotionInstanceProcessed;
+import com.happyhour.entity.PromoInstanceProcessed;
 import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect PromotionInstanceProcessed_Roo_Configurable {
+privileged aspect PromoInstanceProcessed_Roo_Configurable {
     
-    declare @type: PromotionInstanceProcessed: @Configurable;
+    declare @type: PromoInstanceProcessed: @Configurable;
     
 }
