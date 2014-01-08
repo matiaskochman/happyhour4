@@ -7,11 +7,15 @@ import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
 
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
-public class PromotionInstanceProcessed {
+public class PromoInstanceProcessed {
 
     /**
      */
@@ -32,4 +36,9 @@ public class PromotionInstanceProcessed {
     /**
      */
     private Integer maxClientsAllowed;
+
+    /**
+     */
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<PromotionRequestProcessed> promotionRequestProcessedList = new HashSet<PromotionRequestProcessed>();
 }

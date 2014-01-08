@@ -3,13 +3,13 @@
 
 package com.happyhour.entity;
 
-import com.happyhour.entity.PromotionInstanceProcessed;
+import com.happyhour.entity.PromoInstanceProcessed;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-privileged aspect PromotionInstanceProcessed_Roo_ToString {
+privileged aspect PromoInstanceProcessed_Roo_ToString {
     
-    public String PromotionInstanceProcessed.toString() {
+    public String PromoInstanceProcessed.toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
     

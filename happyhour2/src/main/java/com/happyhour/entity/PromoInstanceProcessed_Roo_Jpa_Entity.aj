@@ -3,7 +3,7 @@
 
 package com.happyhour.entity;
 
-import com.happyhour.entity.PromotionInstanceProcessed;
+import com.happyhour.entity.PromoInstanceProcessed;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,32 +11,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
-privileged aspect PromotionInstanceProcessed_Roo_Jpa_Entity {
+privileged aspect PromoInstanceProcessed_Roo_Jpa_Entity {
     
-    declare @type: PromotionInstanceProcessed: @Entity;
+    declare @type: PromoInstanceProcessed: @Entity;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long PromotionInstanceProcessed.id;
+    private Long PromoInstanceProcessed.id;
     
     @Version
     @Column(name = "version")
-    private Integer PromotionInstanceProcessed.version;
+    private Integer PromoInstanceProcessed.version;
     
-    public Long PromotionInstanceProcessed.getId() {
+    public Long PromoInstanceProcessed.getId() {
         return this.id;
     }
     
-    public void PromotionInstanceProcessed.setId(Long id) {
+    public void PromoInstanceProcessed.setId(Long id) {
         this.id = id;
     }
     
-    public Integer PromotionInstanceProcessed.getVersion() {
+    public Integer PromoInstanceProcessed.getVersion() {
         return this.version;
     }
     
-    public void PromotionInstanceProcessed.setVersion(Integer version) {
+    public void PromoInstanceProcessed.setVersion(Integer version) {
         this.version = version;
     }
     
