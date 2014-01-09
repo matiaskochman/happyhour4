@@ -44,9 +44,9 @@
             <menu:item id="i_promotionrequestprocessed_new" messageCode="global_menu_new" url="/promotionrequestprocesseds?form" z="FrlBuxF54FfiwLqTsURqnWW4MF0="/>
             <menu:item id="i_promotionrequestprocessed_list" messageCode="global_menu_list" url="/promotionrequestprocesseds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="qVy3FgGEop94UvRrsoa0aZfjXKo="/>
         </menu:category>
-        <menu:category id="c_promoinstanceprocessed" z="IARTnO1petRhD3WVs1cfeMWsQeo=">
-            <menu:item id="i_promoinstanceprocessed_new" messageCode="global_menu_new" url="/promoinstanceprocesseds?form" z="REujvO8M8AkB6YLkFC4WnecjUkQ="/>
-            <menu:item id="i_promoinstanceprocessed_list" messageCode="global_menu_list" url="/promoinstanceprocesseds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="2+gCR903cSX8OvNpXItQl68tm94="/>
+        <menu:category id="c_promotioninstanceprocessed" z="IchwIkYL/7fP7TBjxrpj7u0TmGM=">
+            <menu:item id="i_promotioninstanceprocessed_new" messageCode="global_menu_new" url="/promotioninstanceprocesseds?form" z="vhZ7WrEw8R6xOADdWeOEbZaPyN8="/>
+            <menu:item id="i_promotioninstanceprocessed_list" messageCode="global_menu_list" url="/promotioninstanceprocesseds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Ze+ltVgmjtTVocxZGb7YRKEI+e4="/>
         </menu:category>
     </menu:menu>
 </div>
