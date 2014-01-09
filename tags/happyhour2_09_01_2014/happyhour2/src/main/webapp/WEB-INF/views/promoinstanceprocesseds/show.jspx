@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_happyhour_entity_PromoInstanceProcessed" object="${promoinstanceprocessed}" path="/promoinstanceprocesseds" z="26zmNylgUDwL78ZKvtEI3BS33wQ=">
+        <field:display field="promotionDescription" id="s_com_happyhour_entity_PromoInstanceProcessed_promotionDescription" object="${promoinstanceprocessed}" z="eAcjpP4PWsauE1rJAdwMucOIAaU="/>
+        <field:display field="businessEstablishment" id="s_com_happyhour_entity_PromoInstanceProcessed_businessEstablishment" object="${promoinstanceprocessed}" z="GNVU+OV/OOrNVPrshWSXTtasQdw="/>
+        <field:display date="true" dateTimePattern="${promoInstanceProcessed_promotionvaliddate_date_format}" field="promotionValidDate" id="s_com_happyhour_entity_PromoInstanceProcessed_promotionValidDate" object="${promoinstanceprocessed}" z="0So4AtiXtaP4b1KV/x9vbfd0rvI="/>
+        <field:display field="maxClientsAllowed" id="s_com_happyhour_entity_PromoInstanceProcessed_maxClientsAllowed" object="${promoinstanceprocessed}" z="xAJs4xOAg1s5Jt6dhC+bjzzCQGw="/>
+        <field:display field="promotionRequestProcessedList" id="s_com_happyhour_entity_PromoInstanceProcessed_promotionRequestProcessedList" object="${promoinstanceprocessed}" z="cVJTVcmZy8EIRJ4lt+yKvZzxUnI="/>
+    </page:show>
+</div>
