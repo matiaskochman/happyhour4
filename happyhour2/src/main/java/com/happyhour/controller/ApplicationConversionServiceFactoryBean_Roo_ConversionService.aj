@@ -4,26 +4,36 @@
 package com.happyhour.controller;
 
 import com.happyhour.controller.ApplicationConversionServiceFactoryBean;
-import com.happyhour.entity.Authority;
-import com.happyhour.entity.BusinessEstablishment;
-import com.happyhour.entity.PromotionDescription;
-import com.happyhour.entity.PromotionInstance;
-import com.happyhour.entity.PromotionRequest;
-import com.happyhour.entity.Usuario;
-import com.happyhour.service.AuthorityService;
-import com.happyhour.service.BusinessEstablishmentService;
-import com.happyhour.service.PromotionDescriptionService;
-import com.happyhour.service.PromotionInstanceService;
-import com.happyhour.service.PromotionRequestService;
-import com.happyhour.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.happyhour.entity.PromotionInstanceProcessed;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.format.FormatterRegistry;
 
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
     
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
     
+    public Converter<PromotionInstanceProcessed, String> ApplicationConversionServiceFactoryBean.getPromotionInstanceProcessedToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.happyhour.entity.PromotionInstanceProcessed, java.lang.String>() {
+            public String convert(PromotionInstanceProcessed promotionInstanceProcessed) {
+                return new StringBuilder().append(promotionInstanceProcessed.getPromotionValidDate()).append(' ').append(promotionInstanceProcessed.getMaxClientsAllowed()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, PromotionInstanceProcessed> ApplicationConversionServiceFactoryBean.getIdToPromotionInstanceProcessedConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.happyhour.entity.PromotionInstanceProcessed>() {
+            public com.happyhour.entity.PromotionInstanceProcessed convert(java.lang.Long id) {
+                return PromotionInstanceProcessed.findPromotionInstanceProcessed(id);
+            }
+        };
+    }
+    
+    public Converter<String, PromotionInstanceProcessed> ApplicationConversionServiceFactoryBean.getStringToPromotionInstanceProcessedConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.happyhour.entity.PromotionInstanceProcessed>() {
+            public com.happyhour.entity.PromotionInstanceProcessed convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), PromotionInstanceProcessed.class);
+            }
+        };
+    }
     
 }
