@@ -181,5 +181,3 @@ web mvc all --package com.happyhour.controller
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 21:29:53
 focus --class ~.entity.PromotionInstanceProcessed
 field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-09 07:57:33
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-09 08:00:09
