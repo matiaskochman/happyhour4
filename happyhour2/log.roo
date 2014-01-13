@@ -182,3 +182,5 @@ web mvc all --package com.happyhour.controller
 focus --class ~.entity.PromotionInstanceProcessed
 field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-09 09:43:51
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-13 13:24:50
+service type --interface ~.service.PromotionInstanceProcessedService --entity ~.entity.PromotionInstanceProcessed
