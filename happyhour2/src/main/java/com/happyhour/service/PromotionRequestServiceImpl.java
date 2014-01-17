@@ -3,11 +3,15 @@ package com.happyhour.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.exception.BusinessException;
 
+@Service
+@Transactional
 public class PromotionRequestServiceImpl implements PromotionRequestService {
 	
 	@Autowired

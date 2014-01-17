@@ -3,14 +3,8 @@
 
 package com.happyhour.service;
 
-import com.happyhour.service.PromotionRequestServiceImpl;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect PromotionRequestServiceImpl_Roo_Service {
     
-    declare @type: PromotionRequestServiceImpl: @Service;
-    
-    declare @type: PromotionRequestServiceImpl: @Transactional;
     
 }

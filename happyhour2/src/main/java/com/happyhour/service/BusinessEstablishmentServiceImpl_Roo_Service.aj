@@ -9,8 +9,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect BusinessEstablishmentServiceImpl_Roo_Service {
     
-    declare @type: BusinessEstablishmentServiceImpl: @Service;
-    
-    declare @type: BusinessEstablishmentServiceImpl: @Transactional;
     
 }
