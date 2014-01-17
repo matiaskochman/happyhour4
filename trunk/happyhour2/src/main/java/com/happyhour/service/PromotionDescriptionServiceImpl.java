@@ -2,9 +2,10 @@ package com.happyhour.service;
 
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.authentication.UserServiceBeanDefinitionParser;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
@@ -12,6 +13,8 @@ import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.Usuario;
 import com.happyhour.exception.BusinessException;
 
+@Service
+@Transactional
 public class PromotionDescriptionServiceImpl implements PromotionDescriptionService {
 
 	@Autowired

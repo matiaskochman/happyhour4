@@ -23,6 +23,7 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.exception.BusinessException;
+import com.happyhour.service.PromotionRequestProcessedService;
 import com.happyhour.service.PromotionRequestService;
 
 @RequestMapping("/promotionrequests")
@@ -33,6 +34,9 @@ public class PromotionRequestController {
 
     @Autowired
     PromotionRequestService promotionRequestService;
+    
+    @Autowired
+    PromotionRequestProcessedService promotionRequestProcessedService;
 
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJson(@RequestBody String json) {
@@ -55,6 +59,13 @@ public class PromotionRequestController {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/processPromotionRequest", produces = "text/html")
+    public String processRequest(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
+    	
+    	promotionRequestProcessedService.processPromotionRequest(promotionRequest);
+    	
+    	return "redirect:/promotionrequests/";
+    }
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {

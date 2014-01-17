@@ -3,12 +3,15 @@ package com.happyhour.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.Authority;
-import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.Usuario;
 
+@Service
+@Transactional
 public class PromotionInstanceServiceImpl implements PromotionInstanceService {
 	
 	@Autowired

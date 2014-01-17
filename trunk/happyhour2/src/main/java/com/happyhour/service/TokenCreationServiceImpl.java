@@ -8,7 +8,10 @@ import java.util.Map;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
+@Transactional
 public class TokenCreationServiceImpl {
 	private Map<String,String> codeMap;
 	private Random rn = new Random();	

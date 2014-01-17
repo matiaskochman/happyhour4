@@ -2,8 +2,13 @@ package com.happyhour.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.happyhour.entity.PromotionInstanceProcessed;
 
+@Service
+@Transactional
 public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceProcessedService {
     public long countAllPromotionInstanceProcesseds() {
         return PromotionInstanceProcessed.countPromotionInstanceProcesseds();

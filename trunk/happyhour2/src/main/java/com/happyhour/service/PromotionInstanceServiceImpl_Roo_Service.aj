@@ -9,8 +9,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect PromotionInstanceServiceImpl_Roo_Service {
     
-    declare @type: PromotionInstanceServiceImpl: @Service;
-    
-    declare @type: PromotionInstanceServiceImpl: @Transactional;
     
 }
