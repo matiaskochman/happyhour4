@@ -2,9 +2,13 @@ package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
+
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.exception.BusinessException;
 import com.happyhour.service.PromotionRequestProcessedService;
@@ -59,6 +64,11 @@ public class PromotionRequestController {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
 
+    void addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("promotionRequest_creationtimestamp_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+    }
+    
+    
     @RequestMapping(value = "/processPromotionRequest", produces = "text/html")
     public String processRequest(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
     	

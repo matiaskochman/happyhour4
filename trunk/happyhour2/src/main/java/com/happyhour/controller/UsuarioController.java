@@ -4,6 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.Usuario;
+import com.happyhour.service.UsuarioService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +23,10 @@ import org.springframework.web.util.WebUtils;
 @RooWebScaffold(path = "usuarios", formBackingObject = Usuario.class)
 public class UsuarioController {
 
+    @Autowired
+    UsuarioService usuarioService;
+	
+	
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {

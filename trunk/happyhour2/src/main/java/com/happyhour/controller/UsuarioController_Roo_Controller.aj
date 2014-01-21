@@ -3,13 +3,8 @@
 
 package com.happyhour.controller;
 
-import com.happyhour.controller.UsuarioController;
-import com.happyhour.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 privileged aspect UsuarioController_Roo_Controller {
     
-    @Autowired
-    UsuarioService UsuarioController.usuarioService;
     
 }
