@@ -6,31 +6,15 @@ package com.happyhour.entity;
 import com.happyhour.entity.PromotionRequest;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Version;
 
 privileged aspect PromotionRequest_Roo_Jpa_Entity {
     
     declare @type: PromotionRequest: @Entity;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long PromotionRequest.id;
-    
     @Version
     @Column(name = "version")
     private Integer PromotionRequest.version;
-    
-    public Long PromotionRequest.getId() {
-        return this.id;
-    }
-    
-    public void PromotionRequest.setId(Long id) {
-        this.id = id;
-    }
     
     public Integer PromotionRequest.getVersion() {
         return this.version;

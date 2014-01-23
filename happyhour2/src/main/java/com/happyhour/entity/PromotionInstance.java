@@ -3,7 +3,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.TypedQuery;
@@ -23,29 +27,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 @RooJson
 public class PromotionInstance {
 
-    /**
-     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+	
     @ManyToOne
     private PromotionDescription promotionDescription;
 
-    /**
-     */
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<PromotionRequest> promoRequestList = new HashSet<PromotionRequest>();
 
-    /**
-     */
     @ManyToOne
     private BusinessEstablishment businessEstablishment;
 
-    /**
-     */
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date promotionValidDate;
 
-    /**
-     */
     private Integer maxClientsAllowed;
 
     

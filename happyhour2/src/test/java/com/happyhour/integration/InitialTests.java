@@ -19,8 +19,8 @@ import com.happyhour.service.BusinessEstablishmentService;
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml" })
 public class InitialTests extends AbstractJUnit4SpringContextTests{
         
-        @Autowired
-        BusinessEstablishmentService businessEstablishmentService;
+    @Autowired
+    BusinessEstablishmentService businessEstablishmentService;
         
     @Test
     @Transactional
@@ -34,6 +34,7 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         a2.setRoleName("ROLE_USER");
         a2.persist();
         
+        /*
         Usuario u1 = new Usuario();
         u1.setUserName("a");
         u1.setPassword("a");
@@ -51,39 +52,83 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         u2.persist();
 
         
-        PromotionDescription p1 = new PromotionDescription();
-        p1.setDescription("promo1");
-        p1.persist();
+        PromotionDescription promotionDescription_a = new PromotionDescription();
+        promotionDescription_a.setDescription("promo1");
+        promotionDescription_a.persist();
         
-        BusinessEstablishment b1 = new BusinessEstablishment();
-        b1.setName("les vendanges");
-        b1.getPromotionDescriptionList().add(p1);
-        b1.persist();
+        BusinessEstablishment businessEstablishment_a = new BusinessEstablishment();
+        businessEstablishment_a.setName("les vendanges");
+        businessEstablishment_a.getPromotionDescriptionList().add(promotionDescription_a);
+        businessEstablishment_a.persist();
 
-        PromotionDescription p2 = new PromotionDescription();
-        p2.setDescription("promo2");
-        p2.persist();
+        PromotionDescription promotionDescription_b = new PromotionDescription();
+        promotionDescription_b.setDescription("promo2");
+        promotionDescription_b.persist();
         
         BusinessEstablishment b2 = new BusinessEstablishment();
         b2.setName("cafe l'industrie");
-        b2.getPromotionDescriptionList().add(p2);
+        b2.getPromotionDescriptionList().add(promotionDescription_b);
         b2.persist();
         
-        Usuario a = Usuario.findUsuariosByUserNameEquals("a").getSingleResult();
-        a.setBusinessEstablishment(b1);
-        a.persist();
+        Usuario user_a = Usuario.findUsuariosByUserNameEquals("a").getSingleResult();
+        user_a.setBusinessEstablishment(businessEstablishment_a);
+        user_a.persist();
 
-        Usuario b = Usuario.findUsuariosByUserNameEquals("b").getSingleResult();
-        b.setBusinessEstablishment(b2);
-        b.persist();
+        Usuario user_b = Usuario.findUsuariosByUserNameEquals("b").getSingleResult();
+        user_b.setBusinessEstablishment(b2);
+        user_b.persist();
         
         
-        PromotionInstance pi1 = new PromotionInstance();
-        pi1.setBusinessEstablishment(b1);
-        pi1.setPromotionDescription(p1);
-        pi1.setPromotionValidDate(new Date());
+        PromotionInstance promotionInstance_a = new PromotionInstance();
+        promotionInstance_a.setBusinessEstablishment(businessEstablishment_a);
+        promotionInstance_a.setPromotionDescription(promotionDescription_a);
+        promotionInstance_a.setPromotionValidDate(new Date());
         //pi1.setPromotionAlreadyUtilized(false);
-        pi1.setMaxClientsAllowed(5);
-        pi1.persist();
+        promotionInstance_a.setMaxClientsAllowed(25);
+        promotionInstance_a.persist();
+        */
+        
+        createBusinessEstablishment(a1, "a", "promo_a", "business_a");
+        createBusinessEstablishment(a2, "b", "promo_b", "business_b");
+        createBusinessEstablishment(a1, "c", "promo_c", "business_c");
+        createBusinessEstablishment(a1, "d", "promo_d", "business_d");
+        createBusinessEstablishment(a1, "f", "promo_f", "business_f");
+        
+    }
+    
+    
+    private void createBusinessEstablishment(Authority authority,String username,String promoDescriptionName,String businessEstablishmentName){
+        Usuario u1 = new Usuario();
+        u1.setUserName(username);
+        u1.setPassword(username);
+        u1.setEmail(username);
+        u1.setEnabled(true);
+        u1.getRolesList().add(authority);
+        u1.persist();
+
+        PromotionDescription promotionDescription_a = new PromotionDescription();
+        promotionDescription_a.setDescription(promoDescriptionName);
+        promotionDescription_a.persist();
+        
+        BusinessEstablishment businessEstablishment_a = new BusinessEstablishment();
+        businessEstablishment_a.setName(businessEstablishmentName);
+        businessEstablishment_a.getPromotionDescriptionList().add(promotionDescription_a);
+        businessEstablishment_a.persist();
+        
+        Usuario user_a = Usuario.findUsuariosByUserNameEquals(u1.getUserName()).getSingleResult();
+        user_a.setBusinessEstablishment(businessEstablishment_a);
+        user_a.persist();
+        
+        PromotionInstance promotionInstance_a = new PromotionInstance();
+        promotionInstance_a.setBusinessEstablishment(businessEstablishment_a);
+        promotionInstance_a.setPromotionDescription(promotionDescription_a);
+        promotionInstance_a.setPromotionValidDate(new Date());
+        promotionInstance_a.setMaxClientsAllowed(25);
+        promotionInstance_a.persist();
+        
+        BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(businessEstablishment_a.getId());
+        
+        businessEstablishment.getPromotionInstanceList().add(promotionInstance_a);
+        businessEstablishment.persist();
     }
 }

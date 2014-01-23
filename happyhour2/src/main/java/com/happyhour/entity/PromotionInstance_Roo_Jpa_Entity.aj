@@ -15,10 +15,6 @@ privileged aspect PromotionInstance_Roo_Jpa_Entity {
     
     declare @type: PromotionInstance: @Entity;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long PromotionInstance.id;
     
     @Version
     @Column(name = "version")

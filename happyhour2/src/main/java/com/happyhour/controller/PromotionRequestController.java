@@ -69,10 +69,10 @@ public class PromotionRequestController {
     }
     
     
-    @RequestMapping(value = "/processPromotionRequest", produces = "text/html")
-    public String processRequest(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
+    @RequestMapping(value = "processPromotionRequest/{id}")
+    public String processRequest(@PathVariable("id") Long id){
     	
-    	promotionRequestProcessedService.processPromotionRequest(promotionRequest);
+    	promotionRequestProcessedService.processPromotionRequest(id);
     	
     	return "redirect:/promotionrequests/";
     }

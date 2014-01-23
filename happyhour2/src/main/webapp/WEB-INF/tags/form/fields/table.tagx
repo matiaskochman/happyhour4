@@ -69,6 +69,14 @@
             <c:set var="columnDatePattern" value="${patterns[num.count-1]}" />
             <td>
               <c:choose>
+                <c:when test="${columnType eq 'long'}">
+                <!-- 
+                  <spring:escapeBody>
+                    <fmt:formatDate value="${item[column]}" pattern="${fn:escapeXml(columnDatePattern)}" var="colTxt" />
+                  </spring:escapeBody>
+                 -->
+                </c:when>
+              
                 <c:when test="${columnType eq 'date'}">
                   <spring:escapeBody>
                     <fmt:formatDate value="${item[column]}" pattern="${fn:escapeXml(columnDatePattern)}" var="colTxt" />
