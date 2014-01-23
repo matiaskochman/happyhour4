@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
+import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.Usuario;
 
 @Service
@@ -83,5 +84,4 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
 		return list;
 	}
 
-	
 }

@@ -17,11 +17,11 @@
         <field:display field="token" id="s_com_happyhour_entity_PromotionRequest_token" object="${promotionrequest}" z="E7euyEkyQDK+9oSwRN8YY2xhVf4="/>
         <field:display date="true" dateTimePattern="${promotionRequest_creationtimestamp_date_format}" field="creationTimeStamp" id="s_com_happyhour_entity_PromotionRequest_creationTimeStamp" object="${promotionrequest}" z="dk0WMaSfjYmBbvxE8rjf0fkAOzA="/>
         
-        <div style="float: left;">
-        	<form:show id="sdf" object="${promotionrequest}" path="/promotioninstances/processPromotionRequest">
-        		<input id="proceed" type="submit" value="Submit" />
-        	</form:show>
-        	
+        <div>
+            <spring:url value="processPromotionRequest/${itemId}" var="show_form_url" />
+            <spring:url value="/resources/images/show.png" var="show_image_url" />
+            <spring:message arguments="${typeName}" code="entity_show" var="show_label" htmlEscape="false" />
+            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}" title="${fn:escapeXml(show_label)}">Process</a>
         </div>
     </page:show>
 </div>

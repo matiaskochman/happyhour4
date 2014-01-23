@@ -26,6 +26,7 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.happyhour.entity.PromotionInstance;
+import com.happyhour.entity.PromotionRequest;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionDescriptionService;
 import com.happyhour.service.PromotionInstanceService;
@@ -153,12 +154,13 @@ public class PromotionInstanceController {
         return new ResponseEntity<String>(promotionInstance.toJson(), headers, HttpStatus.OK);
     }
     
-    @RequestMapping(headers = "Accept=application/json")
+    @RequestMapping(value = "/list", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> listJson() {
+    public ResponseEntity<String> listJson(@RequestBody String json) {
         HttpHeaders headers = new HttpHeaders();
+        
         headers.add("Content-Type", "application/json; charset=utf-8");
-        List<PromotionInstance> result = promotionInstanceService.findAllPromotionInstances();
+        List<PromotionInstance> result = promotionInstanceService.findPromotionInstanceEntriesByBusinessEstablishment(json);
         return new ResponseEntity<String>(PromotionInstance.toJsonArray(result), headers, HttpStatus.OK);
     }
     

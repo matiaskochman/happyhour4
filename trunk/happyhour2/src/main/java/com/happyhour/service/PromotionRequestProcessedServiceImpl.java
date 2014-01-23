@@ -15,6 +15,12 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 	
 	@Autowired
 	PromotionRequestService promotionRequestService;
+
+	@Autowired
+	BusinessEstablishmentService businessEstablishmentService;
+
+	@Autowired
+	PromotionInstanceService promotionInstanceService;
 	
     public long countAllPromotionRequestProcesseds() {
         return PromotionRequestProcessed.countPromotionRequestProcesseds();
@@ -45,8 +51,10 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
     }
 
 	@Override
-	public void processPromotionRequest(PromotionRequest promotionRequest) {
+	public void processPromotionRequest(Long promotionRequestId) {
 		PromotionRequestProcessed processed = new PromotionRequestProcessed();
+		
+		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		
 		processed.setBusinessEstablishmentId(promotionRequest.getBusinessEstablishmentId());
 		processed.setClientTelephone(promotionRequest.getClientTelephone());
@@ -55,6 +63,8 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		processed.setToken(promotionRequest.getToken());
 		
 		savePromotionRequestProcessed(processed);
+		
+		promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
 		
 		promotionRequestService.deletePromotionRequest(promotionRequest);
 	}

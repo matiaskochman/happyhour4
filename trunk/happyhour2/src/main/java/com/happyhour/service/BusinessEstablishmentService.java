@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.roo.addon.layers.service.RooService;
 
 import com.happyhour.entity.BusinessEstablishment;
+import com.happyhour.entity.PromotionRequest;
 
 @RooService(domainTypes = { com.happyhour.entity.BusinessEstablishment.class })
 public interface BusinessEstablishmentService {
@@ -15,6 +16,6 @@ public interface BusinessEstablishmentService {
     public abstract List<BusinessEstablishment> findBusinessEstablishmentEntries(int firstResult, int maxResults);
     public abstract List<BusinessEstablishment> findBusinessEstablishmentEntriesByUser(int firstResult, int maxResults);
     public abstract void saveBusinessEstablishment(BusinessEstablishment businessEstablishment);    
-    public abstract BusinessEstablishment updateBusinessEstablishment(BusinessEstablishment businessEstablishment);    
+    public abstract BusinessEstablishment updateBusinessEstablishment(BusinessEstablishment businessEstablishment);
     
 }

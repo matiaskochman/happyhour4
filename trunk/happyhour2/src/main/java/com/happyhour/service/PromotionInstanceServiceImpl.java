@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.Authority;
+import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionInstance;
+import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.Usuario;
 
 @Service
@@ -68,6 +70,32 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
 		
         return list;
     }
+
+	@Override
+	public void deletePromotionRequestFromPromotionInstance(PromotionRequest promotionRequest) {
+		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(Long.getLong(promotionRequest.getPromoId()));
+		
+		for (PromotionRequest pRequest : promotionInstance.getPromoRequestList()) {
+			if(pRequest.equals(promotionRequest)){
+				promotionInstance.getPromoRequestList().remove(pRequest);
+				break;
+			}
+		}
+		promotionInstance.merge();
+		
+	}
+
+	@Override
+	public List<PromotionInstance> findPromotionInstanceEntriesByBusinessEstablishment(String businessEstablishmentId) {
+		Long id = null;
+			
+		id = new Long(businessEstablishmentId);
+			
+		
+		BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(id);
+		List<PromotionInstance> list= businessEstablishment.getPromotionInstanceList();
+		return list;
+	}
 
 	
 }
