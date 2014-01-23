@@ -73,7 +73,9 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
 
 	@Override
 	public void deletePromotionRequestFromPromotionInstance(PromotionRequest promotionRequest) {
-		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(Long.getLong(promotionRequest.getPromoId()));
+		
+		Long id = new Long(promotionRequest.getPromoId());
+		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(id);
 		
 		for (PromotionRequest pRequest : promotionInstance.getPromoRequestList()) {
 			if(pRequest.equals(promotionRequest)){
