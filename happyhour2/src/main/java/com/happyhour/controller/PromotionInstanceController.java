@@ -26,7 +26,6 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.happyhour.entity.PromotionInstance;
-import com.happyhour.entity.PromotionRequest;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionDescriptionService;
 import com.happyhour.service.PromotionInstanceService;
@@ -50,6 +49,18 @@ public class PromotionInstanceController {
     @Autowired
     PromotionRequestService promotionRequestService;
 
+    
+    @RequestMapping(value = "/json/list", method = RequestMethod.POST, headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> listJson(@RequestBody String json) {
+        HttpHeaders headers = new HttpHeaders();
+        
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        List<PromotionInstance> result = promotionInstanceService.findPromotionInstanceEntriesByBusinessEstablishment(json);
+        return new ResponseEntity<String>(PromotionInstance.toJsonArray(result), headers, HttpStatus.OK);
+    }
+    
+    
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid PromotionInstance promotionInstance, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -152,16 +163,6 @@ public class PromotionInstanceController {
             return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<String>(promotionInstance.toJson(), headers, HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/list", method = RequestMethod.POST, headers = "Accept=application/json")
-    @ResponseBody
-    public ResponseEntity<String> listJson(@RequestBody String json) {
-        HttpHeaders headers = new HttpHeaders();
-        
-        headers.add("Content-Type", "application/json; charset=utf-8");
-        List<PromotionInstance> result = promotionInstanceService.findPromotionInstanceEntriesByBusinessEstablishment(json);
-        return new ResponseEntity<String>(PromotionInstance.toJsonArray(result), headers, HttpStatus.OK);
     }
     
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
