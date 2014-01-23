@@ -43,7 +43,7 @@ public class PromotionRequestController {
     @Autowired
     PromotionRequestProcessedService promotionRequestProcessedService;
 
-    @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/create",method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJson(@RequestBody String json) {
         HttpHeaders headers = new HttpHeaders();
         PromotionRequest promotionRequest = PromotionRequest.fromJsonToPromotionRequest(json);
@@ -64,6 +64,17 @@ public class PromotionRequestController {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/json/list",headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> listJson() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        List<PromotionRequest> result = promotionRequestService.findAllPromotionRequests();
+        return new ResponseEntity<String>(PromotionRequest.toJsonArray(result), headers, HttpStatus.OK);
+    }
+
+    
+    
     void addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("promotionRequest_creationtimestamp_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
@@ -167,15 +178,6 @@ public class PromotionRequestController {
             return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<String>(promotionRequest.toJson(), headers, HttpStatus.OK);
-    }
-
-    @RequestMapping(headers = "Accept=application/json")
-    @ResponseBody
-    public ResponseEntity<String> listJson() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json; charset=utf-8");
-        List<PromotionRequest> result = promotionRequestService.findAllPromotionRequests();
-        return new ResponseEntity<String>(PromotionRequest.toJsonArray(result), headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")

@@ -92,7 +92,6 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
 		Long id = null;
 			
 		id = new Long(businessEstablishmentId);
-			
 		
 		BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(id);
 		List<PromotionInstance> list= businessEstablishment.getPromotionInstanceList();
