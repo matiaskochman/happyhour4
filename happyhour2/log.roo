@@ -184,3 +184,11 @@ field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequest
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-09 09:43:51
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-13 13:24:50
 service type --interface ~.service.PromotionInstanceProcessedService --entity ~.entity.PromotionInstanceProcessed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-04 08:36:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-04 08:43:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-04 08:44:45
+focus --class ~.entity.PromotionRequestProcessed
+json add 
+focus --class ~.entity.PromotionInstanceProcessed
+json add 
+web mvc json all

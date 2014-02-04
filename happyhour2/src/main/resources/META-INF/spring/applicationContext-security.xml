@@ -15,6 +15,7 @@
         <intercept-url pattern="/loginController/login/**" access="permitAll" />
         <intercept-url pattern="/promotioninstances/json/**" access="permitAll" />
         <intercept-url pattern="/promotionrequests/json/**" access="permitAll" />
+        <intercept-url pattern="/promotionrequestprocesseds/json/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
     </http>
     <!-- Configure Authentication mechanism -->
