@@ -1,9 +1,7 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -17,30 +15,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
-
 import com.happyhour.entity.PromotionInstanceProcessed;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionDescriptionService;
 import com.happyhour.service.PromotionInstanceProcessedService;
 import com.happyhour.service.PromotionRequestProcessedService;
+import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 
 @RequestMapping("/promotioninstanceprocesseds")
 @Controller
 @RooWebScaffold(path = "promotioninstanceprocesseds", formBackingObject = PromotionInstanceProcessed.class)
+@RooWebJson(jsonObject = PromotionInstanceProcessed.class)
 public class PromotionInstanceProcessedController {
-	
+
     @Autowired
-	PromotionInstanceProcessedService promotionInstanceProcessedService;
-    
+    PromotionInstanceProcessedService promotionInstanceProcessedService;
+
     @Autowired
     BusinessEstablishmentService businessEstablishmentService;
-    
+
     @Autowired
     PromotionDescriptionService promotionDescriptionService;
-    
+
     @Autowired
     PromotionRequestProcessedService promotionRequestProcessedService;
-    
+
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid PromotionInstanceProcessed promotionInstanceProcessed, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -51,13 +50,13 @@ public class PromotionInstanceProcessedController {
         promotionInstanceProcessedService.savePromotionInstanceProcessed(promotionInstanceProcessed);
         return "redirect:/promotioninstanceprocesseds/" + encodeUrlPathSegment(promotionInstanceProcessed.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new PromotionInstanceProcessed());
         return "promotioninstanceprocesseds/create";
     }
-    
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
@@ -65,7 +64,7 @@ public class PromotionInstanceProcessedController {
         uiModel.addAttribute("itemId", id);
         return "promotioninstanceprocesseds/show";
     }
-    
+
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -80,7 +79,7 @@ public class PromotionInstanceProcessedController {
         addDateTimeFormatPatterns(uiModel);
         return "promotioninstanceprocesseds/list";
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid PromotionInstanceProcessed promotionInstanceProcessed, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -91,13 +90,13 @@ public class PromotionInstanceProcessedController {
         promotionInstanceProcessedService.updatePromotionInstanceProcessed(promotionInstanceProcessed);
         return "redirect:/promotioninstanceprocesseds/" + encodeUrlPathSegment(promotionInstanceProcessed.getId().toString(), httpServletRequest);
     }
-    
+
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, promotionInstanceProcessedService.findPromotionInstanceProcessed(id));
         return "promotioninstanceprocesseds/update";
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         PromotionInstanceProcessed promotionInstanceProcessed = promotionInstanceProcessedService.findPromotionInstanceProcessed(id);
@@ -107,11 +106,11 @@ public class PromotionInstanceProcessedController {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/promotioninstanceprocesseds";
     }
-    
+
     void addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("promotionInstanceProcessed_promotionvaliddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
-    
+
     void populateEditForm(Model uiModel, PromotionInstanceProcessed promotionInstanceProcessed) {
         uiModel.addAttribute("promotionInstanceProcessed", promotionInstanceProcessed);
         addDateTimeFormatPatterns(uiModel);
@@ -119,7 +118,7 @@ public class PromotionInstanceProcessedController {
         uiModel.addAttribute("promotiondescriptions", promotionDescriptionService.findAllPromotionDescriptions());
         uiModel.addAttribute("promotionrequestprocesseds", promotionRequestProcessedService.findAllPromotionRequestProcesseds());
     }
-    
+
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -127,8 +126,8 @@ public class PromotionInstanceProcessedController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
-	
 }

@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
+import org.springframework.roo.addon.json.RooJson;
 
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
+@RooJson
 public class PromotionRequestProcessed {
 
     /**
@@ -37,5 +39,4 @@ public class PromotionRequestProcessed {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date creationTimeStamp;
-
 }

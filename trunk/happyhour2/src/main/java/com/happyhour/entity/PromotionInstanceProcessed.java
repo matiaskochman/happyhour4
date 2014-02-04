@@ -13,10 +13,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.roo.addon.json.RooJson;
 
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
+@RooJson
 public class PromotionInstanceProcessed {
 
     /**
