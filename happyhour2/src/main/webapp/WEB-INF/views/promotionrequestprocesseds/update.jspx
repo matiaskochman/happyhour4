@@ -8,5 +8,6 @@
         <field:input field="clientTelephone" id="c_com_happyhour_entity_PromotionRequestProcessed_clientTelephone" z="5y6sGWsGP0ch50lH6gXhVmyuKqE="/>
         <field:input field="token" id="c_com_happyhour_entity_PromotionRequestProcessed_token" z="dDnBVf4DmUAN3nWzClSSss14YkI="/>
         <field:datetime dateTimePattern="${promotionRequestProcessed_creationtimestamp_date_format}" field="creationTimeStamp" id="c_com_happyhour_entity_PromotionRequestProcessed_creationTimeStamp" z="O5piDFbo4AWdLWNoJh+t7tf6r/I="/>
+        <field:checkbox field="delivered" id="c_com_happyhour_entity_PromotionRequestProcessed_delivered" z="RHWUxCm2Bt+J5zLIM+o9cg9Uw6E="/>
     </form:update>
 </div>

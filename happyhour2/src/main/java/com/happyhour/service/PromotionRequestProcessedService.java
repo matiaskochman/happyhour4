@@ -15,6 +15,7 @@ public interface PromotionRequestProcessedService {
     public abstract List<PromotionRequestProcessed> findPromotionRequestProcessedEntries(int firstResult, int maxResults);    
     public abstract void savePromotionRequestProcessed(PromotionRequestProcessed promotionRequestProcessed);    
     public abstract PromotionRequestProcessed updatePromotionRequestProcessed(PromotionRequestProcessed promotionRequestProcessed);
-	public abstract void processPromotionRequest(Long promotionRequestId);    
+	public abstract void processPromotionRequestDelivered(Long promotionRequestId);
+	public abstract void processPromotionRequestNotDelivered(Long promotionRequestId);    
 	
 }

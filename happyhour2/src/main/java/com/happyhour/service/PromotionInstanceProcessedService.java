@@ -13,6 +13,7 @@ public interface PromotionInstanceProcessedService {
     public abstract List<PromotionInstanceProcessed> findAllPromotionInstanceProcesseds();    
     public abstract List<PromotionInstanceProcessed> findPromotionInstanceProcessedEntries(int firstResult, int maxResults);    
     public abstract void savePromotionInstanceProcessed(PromotionInstanceProcessed promotionInstanceProcessed);    
-    public abstract PromotionInstanceProcessed updatePromotionInstanceProcessed(PromotionInstanceProcessed promotionInstanceProcessed);    
+    public abstract PromotionInstanceProcessed updatePromotionInstanceProcessed(PromotionInstanceProcessed promotionInstanceProcessed);
+	public abstract void processPromotionInstance(Long id);    
 	
 }

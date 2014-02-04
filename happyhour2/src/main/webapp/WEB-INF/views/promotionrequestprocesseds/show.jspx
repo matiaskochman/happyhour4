@@ -8,5 +8,6 @@
         <field:display field="clientTelephone" id="s_com_happyhour_entity_PromotionRequestProcessed_clientTelephone" object="${promotionrequestprocessed}" z="i9xak2BpxCIzY/idUhatrbauE3U="/>
         <field:display field="token" id="s_com_happyhour_entity_PromotionRequestProcessed_token" object="${promotionrequestprocessed}" z="QqTe0zeyUTPiX97ZVeXDZS0ZIhc="/>
         <field:display date="true" dateTimePattern="${promotionRequestProcessed_creationtimestamp_date_format}" field="creationTimeStamp" id="s_com_happyhour_entity_PromotionRequestProcessed_creationTimeStamp" object="${promotionrequestprocessed}" z="msAItNYcd5M0nYV7nqeWl6osLCo="/>
+        <field:display field="delivered" id="s_com_happyhour_entity_PromotionRequestProcessed_delivered" object="${promotionrequestprocessed}" z="MEbvLM2HK50uQPSJjjIfMBrCrbs="/>
     </page:show>
 </div>

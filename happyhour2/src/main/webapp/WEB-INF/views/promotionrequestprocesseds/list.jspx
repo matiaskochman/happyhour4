@@ -9,6 +9,7 @@
             <table:column id="c_com_happyhour_entity_PromotionRequestProcessed_clientTelephone" property="clientTelephone" z="FvWvuPSMPw1abE7ampf0LOMvqKY="/>
             <table:column id="c_com_happyhour_entity_PromotionRequestProcessed_token" property="token" z="gqhoswRRr6Io8CEBPNFS2O15BW0="/>
             <table:column date="true" dateTimePattern="${promotionRequestProcessed_creationtimestamp_date_format}" id="c_com_happyhour_entity_PromotionRequestProcessed_creationTimeStamp" property="creationTimeStamp" z="8BGypwuDiwzdivW0OKwoJwsnTCw="/>
+            <table:column id="c_com_happyhour_entity_PromotionRequestProcessed_delivered" property="delivered" z="BfolL6CxLvgnJvqS6p6sWBhz/L0="/>
         </table:table>
     </page:list>
 </div>

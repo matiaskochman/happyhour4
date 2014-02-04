@@ -12,6 +12,14 @@ import java.util.Set;
 
 privileged aspect PromotionInstance_Roo_JavaBean {
     
+    public Long PromotionInstance.getId() {
+        return this.id;
+    }
+    
+    public void PromotionInstance.setId(Long id) {
+        this.id = id;
+    }
+    
     public PromotionDescription PromotionInstance.getPromotionDescription() {
         return this.promotionDescription;
     }

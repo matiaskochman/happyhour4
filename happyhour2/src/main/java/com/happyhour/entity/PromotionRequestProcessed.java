@@ -18,24 +18,12 @@ import org.springframework.roo.addon.json.RooJson;
 @RooJson
 public class PromotionRequestProcessed {
 
-    /**
-     */
     private String promoId;
-
-    /**
-     */
     private String businessEstablishmentId;
-
-    /**
-     */
     private String clientTelephone;
-
-    /**
-     */
     private String token;
-
-    /**
-     */
+    private Boolean delivered = false;
+    
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date creationTimeStamp;
