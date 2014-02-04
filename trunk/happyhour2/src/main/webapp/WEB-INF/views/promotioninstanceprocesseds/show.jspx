@@ -8,5 +8,13 @@
         <field:display date="true" dateTimePattern="${promotionInstanceProcessed_promotionvaliddate_date_format}" field="promotionValidDate" id="s_com_happyhour_entity_PromotionInstanceProcessed_promotionValidDate" object="${promotioninstanceprocessed}" z="W8KktAWLG1ZtK5wTJXwikgjrImA="/>
         <field:display field="maxClientsAllowed" id="s_com_happyhour_entity_PromotionInstanceProcessed_maxClientsAllowed" object="${promotioninstanceprocessed}" z="KWU/P7KZEhmkIsZzqSMRXYZoFuM="/>
         <field:display field="promotionRequestProcessedList" id="s_com_happyhour_entity_PromotionInstanceProcessed_promotionRequestProcessedList" object="${promotioninstanceprocessed}" z="91xZJKG7rpYOmGrS1AcqPB6Nr7A="/>
+        
+        <div>
+            <spring:url value="processPromotionRequest/${itemId}" var="show_form_url" />
+            <spring:url value="/resources/images/show.png" var="show_image_url" />
+            <spring:message arguments="${typeName}" code="entity_show" var="show_label" htmlEscape="false" />
+            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}" title="${fn:escapeXml(show_label)}">Process</a>
+        </div>
+        
     </page:show>
 </div>

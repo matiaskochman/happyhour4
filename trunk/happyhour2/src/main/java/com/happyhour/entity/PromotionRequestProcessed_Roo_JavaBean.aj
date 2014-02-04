@@ -40,6 +40,14 @@ privileged aspect PromotionRequestProcessed_Roo_JavaBean {
         this.token = token;
     }
     
+    public Boolean PromotionRequestProcessed.getDelivered() {
+        return this.delivered;
+    }
+    
+    public void PromotionRequestProcessed.setDelivered(Boolean delivered) {
+        this.delivered = delivered;
+    }
+    
     public Date PromotionRequestProcessed.getCreationTimeStamp() {
         return this.creationTimeStamp;
     }

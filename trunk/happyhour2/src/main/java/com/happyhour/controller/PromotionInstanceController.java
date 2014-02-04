@@ -28,6 +28,7 @@ import org.springframework.web.util.WebUtils;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionDescriptionService;
+import com.happyhour.service.PromotionInstanceProcessedService;
 import com.happyhour.service.PromotionInstanceService;
 import com.happyhour.service.PromotionRequestService;
 
@@ -40,6 +41,9 @@ public class PromotionInstanceController {
     @Autowired
     PromotionInstanceService promotionInstanceService;
 
+    @Autowired
+    PromotionInstanceProcessedService promotionInstanceProcessedService;
+    
     @Autowired
     BusinessEstablishmentService businessEstablishmentService;
 
@@ -206,5 +210,14 @@ public class PromotionInstanceController {
         promotionInstanceService.deletePromotionInstance(promotionInstance);
         return new ResponseEntity<String>(headers, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "processPromotionRequest/{id}")
+    public String processRequest(@PathVariable("id") Long id){
+    	
+    	promotionInstanceProcessedService.processPromotionInstance(id);
+    	
+    	return "redirect:/promotionrequests/";
+    }
+    
     
 }
