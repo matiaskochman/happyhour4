@@ -53,39 +53,42 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 	@Override
 	public void processPromotionRequestDelivered(Long promotionRequestId) {
 		
-		PromotionRequestProcessed processed = new PromotionRequestProcessed();
-		
-		PromotionRequest promotionRequest = setAPromotionRequestProcessed(promotionRequestId, processed);
+		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
+		PromotionRequestProcessed processed = new PromotionRequestProcessed(promotionRequest.getPromoId(),promotionRequest.getBusinessEstablishmentId()
+				, promotionRequest.getClientTelephone(), promotionRequest.getToken(),promotionRequest.getCreationTimeStamp());
 		
 		processed.setDelivered(true);
 		
-		savePromotionRequestProcessed(processed);
+		this.savePromotionRequestProcessed(processed);
+		
+		promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(processed);
 		
 		promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
-		
 		promotionRequestService.deletePromotionRequest(promotionRequest);
+		
 	}
 
 	@Override
 	public void processPromotionRequestNotDelivered(Long promotionRequestId) {
 		
-		PromotionRequestProcessed processed = new PromotionRequestProcessed();
+		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		
-		PromotionRequest promotionRequest = setAPromotionRequestProcessed(promotionRequestId, processed);
+		PromotionRequestProcessed processed = new PromotionRequestProcessed(promotionRequest.getPromoId(),promotionRequest.getBusinessEstablishmentId()
+				, promotionRequest.getClientTelephone(), promotionRequest.getToken(),promotionRequest.getCreationTimeStamp());
 		
 		processed.setDelivered(false);
 		
-		savePromotionRequestProcessed(processed);
+		this.savePromotionRequestProcessed(processed);
+		
+		promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(processed);
 		
 		promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
-		
 		promotionRequestService.deletePromotionRequest(promotionRequest);
 	}
 	
 	
-	private PromotionRequest setAPromotionRequestProcessed(Long promotionRequestId, PromotionRequestProcessed processed) {
+	private PromotionRequestProcessed setAPromotionRequestProcessed(PromotionRequest promotionRequest, PromotionRequestProcessed processed) {
 		
-		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		
 		processed.setBusinessEstablishmentId(promotionRequest.getBusinessEstablishmentId());
 		processed.setClientTelephone(promotionRequest.getClientTelephone());
@@ -93,7 +96,7 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		processed.setPromoId(promotionRequest.getPromoId());
 		processed.setToken(promotionRequest.getToken());
 		
-		return promotionRequest;
+		return processed;
 	}
 	
 }

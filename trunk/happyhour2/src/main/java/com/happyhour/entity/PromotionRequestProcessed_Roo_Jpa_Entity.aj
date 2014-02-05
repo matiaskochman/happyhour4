@@ -15,22 +15,11 @@ privileged aspect PromotionRequestProcessed_Roo_Jpa_Entity {
     
     declare @type: PromotionRequestProcessed: @Entity;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long PromotionRequestProcessed.id;
     
     @Version
     @Column(name = "version")
     private Integer PromotionRequestProcessed.version;
     
-    public Long PromotionRequestProcessed.getId() {
-        return this.id;
-    }
-    
-    public void PromotionRequestProcessed.setId(Long id) {
-        this.id = id;
-    }
     
     public Integer PromotionRequestProcessed.getVersion() {
         return this.version;
