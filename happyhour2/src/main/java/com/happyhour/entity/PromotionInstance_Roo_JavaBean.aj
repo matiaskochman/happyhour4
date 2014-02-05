@@ -7,6 +7,7 @@ import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
+import com.happyhour.entity.PromotionRequestProcessed;
 import java.util.Date;
 import java.util.Set;
 
@@ -58,6 +59,14 @@ privileged aspect PromotionInstance_Roo_JavaBean {
     
     public void PromotionInstance.setMaxClientsAllowed(Integer maxClientsAllowed) {
         this.maxClientsAllowed = maxClientsAllowed;
+    }
+    
+    public Set<PromotionRequestProcessed> PromotionInstance.getPromotionRequestProcessedList() {
+        return this.promotionRequestProcessedList;
+    }
+    
+    public void PromotionInstance.setPromotionRequestProcessedList(Set<PromotionRequestProcessed> promotionRequestProcessedList) {
+        this.promotionRequestProcessedList = promotionRequestProcessedList;
     }
     
 }

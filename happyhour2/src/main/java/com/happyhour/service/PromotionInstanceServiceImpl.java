@@ -10,6 +10,7 @@ import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
+import com.happyhour.entity.PromotionRequestProcessed;
 import com.happyhour.entity.Usuario;
 
 @Service
@@ -96,6 +97,15 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
 		BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(id);
 		List<PromotionInstance> list= businessEstablishment.getPromotionInstanceList();
 		return list;
+	}
+
+	@Override
+	public void savePromotionRequestProcessedToPromotionInstance(PromotionRequestProcessed processed) {
+		Long id = new Long(processed.getPromoId());
+		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(id);
+		
+		promotionInstance.getPromotionRequestProcessedList().add(processed);
+		promotionInstance.merge();
 	}
 
 	

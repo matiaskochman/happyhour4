@@ -16,7 +16,10 @@ import com.happyhour.entity.PromotionRequest;
 public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceProcessedService {
 	
 	@Autowired
-	PromotionRequestProcessedService promotionRequestProcessedService;
+	private PromotionRequestProcessedService promotionRequestProcessedService;
+
+	@Autowired
+	private PromotionInstanceService promotionInstanceService;
 	
     public long countAllPromotionInstanceProcesseds() {
         return PromotionInstanceProcessed.countPromotionInstanceProcesseds();
@@ -49,32 +52,25 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 	@Override
 	public void processPromotionInstance(Long id) {
 		
-		PromotionInstanceProcessed promotionInstanceProcessed = new PromotionInstanceProcessed();
 		
 		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(id);
+		
+		PromotionInstanceProcessed promotionInstanceProcessed = new PromotionInstanceProcessed(promotionInstance.getPromotionDescription(),
+				promotionInstance.getBusinessEstablishment(),promotionInstance.getPromotionValidDate(), promotionInstance.getMaxClientsAllowed());
 		
 		Set<PromotionRequest> promotionRequestList = promotionInstance.getPromoRequestList();
 		
 		for (PromotionRequest promotionRequest : promotionRequestList) {
 			promotionRequestProcessedService.processPromotionRequestNotDelivered(promotionRequest.getId());
 		}
-		/*
-		PromotionRequestProcessed processed = new PromotionRequestProcessed();
 		
-		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		
-		processed.setBusinessEstablishmentId(promotionRequest.getBusinessEstablishmentId());
-		processed.setClientTelephone(promotionRequest.getClientTelephone());
-		processed.setCreationTimeStamp(promotionRequest.getCreationTimeStamp());
-		processed.setPromoId(promotionRequest.getPromoId());
-		processed.setToken(promotionRequest.getToken());
+		promotionInstanceProcessed.getPromotionRequestProcessedList().addAll(promotionInstance.getPromotionRequestProcessedList());
 		
-		savePromotionRequestProcessed(processed);
+		promotionInstanceProcessed.merge();
 		
-		promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
+		promotionInstanceService.deletePromotionInstance(promotionInstance);
 		
-		promotionRequestService.deletePromotionRequest(promotionRequest);
-		*/
 	}
 	
 }

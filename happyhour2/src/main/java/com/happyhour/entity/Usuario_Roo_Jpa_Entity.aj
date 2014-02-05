@@ -6,31 +6,15 @@ package com.happyhour.entity;
 import com.happyhour.entity.Usuario;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Version;
 
 privileged aspect Usuario_Roo_Jpa_Entity {
     
     declare @type: Usuario: @Entity;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long Usuario.id;
-    
     @Version
     @Column(name = "version")
     private Integer Usuario.version;
-    
-    public Long Usuario.getId() {
-        return this.id;
-    }
-    
-    public void Usuario.setId(Long id) {
-        this.id = id;
-    }
     
     public Integer Usuario.getVersion() {
         return this.version;

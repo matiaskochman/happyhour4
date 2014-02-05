@@ -9,6 +9,7 @@
             <table:column date="true" dateTimePattern="${promotionInstanceProcessed_promotionvaliddate_date_format}" id="c_com_happyhour_entity_PromotionInstanceProcessed_promotionValidDate" property="promotionValidDate" z="952O3q6RWm7JXn06dDNRIDWG8tI="/>
             <table:column id="c_com_happyhour_entity_PromotionInstanceProcessed_maxClientsAllowed" property="maxClientsAllowed" z="EG8QFSUBChR3vnNMQUNeOXvIwKY="/>
             <table:column id="c_com_happyhour_entity_PromotionInstanceProcessed_promotionRequestProcessedList" property="promotionRequestProcessedList" z="GtCjZVYxhbvvJMQcDAsCKR4yaVM="/>
+            <table:column id="c_com_happyhour_entity_PromotionInstanceProcessed_promotionRequestProcessedDeliveredList" property="promotionRequestProcessedDeliveredList" z="user-managed"/>
         </table:table>
     </page:list>
 </div>
