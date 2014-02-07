@@ -1,5 +1,6 @@
 package com.happyhour.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,10 +83,23 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		
 		promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(processed);
 		
-		promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
-		promotionRequestService.deletePromotionRequest(promotionRequest);
+		//promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
+		//promotionRequestService.deletePromotionRequest(promotionRequest);
 	}
 	
+	@Override
+	public void processPromotionRequestCollectionNotDelivered(Collection<PromotionRequest> c) {
+		
+		for (PromotionRequest promotionRequest : c) {
+			processPromotionRequestNotDelivered(promotionRequest.getId());
+		}
+		
+		for (PromotionRequest promotionRequest : c) {
+			promotionRequest.remove();
+		}
+		
+		
+	}
 	
 	private PromotionRequestProcessed setAPromotionRequestProcessed(PromotionRequest promotionRequest, PromotionRequestProcessed processed) {
 		
@@ -98,5 +112,6 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		
 		return processed;
 	}
+
 	
 }
