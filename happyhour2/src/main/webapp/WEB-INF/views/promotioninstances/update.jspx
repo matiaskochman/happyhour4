@@ -8,5 +8,6 @@
         <field:select field="businessEstablishment" id="c_com_happyhour_entity_PromotionInstance_businessEstablishment" itemValue="id" items="${businessestablishments}" path="/businessestablishments" z="fo54RoOll3I8f01FB6YVCHjsPmY="/>
         <field:datetime dateTimePattern="${promotionInstance_promotionvaliddate_date_format}" field="promotionValidDate" id="c_com_happyhour_entity_PromotionInstance_promotionValidDate" z="cuc0KtWgugerwQwP5tpVKYSiuXA="/>
         <field:input field="maxClientsAllowed" id="c_com_happyhour_entity_PromotionInstance_maxClientsAllowed" validationMessageCode="field_invalid_integer" z="bZtB4d0nH6c1KVW9QDvm+zJpNlc="/>
+        <field:select field="promotionRequestProcessedList" id="c_com_happyhour_entity_PromotionInstance_promotionRequestProcessedList" itemValue="id" items="${promotionrequestprocesseds}" multiple="true" path="/promotionrequestprocesseds" z="KpkSofw+hPFwblcLQSoJaRSC5iw="/>
     </form:update>
 </div>

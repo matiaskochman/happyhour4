@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionInstanceProcessed;
 import com.happyhour.entity.PromotionRequest;
@@ -20,6 +21,9 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 
 	@Autowired
 	private PromotionInstanceService promotionInstanceService;
+
+	@Autowired
+	private BusinessEstablishmentService businessEstablishmentService;
 	
     public long countAllPromotionInstanceProcesseds() {
         return PromotionInstanceProcessed.countPromotionInstanceProcesseds();
@@ -49,9 +53,7 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
         return promotionInstanceProcessed.merge();
     }
 
-	@Override
 	public void processPromotionInstance(Long id) {
-		
 		
 		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(id);
 		
@@ -68,6 +70,15 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 		promotionInstanceProcessed.getPromotionRequestProcessedList().addAll(promotionInstance.getPromotionRequestProcessedList());
 		
 		promotionInstanceProcessed.merge();
+		
+		BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(promotionInstance.getBusinessEstablishment().getId());
+		
+		businessEstablishment.getPromotionInstanceList().remove(promotionInstance.getId());
+		
+		businessEstablishment.merge();
+		
+		//promotionInstance.setPromoRequestList(null);
+		//promotionInstance.setPromotionRequestProcessedList(null);
 		
 		promotionInstanceService.deletePromotionInstance(promotionInstance);
 		
