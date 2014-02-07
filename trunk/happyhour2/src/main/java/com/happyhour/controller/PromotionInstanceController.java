@@ -211,12 +211,12 @@ public class PromotionInstanceController {
         return new ResponseEntity<String>(headers, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "processPromotionRequest/{id}")
-    public String processRequest(@PathVariable("id") Long id){
+    @RequestMapping(value = "processPromotionInstance/{id}")
+    public String processPromotionInstance(@PathVariable("id") Long id){
     	
     	promotionInstanceProcessedService.processPromotionInstance(id);
     	
-    	return "redirect:/promotionrequests/";
+    	return "redirect:/promotioninstances/";
     }
     
     
