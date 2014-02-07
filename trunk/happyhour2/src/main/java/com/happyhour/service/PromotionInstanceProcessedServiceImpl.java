@@ -55,24 +55,32 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 
 	public void processPromotionInstance(Long id) {
 		
-		PromotionInstance promotionInstance = PromotionInstance.findPromotionInstance(id);
+		PromotionInstance promotionInstance = promotionInstanceService.findPromotionInstance(id);
 		
 		PromotionInstanceProcessed promotionInstanceProcessed = new PromotionInstanceProcessed(promotionInstance.getPromotionDescription(),
 				promotionInstance.getBusinessEstablishment(),promotionInstance.getPromotionValidDate(), promotionInstance.getMaxClientsAllowed());
 		
 		Set<PromotionRequest> promotionRequestList = promotionInstance.getPromoRequestList();
 		
+		promotionInstance.setPromoRequestList(null);
+		
+		promotionRequestProcessedService.processPromotionRequestCollectionNotDelivered(promotionRequestList);
+		
+		/*
 		for (PromotionRequest promotionRequest : promotionRequestList) {
 			promotionRequestProcessedService.processPromotionRequestNotDelivered(promotionRequest.getId());
 		}
-		
-		
+		*/
+		//promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
+
 		promotionInstanceProcessed.getPromotionRequestProcessedList().addAll(promotionInstance.getPromotionRequestProcessedList());
 		
 		promotionInstanceProcessed.merge();
 		
 		BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(promotionInstance.getBusinessEstablishment().getId());
 		
+		promotionInstance.setBusinessEstablishment(null);
+		promotionInstance.merge();
 		businessEstablishment.getPromotionInstanceList().remove(promotionInstance.getId());
 		
 		businessEstablishment.merge();
