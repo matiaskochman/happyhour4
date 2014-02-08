@@ -3,12 +3,8 @@
 
 package com.happyhour.entity;
 
-import com.happyhour.entity.BusinessEstablishment;
-import com.happyhour.entity.PromotionDescription;
-import com.happyhour.entity.PromotionInstance;
-import com.happyhour.entity.PromotionRequest;
-import com.happyhour.entity.PromotionRequestProcessed;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 privileged aspect PromotionInstance_Roo_JavaBean {
@@ -29,11 +25,11 @@ privileged aspect PromotionInstance_Roo_JavaBean {
         this.promotionDescription = promotionDescription;
     }
     
-    public Set<PromotionRequest> PromotionInstance.getPromoRequestList() {
+    public List<PromotionRequest> PromotionInstance.getPromoRequestList() {
         return this.promoRequestList;
     }
     
-    public void PromotionInstance.setPromoRequestList(Set<PromotionRequest> promoRequestList) {
+    public void PromotionInstance.setPromoRequestList(List<PromotionRequest> promoRequestList) {
         this.promoRequestList = promoRequestList;
     }
     
@@ -61,11 +57,11 @@ privileged aspect PromotionInstance_Roo_JavaBean {
         this.maxClientsAllowed = maxClientsAllowed;
     }
     
-    public Set<PromotionRequestProcessed> PromotionInstance.getPromotionRequestProcessedList() {
+    public List<PromotionRequestProcessed> PromotionInstance.getPromotionRequestProcessedList() {
         return this.promotionRequestProcessedList;
     }
     
-    public void PromotionInstance.setPromotionRequestProcessedList(Set<PromotionRequestProcessed> promotionRequestProcessedList) {
+    public void PromotionInstance.setPromotionRequestProcessedList(List<PromotionRequestProcessed> promotionRequestProcessedList) {
         this.promotionRequestProcessedList = promotionRequestProcessedList;
     }
     

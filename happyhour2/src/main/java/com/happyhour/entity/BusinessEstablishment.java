@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.ManyToMany;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 
@@ -20,6 +21,10 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJson
 public class BusinessEstablishment {
 
+    @PersistenceContext
+    transient EntityManager entityManager;
+	
+	
     /**
      */
     @NotNull

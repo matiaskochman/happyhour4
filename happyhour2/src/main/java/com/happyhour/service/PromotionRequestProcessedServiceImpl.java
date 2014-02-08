@@ -1,6 +1,6 @@
 package com.happyhour.service;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +52,9 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
     }
 
 	@Override
-	public void processPromotionRequestDelivered(Long promotionRequestId) {
+	public PromotionRequestProcessed processPromotionRequestDelivered(PromotionRequest promotionRequest) {
 		
-		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
+		//PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		PromotionRequestProcessed processed = new PromotionRequestProcessed(promotionRequest.getPromoId(),promotionRequest.getBusinessEstablishmentId()
 				, promotionRequest.getClientTelephone(), promotionRequest.getToken(),promotionRequest.getCreationTimeStamp());
 		
@@ -67,31 +67,46 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
 		promotionRequestService.deletePromotionRequest(promotionRequest);
 		
+		return processed;
 	}
 
 	@Override
-	public void processPromotionRequestNotDelivered(Long promotionRequestId) {
+	public PromotionRequestProcessed processPromotionRequestNotDelivered(PromotionRequest promotionRequest) {
 		
-		PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
+		//PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		
 		PromotionRequestProcessed processed = new PromotionRequestProcessed(promotionRequest.getPromoId(),promotionRequest.getBusinessEstablishmentId()
 				, promotionRequest.getClientTelephone(), promotionRequest.getToken(),promotionRequest.getCreationTimeStamp());
 		
 		processed.setDelivered(false);
-		
+
+		/*
 		this.savePromotionRequestProcessed(processed);
 		
 		promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(processed);
+		*/
 		
-		//promotionInstanceService.deletePromotionRequestFromPromotionInstance(promotionRequest);
-		//promotionRequestService.deletePromotionRequest(promotionRequest);
+		return processed;
+		
 	}
 	
 	@Override
-	public void processPromotionRequestCollectionNotDelivered(Collection<PromotionRequest> c) {
+	public void processPromotionRequestCollectionNotDelivered(List<PromotionRequest> c) {
+		
+		List<PromotionRequestProcessed> list = new ArrayList<PromotionRequestProcessed>();
 		
 		for (PromotionRequest promotionRequest : c) {
-			processPromotionRequestNotDelivered(promotionRequest.getId());
+			PromotionRequestProcessed promotionRequestProcessed = processPromotionRequestNotDelivered(promotionRequest);
+			
+			
+			list.add(promotionRequestProcessed);
+		}
+		
+		for (PromotionRequestProcessed promotionRequestProcessed : list) {
+			this.savePromotionRequestProcessed(promotionRequestProcessed);
+			
+			promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(promotionRequestProcessed);
+			
 		}
 		
 		for (PromotionRequest promotionRequest : c) {

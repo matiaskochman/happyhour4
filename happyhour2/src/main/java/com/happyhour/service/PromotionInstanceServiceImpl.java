@@ -54,7 +54,6 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
     public List<PromotionInstance> findPromotionInstanceEntriesByUser(int firstResult, int maxResults) {
     	
     	String username = usuarioService.getLoggedUserName();
-    	List<Authority> authorityList =  usuarioService.getLoggedUserAuthorities();
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority authority = null;
 		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
