@@ -1,6 +1,7 @@
 package com.happyhour.integration;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,43 @@ import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
+import com.happyhour.entity.PromotionInstanceProcessed;
+import com.happyhour.entity.PromotionRequest;
+import com.happyhour.entity.PromotionRequestProcessed;
 import com.happyhour.entity.Usuario;
 import com.happyhour.service.BusinessEstablishmentService;
+import com.happyhour.service.PromotionDescriptionService;
+import com.happyhour.service.PromotionInstanceProcessedService;
+import com.happyhour.service.PromotionRequestProcessedService;
+import com.happyhour.service.PromotionRequestService;
+import com.happyhour.service.TokenCreationServiceImpl;
+import com.happyhour.service.UsuarioService;
 
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml" })
 public class InitialTests extends AbstractJUnit4SpringContextTests{
         
     @Autowired
     BusinessEstablishmentService businessEstablishmentService;
-        
+
+    @Autowired
+    PromotionInstanceProcessedService promotionInstanceProcessedService;
+
+    @Autowired
+    PromotionRequestService promotionRequestService;
+
+    @Autowired
+    PromotionRequestProcessedService promotionRequestProcessedService;
+    
+    @Autowired
+    PromotionDescriptionService promotionDescriptionService;
+    
+    @Autowired
+    UsuarioService usuarioService;
+    
+	@Autowired
+	private TokenCreationServiceImpl tokenCreationServiceImpl;
+    
+    
     @Test
     @Transactional
     @Rollback(false)
@@ -40,11 +69,17 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         createBusinessEstablishment(a2, "c", "promo_c", "business_c");
         createBusinessEstablishment(a2, "d", "promo_d", "business_d");
         createBusinessEstablishment(a2, "f", "promo_f", "business_f");
+     
+        createPromotionRequest("1", "1", "0000000001", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("1", "1", "0000000002", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("1", "1", "0000000003", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
         
     }
     
     
     private void createBusinessEstablishment(Authority authority,String username,String promoDescriptionName,String businessEstablishmentName){
+    	
+    	
         Usuario u1 = new Usuario();
         u1.setUserName(username);
         u1.setPassword(username);
@@ -77,5 +112,37 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         
         businessEstablishment.getPromotionInstanceList().add(promotionInstance_a);
         businessEstablishment.persist();
+        
+        
+    }
+    
+    private void createPromotionRequest(String promoId, String businessEstablishmentId,String clientTelephone, String token, Date creationTimeStamp){
+    	PromotionRequest promotionRequest = new PromotionRequest(promoId,businessEstablishmentId,clientTelephone,token,creationTimeStamp);
+    	
+    	promotionRequestService.savePromotionRequest(promotionRequest);
+    	
+    }
+    
+    public void deleteAll(){
+    	List<PromotionDescription> list = promotionDescriptionService.findAllPromotionDescriptions();
+    	List<PromotionRequestProcessed> list2 = promotionRequestProcessedService.findAllPromotionRequestProcesseds();
+    	List<PromotionRequest> list1 = promotionRequestService.findAllPromotionRequests();
+    	List<PromotionInstanceProcessed> list3 = promotionInstanceProcessedService.findAllPromotionInstanceProcesseds();
+    	
+    	for (PromotionRequestProcessed promotionRequestProcessed : list2) {
+    		promotionRequestProcessed.remove();
+    	}
+    	
+    	for (PromotionInstanceProcessed promotionInstanceProcessed : list3) {
+    		promotionInstanceProcessed.remove();
+    	}
+    	
+    	for (PromotionRequest promotionRequest : list1) {
+			promotionRequest.remove();
+		}
+    	
+    	for (PromotionDescription promotionDescription : list) {
+    		promotionDescription.remove();
+    	}
     }
 }
