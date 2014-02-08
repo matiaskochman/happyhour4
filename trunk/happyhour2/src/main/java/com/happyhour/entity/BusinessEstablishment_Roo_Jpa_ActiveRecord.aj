@@ -10,10 +10,12 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect BusinessEstablishment_Roo_Jpa_ActiveRecord {
-    
+
+	/*
     @PersistenceContext
     transient EntityManager BusinessEstablishment.entityManager;
-    
+    */
+	
     public static final EntityManager BusinessEstablishment.entityManager() {
         EntityManager em = new BusinessEstablishment().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");

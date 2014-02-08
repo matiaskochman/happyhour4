@@ -83,7 +83,8 @@ public class PromotionRequestController {
     @RequestMapping(value = "processPromotionRequest/{id}")
     public String processRequest(@PathVariable("id") Long id){
     	
-    	promotionRequestProcessedService.processPromotionRequestDelivered(id);
+    	PromotionRequest promotionRequest = promotionRequestService.findPromotionRequest(id);
+    	promotionRequestProcessedService.processPromotionRequestDelivered(promotionRequest);
     	
     	return "redirect:/promotionrequests/";
     }
