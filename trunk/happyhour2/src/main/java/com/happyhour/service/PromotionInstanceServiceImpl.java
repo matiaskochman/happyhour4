@@ -28,6 +28,13 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
     }
     
     public void deletePromotionInstance(PromotionInstance promotionInstance) {
+    	
+    	List<PromotionRequest> promotionRequestList = promotionInstance.getPromoRequestList();
+    	
+    	for (PromotionRequest promotionRequest : promotionRequestList) {
+			promotionRequest.remove();
+		}
+    	
         promotionInstance.remove();
     }
     

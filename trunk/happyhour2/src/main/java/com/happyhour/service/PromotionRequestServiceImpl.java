@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.happyhour.entity.Authority;
+import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
+import com.happyhour.entity.Usuario;
 import com.happyhour.exception.BusinessException;
 
 @Service
@@ -26,6 +29,8 @@ public class PromotionRequestServiceImpl implements PromotionRequestService {
 	@Autowired
 	private PromotionInstanceService promotionInstanceService;
 	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	/**
 	 * create a code for a specific promo, businessEstablishment
@@ -100,6 +105,26 @@ public class PromotionRequestServiceImpl implements PromotionRequestService {
     public PromotionRequest updatePromotionRequest(PromotionRequest promotionRequest) {
         return promotionRequest.merge();
     }
+
+	@Override
+	public List<PromotionRequest> findPromotionRequestEntriesByUser(int firstResult, int maxResults) {
+		
+	    String username = usuarioService.getLoggedUserName(); 
+	    List<PromotionRequest> list = null;
+		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
+		Authority adminAuthority = null;
+		adminAuthority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		
+		if(usuarioService.getLoggedUserAuthorities().contains(adminAuthority)){
+			
+			list = PromotionRequest.findPromotionRequestEntries(firstResult, maxResults);
+		}else{
+			list = PromotionRequest.findPromotionRequestEntriesByUser(usuario, firstResult, maxResults);
+		}
+	    
+		return list;
+		
+	}
 
 	
 }

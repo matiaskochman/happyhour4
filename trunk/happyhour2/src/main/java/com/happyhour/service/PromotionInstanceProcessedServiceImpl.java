@@ -74,7 +74,6 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 		promotionInstance.getPromoRequestList().removeAll(promotionRequestList);
 		promotionInstance.getPromotionRequestProcessedList().removeAll(list);
 		
-		//promotionInstance.setPromotionDescription(null);
 		promotionInstance.setBusinessEstablishment(null);
 		
 		promotionInstance.merge();
@@ -82,7 +81,6 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 		
 		businessEstablishment.merge();
 		
-		//promotionInstance.remove();
 		promotionInstanceService.deletePromotionInstance(promotionInstance);
 		
 	}

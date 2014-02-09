@@ -73,6 +73,8 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         createPromotionRequest("1", "1", "0000000001", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
         createPromotionRequest("1", "1", "0000000002", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
         createPromotionRequest("1", "1", "0000000003", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+
+        createPromotionRequest("2", "2", "0000000004", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
         
     }
     

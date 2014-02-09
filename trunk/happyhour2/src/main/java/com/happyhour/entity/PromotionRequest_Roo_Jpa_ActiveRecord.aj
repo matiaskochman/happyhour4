@@ -3,22 +3,19 @@
 
 package com.happyhour.entity;
 
-import com.happyhour.entity.PromotionRequest;
 import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect PromotionRequest_Roo_Jpa_ActiveRecord {
     
+	/*
     @PersistenceContext
     transient EntityManager PromotionRequest.entityManager;
-    
-    public static final EntityManager PromotionRequest.entityManager() {
-        EntityManager em = new PromotionRequest().entityManager;
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
-        return em;
-    }
+    */
+	
     
     public static long PromotionRequest.countPromotionRequests() {
         return entityManager().createQuery("SELECT COUNT(o) FROM PromotionRequest o", Long.class).getSingleResult();

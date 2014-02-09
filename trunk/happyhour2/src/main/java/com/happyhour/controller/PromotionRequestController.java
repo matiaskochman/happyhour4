@@ -117,7 +117,8 @@ public class PromotionRequestController {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("promotionrequests", promotionRequestService.findPromotionRequestEntries(firstResult, sizeNo));
+            //uiModel.addAttribute("promotionrequests", promotionRequestService.findPromotionRequestEntries(firstResult, sizeNo));
+            uiModel.addAttribute("promotionrequests", promotionRequestService.findPromotionRequestEntriesByUser(firstResult, sizeNo));
             float nrOfPages = (float) promotionRequestService.countAllPromotionRequests() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
