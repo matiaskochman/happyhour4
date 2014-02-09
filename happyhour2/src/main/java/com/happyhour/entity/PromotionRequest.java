@@ -1,19 +1,22 @@
 package com.happyhour.entity;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
-
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @RooJavaBean
 @RooToString
@@ -21,6 +24,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @RooJson
 public class PromotionRequest {
 
+    @PersistenceContext
+    transient EntityManager entityManager;
 	
 	
     public PromotionRequest() {
@@ -50,6 +55,18 @@ public class PromotionRequest {
     @DateTimeFormat(style = "M-")
     private Date creationTimeStamp;
 
+    
+    public static List<PromotionRequest> findPromotionRequestEntriesByUser(Usuario usuario, int firstResult, int maxResults) {
+        if (usuario == null || usuario.getUserName() == null || usuario.getUserName().length() == 0) {
+            throw new IllegalArgumentException("The userName argument is required");
+        }
+        EntityManager em = PromotionRequest.entityManager();
+
+        TypedQuery<PromotionRequest> q = em.createQuery("SELECT pr FROM PromotionRequest AS pr WHERE pr.businessEstablishmentId = :businessEstablishmentId", PromotionRequest.class).setFirstResult(firstResult).setMaxResults(maxResults);
+        q.setParameter("businessEstablishmentId", usuario.getBusinessEstablishment().getId().toString());
+        return q.getResultList();
+    }
+    
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,5 +122,12 @@ public class PromotionRequest {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public static final EntityManager entityManager() {
+        EntityManager em = new PromotionRequest().entityManager;
+        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
+        return em;
+    }
+    
     
 }

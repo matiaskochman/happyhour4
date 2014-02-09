@@ -15,6 +15,7 @@ public interface PromotionRequestService {
     public abstract List<PromotionRequest> findAllPromotionRequests();    
     public abstract List<PromotionRequest> findPromotionRequestEntries(int firstResult, int maxResults);    
     public abstract void savePromotionRequest(PromotionRequest promotionRequest);    
-    public abstract PromotionRequest updatePromotionRequest(PromotionRequest promotionRequest);    
+    public abstract PromotionRequest updatePromotionRequest(PromotionRequest promotionRequest);
+	public abstract List<PromotionRequest> findPromotionRequestEntriesByUser(int firstResult,int maxResults);    
 	
 }
