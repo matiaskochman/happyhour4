@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.PromotionRequestProcessed;
 
@@ -54,7 +55,6 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 	@Override
 	public PromotionRequestProcessed processPromotionRequestDelivered(PromotionRequest promotionRequest) {
 		
-		//PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		PromotionRequestProcessed processed = new PromotionRequestProcessed(promotionRequest.getPromoId(),promotionRequest.getBusinessEstablishmentId()
 				, promotionRequest.getClientTelephone(), promotionRequest.getToken(),promotionRequest.getCreationTimeStamp());
 		
@@ -70,63 +70,47 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		return processed;
 	}
 
+	/**
+	 * when processing a PromotionInstance, each PromotionRequest that hasn't been claimed by a client
+	 * is processed as not delivered, that is accomplished by creating a collection of PromotionRequestProcessed
+	 * in a PromotionInstanceProcessed 
+	 */
 	@Override
 	public PromotionRequestProcessed processPromotionRequestNotDelivered(PromotionRequest promotionRequest) {
 		
-		//PromotionRequest promotionRequest = PromotionRequest.findPromotionRequest(promotionRequestId);
 		
 		PromotionRequestProcessed processed = new PromotionRequestProcessed(promotionRequest.getPromoId(),promotionRequest.getBusinessEstablishmentId()
 				, promotionRequest.getClientTelephone(), promotionRequest.getToken(),promotionRequest.getCreationTimeStamp());
 		
 		processed.setDelivered(false);
-
-		/*
-		this.savePromotionRequestProcessed(processed);
-		
-		promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(processed);
-		*/
 		
 		return processed;
 		
 	}
 	
 	@Override
-	public void processPromotionRequestCollectionNotDelivered(List<PromotionRequest> c) {
+	public void processPromotionRequestCollectionNotDelivered(PromotionInstance instance) {
 		
 		List<PromotionRequestProcessed> list = new ArrayList<PromotionRequestProcessed>();
+		
+		List<PromotionRequest> c  = instance.getPromoRequestList();
 		
 		for (PromotionRequest promotionRequest : c) {
 			PromotionRequestProcessed promotionRequestProcessed = processPromotionRequestNotDelivered(promotionRequest);
 			
-			
 			list.add(promotionRequestProcessed);
 		}
 		
-		for (PromotionRequestProcessed promotionRequestProcessed : list) {
-			this.savePromotionRequestProcessed(promotionRequestProcessed);
-			
-			promotionInstanceService.savePromotionRequestProcessedToPromotionInstance(promotionRequestProcessed);
-			
-		}
+
+		instance.getPromoRequestList().removeAll(c);
+		instance.getPromotionRequestProcessedList().addAll(list);
+		instance.merge();
 		
-		for (PromotionRequest promotionRequest : c) {
+		List<PromotionRequest> promoRequestList = promotionRequestService.findPromotionRequestEntriesByUser(0, 10000);
+		for (PromotionRequest promotionRequest : promoRequestList) {
 			promotionRequest.remove();
 		}
-		
-		
 	}
 	
-	private PromotionRequestProcessed setAPromotionRequestProcessed(PromotionRequest promotionRequest, PromotionRequestProcessed processed) {
-		
-		
-		processed.setBusinessEstablishmentId(promotionRequest.getBusinessEstablishmentId());
-		processed.setClientTelephone(promotionRequest.getClientTelephone());
-		processed.setCreationTimeStamp(promotionRequest.getCreationTimeStamp());
-		processed.setPromoId(promotionRequest.getPromoId());
-		processed.setToken(promotionRequest.getToken());
-		
-		return processed;
-	}
-
 	
 }

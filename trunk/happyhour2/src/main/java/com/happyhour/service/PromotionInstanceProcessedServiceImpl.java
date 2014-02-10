@@ -56,23 +56,42 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 
 	public void processPromotionInstance(Long id) {
 		
+		/**
+		 * loading the promotionInstance 
+		 */
 		PromotionInstance promotionInstance = promotionInstanceService.findPromotionInstance(id);
 		
+		/**
+		 * creating a promotionInstanceProcessed
+		 */
 		PromotionInstanceProcessed promotionInstanceProcessed = new PromotionInstanceProcessed(promotionInstance.getPromotionDescription(),
 				promotionInstance.getBusinessEstablishment(),promotionInstance.getPromotionValidDate(), promotionInstance.getMaxClientsAllowed());
 		
-		List<PromotionRequest> promotionRequestList = promotionInstance.getPromoRequestList();
+		/**
+		 * getting a list of promotionRequest of the promotionInstance to process , after they shoud be deleted
+		 */
+		//List<PromotionRequest> promotionRequestList = promotionInstance.getPromoRequestList();
+
+		/**
+		 * processing the list of promotionRequest as not delivered.
+		 */
+		promotionRequestProcessedService.processPromotionRequestCollectionNotDelivered(promotionInstance);
 		
-		promotionRequestProcessedService.processPromotionRequestCollectionNotDelivered(promotionRequestList);
+		/**
+		 * getting the list of promotionRequestProcessed from the promotionInstance and setting it to the
+		 * promotionInstanceProcessed
+		 */
+		List<PromotionRequestProcessed> promotionRequestProcessedList = promotionInstance.getPromotionRequestProcessedList();
+		promotionInstanceProcessed.getPromotionRequestProcessedList().addAll(promotionRequestProcessedList);
 		
-		List<PromotionRequestProcessed> list = promotionInstance.getPromotionRequestProcessedList();
-		promotionInstanceProcessed.getPromotionRequestProcessedList().addAll(list);
-		
-		promotionInstanceProcessed.merge();
+		/**
+		 * saving the promotinInstanceProcessed
+		 */
+		promotionInstanceProcessed.persist();
 		
 		BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(promotionInstance.getBusinessEstablishment().getId());
-		promotionInstance.getPromoRequestList().removeAll(promotionRequestList);
-		promotionInstance.getPromotionRequestProcessedList().removeAll(list);
+		//promotionInstance.getPromoRequestList().removeAll(promotionRequestList);
+		promotionInstance.getPromotionRequestProcessedList().removeAll(promotionRequestProcessedList);
 		
 		promotionInstance.setBusinessEstablishment(null);
 		

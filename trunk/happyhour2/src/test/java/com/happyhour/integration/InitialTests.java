@@ -75,6 +75,20 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         createPromotionRequest("1", "1", "0000000003", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
 
         createPromotionRequest("2", "2", "0000000004", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("2", "2", "0000000005", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("2", "2", "0000000006", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+
+        createPromotionRequest("3", "3", "0000000007", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("3", "3", "0000000008", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("3", "3", "0000000009", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+
+        createPromotionRequest("4", "4", "0000000007", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("4", "4", "0000000008", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("4", "4", "0000000009", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+
+        createPromotionRequest("5", "5", "0000000007", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("5", "5", "0000000008", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("5", "3", "0000000009", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
         
     }
     
