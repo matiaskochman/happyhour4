@@ -102,10 +102,18 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		}
 		
 
+		/**
+		 * removing from the PromotionInstance all the PromotionRequests 
+		 * and adding the new PromotionRequestsProcessed
+		 */
 		instance.getPromoRequestList().removeAll(c);
 		instance.getPromotionRequestProcessedList().addAll(list);
 		instance.merge();
 		
+		/**
+		 * remove all the promotionRequests from the database for the user 
+		 * TODO it has to be filtered by promotionId
+		 */
 		List<PromotionRequest> promoRequestList = promotionRequestService.findPromotionRequestEntriesByUser(0, 10000);
 		for (PromotionRequest promotionRequest : promoRequestList) {
 			promotionRequest.remove();
