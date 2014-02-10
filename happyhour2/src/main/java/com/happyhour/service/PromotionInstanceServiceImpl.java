@@ -27,6 +27,9 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
         return PromotionInstance.countPromotionInstances();
     }
     
+    /**
+     * delete a promotionInstance with its list of  promotinRequests
+     */
     public void deletePromotionInstance(PromotionInstance promotionInstance) {
     	
     	List<PromotionRequest> promotionRequestList = promotionInstance.getPromoRequestList();
@@ -58,6 +61,9 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
         return promotionInstance.merge();
     }
     
+    /**
+     * find a list of promotionInstance by user
+     */
     public List<PromotionInstance> findPromotionInstanceEntriesByUser(int firstResult, int maxResults) {
     	
     	String username = usuarioService.getLoggedUserName();

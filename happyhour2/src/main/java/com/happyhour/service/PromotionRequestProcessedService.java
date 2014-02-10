@@ -1,9 +1,9 @@
 package com.happyhour.service;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.roo.addon.layers.service.RooService;
 
+import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.PromotionRequestProcessed;
 
@@ -18,6 +18,6 @@ public interface PromotionRequestProcessedService {
     public abstract PromotionRequestProcessed updatePromotionRequestProcessed(PromotionRequestProcessed promotionRequestProcessed);
 	public abstract PromotionRequestProcessed processPromotionRequestDelivered(PromotionRequest promotionRequest);
 	public abstract PromotionRequestProcessed processPromotionRequestNotDelivered(PromotionRequest promotionRequest);    
-	public abstract void processPromotionRequestCollectionNotDelivered(List<PromotionRequest> list);
+	public abstract void processPromotionRequestCollectionNotDelivered(PromotionInstance instance);
 	
 }
