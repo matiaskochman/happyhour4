@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.happyhour.entity.Authority;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.PromotionRequestProcessed;
+import com.happyhour.entity.Usuario;
 
 @Service
 @Transactional
@@ -23,6 +25,9 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 
 	@Autowired
 	PromotionInstanceService promotionInstanceService;
+
+	@Autowired
+	private UsuarioService usuarioService;
 	
     public long countAllPromotionRequestProcesseds() {
         return PromotionRequestProcessed.countPromotionRequestProcesseds();
@@ -118,6 +123,25 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		for (PromotionRequest promotionRequest : promoRequestList) {
 			promotionRequest.remove();
 		}
+	}
+
+	@Override
+	public List<PromotionRequestProcessed> findPromotionRequestProcessedEntriesByUser(int firstResult, int maxResults) {
+	    String username = usuarioService.getLoggedUserName(); 
+	    List<PromotionRequestProcessed> list = null;
+		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
+		Authority adminAuthority = null;
+		adminAuthority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		
+		if(usuarioService.getLoggedUserAuthorities().contains(adminAuthority)){
+			
+			list = PromotionRequestProcessed.findPromotionRequestProcessedEntries(firstResult, maxResults);
+		}else{
+			list = PromotionRequestProcessed.findPromotionRequestProcessedEntriesByUser(usuario, firstResult, maxResults);
+		}
+	    
+		return list;
+
 	}
 	
 	

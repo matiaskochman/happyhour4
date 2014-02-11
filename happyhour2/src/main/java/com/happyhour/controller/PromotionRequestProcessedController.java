@@ -65,7 +65,8 @@ public class PromotionRequestProcessedController {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("promotionrequestprocesseds", PromotionRequestProcessed.findPromotionRequestProcessedEntries(firstResult, sizeNo));
+            //uiModel.addAttribute("promotionrequestprocesseds", PromotionRequestProcessed.findPromotionRequestProcessedEntries(firstResult, sizeNo));
+            uiModel.addAttribute("promotionrequestprocesseds", promotionRequestProcessedService.findPromotionRequestProcessedEntriesByUser(firstResult, sizeNo));
             float nrOfPages = (float) PromotionRequestProcessed.countPromotionRequestProcesseds() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
