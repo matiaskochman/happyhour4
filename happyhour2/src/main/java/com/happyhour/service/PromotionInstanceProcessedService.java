@@ -14,6 +14,7 @@ public interface PromotionInstanceProcessedService {
     public abstract List<PromotionInstanceProcessed> findPromotionInstanceProcessedEntries(int firstResult, int maxResults);    
     public abstract void savePromotionInstanceProcessed(PromotionInstanceProcessed promotionInstanceProcessed);    
     public abstract PromotionInstanceProcessed updatePromotionInstanceProcessed(PromotionInstanceProcessed promotionInstanceProcessed);
-	public abstract void processPromotionInstance(Long id);    
+	public abstract void processPromotionInstance(Long id);
+	public abstract List<PromotionInstanceProcessed> findPromotionInstanceProcessedEntriesByUser(int firstResult, int sizeNo);    
 	
 }

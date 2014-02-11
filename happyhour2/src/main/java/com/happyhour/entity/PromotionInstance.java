@@ -54,12 +54,11 @@ public class PromotionInstance {
         if (usuario == null || usuario.getUserName() == null || usuario.getUserName().length() == 0) {
             throw new IllegalArgumentException("The userName argument is required");
         }
-        EntityManager em = BusinessEstablishment.entityManager();
-        TypedQuery<BusinessEstablishment> q = em.createQuery("SELECT b FROM BusinessEstablishment AS b,Usuario AS u" + " WHERE u.userName = :userName and u.businessEstablishment = b", BusinessEstablishment.class).setFirstResult(firstResult).setMaxResults(maxResults);
-        q.setParameter("userName", usuario.getUserName());
-        BusinessEstablishment businessEstablishment = q.getSingleResult();
-        List<PromotionInstance> list = businessEstablishment.getPromotionInstanceList();
-        return list;
+        EntityManager em = PromotionInstance.entityManager();
+        TypedQuery<PromotionInstance> q = em.createQuery("SELECT pip FROM PromotionInstance AS pip" +
+        		"  WHERE pip.businessEstablishment.id = :businessEstablishmentId", PromotionInstance.class).setFirstResult(firstResult).setMaxResults(maxResults);
+        q.setParameter("businessEstablishmentId", usuario.getBusinessEstablishment().getId());
+        return q.getResultList();
     }
 
 	@Override
