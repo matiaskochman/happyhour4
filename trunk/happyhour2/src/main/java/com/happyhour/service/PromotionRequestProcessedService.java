@@ -19,5 +19,6 @@ public interface PromotionRequestProcessedService {
 	public abstract PromotionRequestProcessed processPromotionRequestDelivered(PromotionRequest promotionRequest);
 	public abstract PromotionRequestProcessed processPromotionRequestNotDelivered(PromotionRequest promotionRequest);    
 	public abstract void processPromotionRequestCollectionNotDelivered(PromotionInstance instance);
+	public abstract List<PromotionRequestProcessed> findPromotionRequestProcessedEntriesByUser(int firstResult, int sizeNo);
 	
 }
