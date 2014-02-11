@@ -6,20 +6,15 @@ package com.happyhour.entity;
 import com.happyhour.entity.PromotionInstanceProcessed;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Version;
 
 privileged aspect PromotionInstanceProcessed_Roo_Jpa_Entity {
     
     declare @type: PromotionInstanceProcessed: @Entity;
     
-    
     @Version
     @Column(name = "version")
     private Integer PromotionInstanceProcessed.version;
-    
     
     public Integer PromotionInstanceProcessed.getVersion() {
         return this.version;

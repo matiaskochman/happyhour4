@@ -7,8 +7,17 @@ import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import java.util.List;
+import javax.persistence.EntityManager;
 
 privileged aspect BusinessEstablishment_Roo_JavaBean {
+    
+    public EntityManager BusinessEstablishment.getEntityManager() {
+        return this.entityManager;
+    }
+    
+    public void BusinessEstablishment.setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
     
     public String BusinessEstablishment.getName() {
         return this.name;

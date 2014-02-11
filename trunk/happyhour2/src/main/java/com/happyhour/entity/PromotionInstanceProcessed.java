@@ -1,10 +1,12 @@
 package com.happyhour.entity;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -76,5 +79,17 @@ public class PromotionInstanceProcessed {
      */
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<PromotionRequestProcessed> promotionRequestProcessedList = new HashSet<PromotionRequestProcessed>();
+
+	public static List<PromotionInstanceProcessed> findPromotionInstanceProcessedEntriesByUser(Usuario usuario, int firstResult, int maxResults) {
+        if (usuario == null || usuario.getUserName() == null || usuario.getUserName().length() == 0) {
+            throw new IllegalArgumentException("The userName argument is required");
+        }
+        EntityManager em = PromotionInstanceProcessed.entityManager();
+        TypedQuery<PromotionInstanceProcessed> q = em.createQuery("SELECT pip FROM PromotionInstanceProcessed AS pip" +
+        		"  WHERE pip.businessEstablishment.id = :businessEstablishmentId", PromotionInstanceProcessed.class).setFirstResult(firstResult).setMaxResults(maxResults);
+        q.setParameter("businessEstablishmentId", usuario.getBusinessEstablishment().getId());
+        return q.getResultList();
+        
+	}
 
 }

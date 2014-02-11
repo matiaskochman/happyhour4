@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionInstanceProcessed;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.PromotionRequestProcessed;
+import com.happyhour.entity.Usuario;
 
 @Service
 @Transactional
@@ -21,10 +23,16 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 	private PromotionRequestProcessedService promotionRequestProcessedService;
 
 	@Autowired
+	private PromotionRequestService promotionRequestService;
+	
+	@Autowired
 	private PromotionInstanceService promotionInstanceService;
 
 	@Autowired
 	private BusinessEstablishmentService businessEstablishmentService;
+
+	@Autowired
+	private UsuarioService usuarioService;
 	
     public long countAllPromotionInstanceProcesseds() {
         return PromotionInstanceProcessed.countPromotionInstanceProcesseds();
@@ -93,15 +101,34 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
 		//promotionInstance.getPromoRequestList().removeAll(promotionRequestList);
 		promotionInstance.getPromotionRequestProcessedList().removeAll(promotionRequestProcessedList);
 		
-		promotionInstance.setBusinessEstablishment(null);
-		
-		promotionInstance.merge();
 		businessEstablishment.getPromotionInstanceList().remove(promotionInstance);
-		
 		businessEstablishment.merge();
+		
+		promotionInstance.setBusinessEstablishment(null);
+		promotionInstance.merge();
 		
 		promotionInstanceService.deletePromotionInstance(promotionInstance);
 		
+	}
+
+	@Override
+	public List<PromotionInstanceProcessed> findPromotionInstanceProcessedEntriesByUser(int firstResult, int maxResults) {
+    	String username = usuarioService.getLoggedUserName();
+		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
+		Authority authority = null;
+		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+
+		List<PromotionInstanceProcessed> list = null;
+		
+		if(usuarioService.getLoggedUserAuthorities().contains(authority)){
+			
+			list = PromotionInstanceProcessed.findPromotionInstanceProcessedEntries(firstResult, maxResults);
+		}else{
+			
+			list = PromotionInstanceProcessed.findPromotionInstanceProcessedEntriesByUser(usuario, firstResult, maxResults);
+		}
+		
+        return list;
 	}
 	
 }

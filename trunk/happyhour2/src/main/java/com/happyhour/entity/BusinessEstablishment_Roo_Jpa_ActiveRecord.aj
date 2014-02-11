@@ -10,14 +10,12 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect BusinessEstablishment_Roo_Jpa_ActiveRecord {
-
-	/*
+    
     @PersistenceContext
-    transient EntityManager BusinessEstablishment.entityManager;
-    */
-	
+    transient EntityManager BusinessEstablishment._entityManager;
+    
     public static final EntityManager BusinessEstablishment.entityManager() {
-        EntityManager em = new BusinessEstablishment().entityManager;
+        EntityManager em = new BusinessEstablishment()._entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
@@ -41,38 +39,38 @@ privileged aspect BusinessEstablishment_Roo_Jpa_ActiveRecord {
     
     @Transactional
     public void BusinessEstablishment.persist() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.persist(this);
+        if (this._entityManager == null) this._entityManager = entityManager();
+        this._entityManager.persist(this);
     }
     
     @Transactional
     public void BusinessEstablishment.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
+        if (this._entityManager == null) this._entityManager = entityManager();
+        if (this._entityManager.contains(this)) {
+            this._entityManager.remove(this);
         } else {
             BusinessEstablishment attached = BusinessEstablishment.findBusinessEstablishment(this.id);
-            this.entityManager.remove(attached);
+            this._entityManager.remove(attached);
         }
     }
     
     @Transactional
     public void BusinessEstablishment.flush() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.flush();
+        if (this._entityManager == null) this._entityManager = entityManager();
+        this._entityManager.flush();
     }
     
     @Transactional
     public void BusinessEstablishment.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
+        if (this._entityManager == null) this._entityManager = entityManager();
+        this._entityManager.clear();
     }
     
     @Transactional
     public BusinessEstablishment BusinessEstablishment.merge() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        BusinessEstablishment merged = this.entityManager.merge(this);
-        this.entityManager.flush();
+        if (this._entityManager == null) this._entityManager = entityManager();
+        BusinessEstablishment merged = this._entityManager.merge(this);
+        this._entityManager.flush();
         return merged;
     }
     
