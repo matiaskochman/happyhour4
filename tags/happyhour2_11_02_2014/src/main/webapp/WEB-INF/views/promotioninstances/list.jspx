@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_happyhour_entity_PromotionInstance" items="${promotioninstances}" z="CdGVoIiaD0jWmYs5L6l1aL8y8Gg=">
+        <table:table data="${promotioninstances}" id="l_com_happyhour_entity_PromotionInstance" path="/promotioninstances" z="ABvi+l1noJHx+N+hqRx0vTvuNeE=">
+            <table:column id="c_com_happyhour_entity_PromotionInstance_promotionDescription" property="promotionDescription" z="YthzSVxXF8kPRVOrA92yVBfVS3A="/>
+            <table:column id="c_com_happyhour_entity_PromotionInstance_promoRequestList" property="promoRequestList" z="c4XSmsvpB+9gP/qozrJ4Dz/0BZg="/>
+            <table:column id="c_com_happyhour_entity_PromotionInstance_businessEstablishment" property="businessEstablishment" z="tAG02x2/B3J4qaaafOoaPVHSMpM="/>
+            <table:column date="true" dateTimePattern="${promotionInstance_promotionvaliddate_date_format}" id="c_com_happyhour_entity_PromotionInstance_promotionValidDate" property="promotionValidDate" z="6r2yVkZtt+rQrtKqo2zionpFX1Y="/>
+            <table:column id="c_com_happyhour_entity_PromotionInstance_maxClientsAllowed" property="maxClientsAllowed" z="s5oLQalf6ZEgx7IjdzZ9WHPiP8w="/>
+            <table:column id="c_com_happyhour_entity_PromotionInstance_promotionRequestProcessedList" property="promotionRequestProcessedList" z="oLIO2Lrz4hQr/EFTjkFv9Ql6kks="/>
+        </table:table>
+    </page:list>
+</div>

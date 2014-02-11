@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_happyhour_entity_Authority" items="${authoritys}" z="h/6kX7VNUsaFUBw2Awd6Jxt3XOg=">
+        <table:table data="${authoritys}" id="l_com_happyhour_entity_Authority" path="/authoritys" z="sfpeKqDbmTzaBxVYCO9E5GNK8Vo=">
+            <table:column id="c_com_happyhour_entity_Authority_roleName" property="roleName" z="aR62ciwXyEAADrcJDUHV6YoTxnM="/>
+        </table:table>
+    </page:list>
+</div>
