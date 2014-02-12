@@ -3,14 +3,21 @@
 	xmlns:spring="http://www.springframework.org/tags" 
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
 	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" 
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 	
 	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
 	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields"
 	version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+
+    <sec:authorize access="hasRole('ROLE_USER')">
+	    <c:set var="updateDesc" value="false" />
+	    <c:set var="deleteDesc" value="false" />
+	</sec:authorize>
+    
     <page:list id="pl_com_happyhour_entity_PromotionInstanceProcessed" items="${promotioninstanceprocesseds}" z="w/WAfkqSiSOv+3LU0LD3FGKs8VY=">
-        <table:table data="${promotioninstanceprocesseds}" id="l_com_happyhour_entity_PromotionInstanceProcessed" path="/promotioninstanceprocesseds" z="ySpgP8CtSf6RE8dOtptPkyQIfHA=">
+        <table:table data="${promotioninstanceprocesseds}" update="${updateDesc}" delete="${deleteDesc}" id="l_com_happyhour_entity_PromotionInstanceProcessed" path="/promotioninstanceprocesseds" z="ySpgP8CtSf6RE8dOtptPkyQIfHA=">
             <table:column id="c_com_happyhour_entity_PromotionInstanceProcessed_promotionDescription" property="promotionDescription" z="mzPqw67C0nesEz/GJmO5hkcVuuA="/>
             <table:column id="c_com_happyhour_entity_PromotionInstanceProcessed_businessEstablishment" property="businessEstablishment" z="CPv5eSZgGwMWW6a9eppqdW8dtnE="/>
             <table:column date="true" dateTimePattern="${promotionInstanceProcessed_promotionvaliddate_date_format}" id="c_com_happyhour_entity_PromotionInstanceProcessed_promotionValidDate" property="promotionValidDate" z="952O3q6RWm7JXn06dDNRIDWG8tI="/>
