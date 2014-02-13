@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.Authority;
-import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.Usuario;
@@ -37,7 +36,7 @@ public class PromotionRequestServiceImpl implements PromotionRequestService {
 	 * @return 
 	 */
     public void createToken(PromotionRequest promoRequest){
-    	String token = tokenCreationServiceImpl.generateNewOrderNumber(); 
+    	String token = tokenCreationServiceImpl.generateNewOrderNumber(promoRequest); 
     	promoRequest.setToken(token);
     }
 	
