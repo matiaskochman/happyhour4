@@ -1,10 +1,13 @@
 package com.happyhour.entity;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
@@ -40,13 +42,18 @@ public class PromotionInstance {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<PromotionRequestProcessed> promotionRequestProcessedList = new ArrayList<PromotionRequestProcessed>();
-    
+
     @ManyToOne
     private BusinessEstablishment businessEstablishment;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date promotionValidDate;
+
+    @ElementCollection
+    private Set<String> tokenSet = new HashSet<String>();
+    
+    private String tokenIndex = "A";
 
     private Integer maxClientsAllowed;
 
@@ -55,36 +62,29 @@ public class PromotionInstance {
             throw new IllegalArgumentException("The userName argument is required");
         }
         EntityManager em = PromotionInstance.entityManager();
-        TypedQuery<PromotionInstance> q = em.createQuery("SELECT pip FROM PromotionInstance AS pip" +
-        		"  WHERE pip.businessEstablishment.id = :businessEstablishmentId", PromotionInstance.class).setFirstResult(firstResult).setMaxResults(maxResults);
+        TypedQuery<PromotionInstance> q = em.createQuery("SELECT pip FROM PromotionInstance AS pip" + "  WHERE pip.businessEstablishment.id = :businessEstablishmentId", PromotionInstance.class).setFirstResult(firstResult).setMaxResults(maxResults);
         q.setParameter("businessEstablishmentId", usuario.getBusinessEstablishment().getId());
         return q.getResultList();
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PromotionInstance other = (PromotionInstance) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        PromotionInstance other = (PromotionInstance) obj;
+        if (id == null) {
+            if (other.id != null) return false;
+        } else if (!id.equals(other.id)) return false;
+        return true;
+    }
 
 }

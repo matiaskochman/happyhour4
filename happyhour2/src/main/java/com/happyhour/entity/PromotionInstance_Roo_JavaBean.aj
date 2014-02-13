@@ -10,6 +10,7 @@ import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.PromotionRequestProcessed;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 privileged aspect PromotionInstance_Roo_JavaBean {
     
@@ -59,6 +60,22 @@ privileged aspect PromotionInstance_Roo_JavaBean {
     
     public void PromotionInstance.setPromotionValidDate(Date promotionValidDate) {
         this.promotionValidDate = promotionValidDate;
+    }
+    
+    public Set<String> PromotionInstance.getTokenSet() {
+        return this.tokenSet;
+    }
+    
+    public void PromotionInstance.setTokenSet(Set<String> tokenSet) {
+        this.tokenSet = tokenSet;
+    }
+    
+    public String PromotionInstance.getTokenIndex() {
+        return this.tokenIndex;
+    }
+    
+    public void PromotionInstance.setTokenIndex(String tokenIndex) {
+        this.tokenIndex = tokenIndex;
     }
     
     public Integer PromotionInstance.getMaxClientsAllowed() {

@@ -32,12 +32,11 @@ public class PromotionRequest {
 		super();
 	}
 
-	public PromotionRequest(String promoId, String businessEstablishmentId,String clientTelephone, String token, Date creationTimeStamp) {
+	public PromotionRequest(String promoId, String businessEstablishmentId,String clientTelephone, Date creationTimeStamp) {
 		super();
 		this.promoId = promoId;
 		this.businessEstablishmentId = businessEstablishmentId;
 		this.clientTelephone = clientTelephone;
-		this.token = token;
 		this.creationTimeStamp = creationTimeStamp;
 	}
 

@@ -70,25 +70,35 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         createBusinessEstablishment(a2, "d", "promo_d", "business_d");
         createBusinessEstablishment(a2, "f", "promo_f", "business_f");
      
-        createPromotionRequest("1", "1", "0000000001", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("1", "1", "0000000002", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("1", "1", "0000000003", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("1", "1", "0000000001", new Date());
+        createPromotionRequest("1", "1", "0000000002", new Date());
+        createPromotionRequest("1", "1", "0000000003", new Date());
 
-        createPromotionRequest("2", "2", "0000000004", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("2", "2", "0000000005", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("2", "2", "0000000006", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("2", "2", "0000000004", new Date());
+        createPromotionRequest("2", "2", "0000000005", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
 
-        createPromotionRequest("3", "3", "0000000007", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("3", "3", "0000000008", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("3", "3", "0000000009", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("3", "3", "0000000007", new Date());
+        createPromotionRequest("3", "3", "0000000008", new Date());
+        createPromotionRequest("3", "3", "0000000009", new Date());
 
-        createPromotionRequest("4", "4", "0000000010", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("4", "4", "0000000011", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("4", "4", "0000000012", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("4", "4", "0000000010", new Date());
+        createPromotionRequest("4", "4", "0000000011", new Date());
+        createPromotionRequest("4", "4", "0000000012", new Date());
 
-        createPromotionRequest("5", "5", "0000000013", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("5", "5", "0000000014", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
-        createPromotionRequest("5", "5", "0000000015", tokenCreationServiceImpl.generateNewOrderNumber(), new Date());
+        createPromotionRequest("5", "5", "0000000013", new Date());
+        createPromotionRequest("5", "5", "0000000014", new Date());
+        createPromotionRequest("5", "5", "0000000015", new Date());
         
     }
     
@@ -132,8 +142,10 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         
     }
     
-    private void createPromotionRequest(String promoId, String businessEstablishmentId,String clientTelephone, String token, Date creationTimeStamp){
-    	PromotionRequest promotionRequest = new PromotionRequest(promoId,businessEstablishmentId,clientTelephone,token,creationTimeStamp);
+    private void createPromotionRequest(String promoId, String businessEstablishmentId,String clientTelephone, Date creationTimeStamp){
+    	PromotionRequest promotionRequest = new PromotionRequest(promoId,businessEstablishmentId,clientTelephone,creationTimeStamp);
+    	
+    	promotionRequest.setToken(tokenCreationServiceImpl.generateNewOrderNumber(promotionRequest));
     	
     	promotionRequestService.savePromotionRequest(promotionRequest);
     	
