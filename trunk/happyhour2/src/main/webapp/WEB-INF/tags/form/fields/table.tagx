@@ -70,10 +70,10 @@
             <td>
               <c:choose>
                 <c:when test="${columnType eq 'long'}">
-                <!-- 
                   <spring:escapeBody>
                     <fmt:formatDate value="${item[column]}" pattern="${fn:escapeXml(columnDatePattern)}" var="colTxt" />
                   </spring:escapeBody>
+                <!-- 
                  -->
                 </c:when>
               

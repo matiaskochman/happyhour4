@@ -3,7 +3,7 @@
 	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
 	xmlns:sec="http://www.springframework.org/security/tags"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" 	
-	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	xmlns:tablePromotionRequest="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
@@ -13,12 +13,12 @@
 	</sec:authorize>
     
     <page:list id="pl_com_happyhour_entity_PromotionRequest" items="${promotionrequests}" z="INiyay3SlW9U5GEtqutQDkEZHa8=">
-        <table:table data="${promotionrequests}" update="${updateDesc}" delete="${deleteDesc}" id="l_com_happyhour_entity_PromotionRequest" path="/promotionrequests" z="gs4w2cwKqETiqr463KX3j3jnllg=">
-            <table:column id="c_com_happyhour_entity_PromotionRequest_promoId" property="promoId" z="qyYSCPQmeqJyUQJ/uNrEcRy/8+E="/>
-            <table:column id="c_com_happyhour_entity_PromotionRequest_businessEstablishmentId" property="businessEstablishmentId" z="SQN00mKJ7XwjarUOXnieHhQnZaE="/>
-            <table:column id="c_com_happyhour_entity_PromotionRequest_clientTelephone" property="clientTelephone" z="DJpkKWftQGE0bdExPIPwe26XNys="/>
-            <table:column id="c_com_happyhour_entity_PromotionRequest_token" property="token" z="P0et9cwa4Y16YkQiLDHSZnn0s+s="/>
-            <table:column date="true" dateTimePattern="${promotionRequest_creationtimestamp_date_format}" id="c_com_happyhour_entity_PromotionRequest_creationTimeStamp" property="creationTimeStamp" z="3RxMYDr4FK3fKnTF/QMQaSAk6bY="/>
-        </table:table>
+        <tablePromotionRequest:table data="${promotionrequests}" update="${updateDesc}" delete="${deleteDesc}" id="l_com_happyhour_entity_PromotionRequest" path="/promotionrequests" z="gs4w2cwKqETiqr463KX3j3jnllg=">
+            <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_promoId" property="promoId" z="qyYSCPQmeqJyUQJ/uNrEcRy/8+E="/>
+            <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_businessEstablishmentId" property="businessEstablishmentId" z="SQN00mKJ7XwjarUOXnieHhQnZaE="/>
+            <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_clientTelephone" property="clientTelephone" z="DJpkKWftQGE0bdExPIPwe26XNys="/>
+            <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_token" property="token" z="P0et9cwa4Y16YkQiLDHSZnn0s+s="/>
+            <tablePromotionRequest:column date="true" dateTimePattern="${promotionRequest_creationtimestamp_date_format}" id="c_com_happyhour_entity_PromotionRequest_creationTimeStamp" property="creationTimeStamp" z="3RxMYDr4FK3fKnTF/QMQaSAk6bY="/>
+        </tablePromotionRequest:table>
     </page:list>
 </div>

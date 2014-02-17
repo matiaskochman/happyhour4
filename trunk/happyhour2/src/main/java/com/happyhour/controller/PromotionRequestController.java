@@ -80,13 +80,15 @@ public class PromotionRequestController {
     }
     
     
-    @RequestMapping(value = "processPromotionRequest/{id}")
-    public String processRequest(@PathVariable("id") Long id){
+    //@RequestMapping(value = "processPromotionRequest/{id}")
+    @RequestMapping(value = "/processPromotionRequest", produces = "text/html")
+    public String processRequest(@RequestParam("id") Long id,@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel){
     	
     	PromotionRequest promotionRequest = promotionRequestService.findPromotionRequest(id);
     	promotionRequestProcessedService.processPromotionRequestDelivered(promotionRequest);
     	
-    	return "redirect:/promotionrequests/";
+    	//return "redirect:/promotionrequests/list?page=1&size=25";
+    	return list(page, size, uiModel);
     }
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid PromotionRequest promotionRequest, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -105,14 +107,18 @@ public class PromotionRequestController {
         return "promotionrequests/create";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    //@RequestMapping(value = "/{id}", produces = "text/html")
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show(@RequestParam("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         uiModel.addAttribute("promotionrequest", promotionRequestService.findPromotionRequest(id));
         uiModel.addAttribute("itemId", id);
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        
         return "promotionrequests/show";
     }
 
-    @RequestMapping(produces = "text/html")
+    @RequestMapping(value="/list" ,produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
@@ -122,7 +128,10 @@ public class PromotionRequestController {
             float nrOfPages = (float) promotionRequestService.countAllPromotionRequests() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("promotionrequests", promotionRequestService.findAllPromotionRequests());
+        	Integer firstResult = 1;
+        	Integer sizeNo = 10;
+            uiModel.addAttribute("promotionrequests", promotionRequestService.findPromotionRequestEntriesByUser(firstResult, sizeNo));
+            //uiModel.addAttribute("promotionrequests", promotionRequestService.findAllPromotionRequests());
         }
         return "promotionrequests/list";
     }
