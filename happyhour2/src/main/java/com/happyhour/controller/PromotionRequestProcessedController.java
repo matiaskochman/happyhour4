@@ -52,8 +52,8 @@ public class PromotionRequestProcessedController {
         return "promotionrequestprocesseds/create";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show(@RequestParam("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("promotionrequestprocessed", PromotionRequestProcessed.findPromotionRequestProcessed(id));
         uiModel.addAttribute("itemId", id);

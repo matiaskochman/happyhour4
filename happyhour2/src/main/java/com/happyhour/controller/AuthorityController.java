@@ -44,8 +44,8 @@ public class AuthorityController {
         return "authoritys/create";
     }
     
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show(@RequestParam("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         uiModel.addAttribute("authority", authorityService.findAuthority(id));
         uiModel.addAttribute("itemId", id);
         return "authoritys/show";

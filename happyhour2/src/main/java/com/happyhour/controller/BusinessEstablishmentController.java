@@ -57,8 +57,10 @@ public class BusinessEstablishmentController {
         return "businessestablishments/create";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    //@RequestMapping(value = "/{id}", produces = "text/html")
+    //public String show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show(@RequestParam("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         uiModel.addAttribute("businessestablishment", businessEstablishmentService.findBusinessEstablishment(id));
         uiModel.addAttribute("itemId", id);
         return "businessestablishments/show";

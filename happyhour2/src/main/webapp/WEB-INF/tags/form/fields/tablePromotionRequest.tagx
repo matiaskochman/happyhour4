@@ -78,8 +78,6 @@
                   <spring:escapeBody>
                     <fmt:formatDate value="${item[column]}" pattern="${fn:escapeXml(columnDatePattern)}" var="colTxt" />
                   </spring:escapeBody>
-                <!-- 
-                 -->
                 </c:when>
               
                 <c:when test="${columnType eq 'date'}">
