@@ -87,6 +87,24 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         createPromotionRequest("2", "2", "0000000006", new Date());
         createPromotionRequest("2", "2", "0000000006", new Date());
         createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
+        createPromotionRequest("2", "2", "0000000006", new Date());
 
         createPromotionRequest("3", "3", "0000000007", new Date());
         createPromotionRequest("3", "3", "0000000008", new Date());
@@ -131,7 +149,7 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         promotionInstance_a.setBusinessEstablishment(businessEstablishment_a);
         promotionInstance_a.setPromotionDescription(promotionDescription_a);
         promotionInstance_a.setPromotionValidDate(new Date());
-        promotionInstance_a.setMaxClientsAllowed(25);
+        promotionInstance_a.setMaxClientsAllowed(50);
         promotionInstance_a.persist();
         
         BusinessEstablishment businessEstablishment = businessEstablishmentService.findBusinessEstablishment(businessEstablishment_a.getId());

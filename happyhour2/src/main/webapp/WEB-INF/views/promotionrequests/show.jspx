@@ -18,7 +18,7 @@
         <field:display date="true" dateTimePattern="${promotionRequest_creationtimestamp_date_format}" field="creationTimeStamp" id="s_com_happyhour_entity_PromotionRequest_creationTimeStamp" object="${promotionrequest}" z="dk0WMaSfjYmBbvxE8rjf0fkAOzA="/>
         
         <div>
-            <spring:url value="processPromotionRequest/${itemId}" var="show_form_url" />
+            <spring:url value="processPromotionRequest?id=${itemId}&amp;page=${page}&amp;size=${size}" var="show_form_url" />
             <spring:url value="/resources/images/show.png" var="show_image_url" />
             <spring:message arguments="${typeName}" code="entity_show" var="show_label" htmlEscape="false" />
             <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}" title="${fn:escapeXml(show_label)}">Process</a>
