@@ -13,7 +13,7 @@
 	</sec:authorize>
     
     <page:list id="pl_com_happyhour_entity_PromotionRequest" items="${promotionrequests}" z="INiyay3SlW9U5GEtqutQDkEZHa8=">
-        <tablePromotionRequest:table data="${promotionrequests}" update="${updateDesc}" delete="${deleteDesc}" id="l_com_happyhour_entity_PromotionRequest" path="/promotionrequests" z="gs4w2cwKqETiqr463KX3j3jnllg=">
+        <tablePromotionRequest:table data="${promotionrequests}" update="${updateDesc}" delete="${deleteDesc}" id="PromotionRequest" path="/promotionrequests" z="gs4w2cwKqETiqr463KX3j3jnllg=">
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_promoId" property="promoId" z="qyYSCPQmeqJyUQJ/uNrEcRy/8+E="/>
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_businessEstablishmentId" property="businessEstablishmentId" z="SQN00mKJ7XwjarUOXnieHhQnZaE="/>
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_clientTelephone" property="clientTelephone" z="DJpkKWftQGE0bdExPIPwe26XNys="/>
