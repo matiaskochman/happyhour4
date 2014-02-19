@@ -15,12 +15,12 @@
 	<c:set var="promotionRequest_creationtimestamp_date_format" value="dd-MM-yyyy" />
     
     <page:list id="pl_com_happyhour_entity_PromotionRequest" items="${promotionrequests}" z="INiyay3SlW9U5GEtqutQDkEZHa8=">
-        <tablePromotionRequest:table data="${promotionrequests}" update="${updateDesc}" delete="${deleteDesc}" id="PromotionRequest" path="/promotionrequests" z="gs4w2cwKqETiqr463KX3j3jnllg=">
+        <tablePromotionRequest:tablePromotionRequest data="${promotionrequests}" update="${updateDesc}" delete="${deleteDesc}" id="PromotionRequest" path="/promotionrequests" z="gs4w2cwKqETiqr463KX3j3jnllg=">
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_promoId" property="promoId" z="qyYSCPQmeqJyUQJ/uNrEcRy/8+E="/>
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_businessEstablishmentId" property="businessEstablishmentId" z="SQN00mKJ7XwjarUOXnieHhQnZaE="/>
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_clientTelephone" property="clientTelephone" z="DJpkKWftQGE0bdExPIPwe26XNys="/>
             <tablePromotionRequest:column id="c_com_happyhour_entity_PromotionRequest_token" property="token" z="P0et9cwa4Y16YkQiLDHSZnn0s+s="/>
             <tablePromotionRequest:column date="true" dateTimePattern="${promotionRequest_creationtimestamp_date_format}" id="c_com_happyhour_entity_PromotionRequest_creationTimeStamp" property="creationTimeStamp" z="3RxMYDr4FK3fKnTF/QMQaSAk6bY="/>
-        </tablePromotionRequest:table>
+        </tablePromotionRequest:tablePromotionRequest>
     </page:list>
 </div>
