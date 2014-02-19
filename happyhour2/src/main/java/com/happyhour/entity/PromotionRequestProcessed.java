@@ -59,7 +59,7 @@ public class PromotionRequestProcessed {
     private Boolean delivered = false;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date creationTimeStamp;
     
     public static List<PromotionRequestProcessed> findPromotionRequestProcessedEntriesByUser(Usuario usuario, int firstResult, int maxResults) {

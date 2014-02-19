@@ -12,6 +12,8 @@
 	    <c:set var="deleteDesc" value="false" />
 	</sec:authorize>
     
+	<c:set var="promotionRequestProcessed_creationtimestamp_date_format" value="dd-MM-yyyy" />
+    
     
     <page:list id="pl_com_happyhour_entity_PromotionRequestProcessed" items="${promotionrequestprocesseds}" z="rCxPzSuFxiTWBYKgcl1FG3Oug2I=">
         <table:table data="${promotionrequestprocesseds}" update="${updateDesc}" delete="${deleteDesc}" id="l_com_happyhour_entity_PromotionRequestProcessed" path="/promotionrequestprocesseds" z="VxSI3jVDugsnRvLfztvSGaNgiDk=">
