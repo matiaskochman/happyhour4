@@ -5,8 +5,17 @@ package com.happyhour.entity;
 
 import com.happyhour.entity.PromotionRequest;
 import java.util.Date;
+import javax.persistence.EntityManager;
 
 privileged aspect PromotionRequest_Roo_JavaBean {
+    
+    public EntityManager PromotionRequest.getEntityManager() {
+        return this.entityManager;
+    }
+    
+    public void PromotionRequest.setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
     
     public String PromotionRequest.getPromoId() {
         return this.promoId;
