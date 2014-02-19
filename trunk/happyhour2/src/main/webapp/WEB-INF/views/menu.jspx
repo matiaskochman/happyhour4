@@ -11,7 +11,7 @@
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <menu:item id="i_promotionrequest_new" messageCode="global_menu_new" url="/promotionrequests?form" z="jIHq/AxPFs18YcHyqNFmSJO5/tg="/>
             </sec:authorize>
-            <menu:item id="i_promotionrequest_list" messageCode="global_menu_list" url="/promotionrequests/list?page=1&amp;size=${empty param.size ? 10 : param.size}" z="n2hTqhOtY1VmHnpO1/uSF+LZz1I="/>
+            <menu:item id="i_promotionrequest_list" messageCode="global_menu_list" url="/promotionrequests/list?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
         </menu:category>
         <menu:category id="c_promotiondescription" z="EnXJz3tcSlGtgpbOj/FWZXxUfvs=">
             <menu:item id="i_promotiondescription_new" messageCode="global_menu_new" url="/promotiondescriptions?form" z="iVXCK+tVyO4FukYNArq7/qaR63w="/>

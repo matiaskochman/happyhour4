@@ -3,19 +3,16 @@
 
 package com.happyhour.entity;
 
+import com.happyhour.entity.PromotionRequest;
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
+import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect PromotionRequest_Roo_Jpa_ActiveRecord {
     
-	/*
     @PersistenceContext
-    transient EntityManager PromotionRequest.entityManager;
-    */
-	
+    transient EntityManager PromotionRequest._entityManager;
     
     public static long PromotionRequest.countPromotionRequests() {
         return entityManager().createQuery("SELECT COUNT(o) FROM PromotionRequest o", Long.class).getSingleResult();
@@ -36,38 +33,38 @@ privileged aspect PromotionRequest_Roo_Jpa_ActiveRecord {
     
     @Transactional
     public void PromotionRequest.persist() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.persist(this);
+        if (this._entityManager == null) this._entityManager = entityManager();
+        this._entityManager.persist(this);
     }
     
     @Transactional
     public void PromotionRequest.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
+        if (this._entityManager == null) this._entityManager = entityManager();
+        if (this._entityManager.contains(this)) {
+            this._entityManager.remove(this);
         } else {
             PromotionRequest attached = PromotionRequest.findPromotionRequest(this.id);
-            this.entityManager.remove(attached);
+            this._entityManager.remove(attached);
         }
     }
     
     @Transactional
     public void PromotionRequest.flush() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.flush();
+        if (this._entityManager == null) this._entityManager = entityManager();
+        this._entityManager.flush();
     }
     
     @Transactional
     public void PromotionRequest.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
+        if (this._entityManager == null) this._entityManager = entityManager();
+        this._entityManager.clear();
     }
     
     @Transactional
     public PromotionRequest PromotionRequest.merge() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        PromotionRequest merged = this.entityManager.merge(this);
-        this.entityManager.flush();
+        if (this._entityManager == null) this._entityManager = entityManager();
+        PromotionRequest merged = this._entityManager.merge(this);
+        this._entityManager.flush();
         return merged;
     }
     

@@ -1,5 +1,6 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.happyhour.entity.PromotionInstance;
+import com.happyhour.json.JsonResponsePromotionInstance;
 import com.happyhour.service.BusinessEstablishmentService;
 import com.happyhour.service.PromotionDescriptionService;
 import com.happyhour.service.PromotionInstanceProcessedService;
@@ -61,7 +63,23 @@ public class PromotionInstanceController {
         
         headers.add("Content-Type", "application/json; charset=utf-8");
         List<PromotionInstance> result = promotionInstanceService.findPromotionInstanceEntriesByBusinessEstablishment(json);
-        return new ResponseEntity<String>(PromotionInstance.toJsonArray(result), headers, HttpStatus.OK);
+        
+        List<JsonResponsePromotionInstance> list = new ArrayList<JsonResponsePromotionInstance>(); 
+        JsonResponsePromotionInstance jsonResponse = null;
+        for (PromotionInstance promotionInstance : result) {
+        	jsonResponse = new JsonResponsePromotionInstance();
+			jsonResponse.setId(promotionInstance.getId());
+			jsonResponse.setBusinessEstablishmentId(promotionInstance.getBusinessEstablishment().getId().toString());
+			jsonResponse.setPromotionDescription(promotionInstance.getPromotionDescription().getDescription());
+			jsonResponse.setValidDate(promotionInstance.getPromotionValidDate());
+			list.add(jsonResponse);
+		}
+        
+        String toJsonArray = JsonResponsePromotionInstance.toJsonArray(list);
+        
+        //return new ResponseEntity<String>(PromotionInstance.toJsonArray(result), headers, HttpStatus.OK);
+        return new ResponseEntity<String>(toJsonArray, headers, HttpStatus.OK);
+        
     }
     
     
