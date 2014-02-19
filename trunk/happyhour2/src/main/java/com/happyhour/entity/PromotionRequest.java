@@ -51,7 +51,7 @@ public class PromotionRequest {
     private String token;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date creationTimeStamp;
 
     

@@ -68,7 +68,7 @@ public class PromotionInstanceProcessed {
     /**
      */
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date promotionValidDate;
 
     /**
