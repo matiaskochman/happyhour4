@@ -192,3 +192,42 @@ json add
 focus --class ~.entity.PromotionInstanceProcessed
 json add 
 web mvc json all
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-05 09:07:31
+focus --class ~.entity.PromotionInstanceProcessed
+field set --fieldName promotionRequestProcessedDeliveredList --type ~.entity.PromotionRequestProcessed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-05 09:48:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-05 12:55:50
+focus --class ~.entity.PromotionInstance
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-05 14:02:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-07 08:33:20
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-07 13:50:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-11 08:20:10
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-12 13:53:32
+focus --class ~.entity.PromotionInstance
+// [failed] field set --type java.lang.String --fieldName tokenSet
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-12 17:56:52
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-13 08:21:43
+focus --class ~.entity.PromotionInstance
+// [failed] field string --fieldName lastIndex
+// [failed] field string --fieldName lastIndex 
+// [failed] field string --fieldName tokenIndex
+field string --fieldName tokenIndex
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-13 10:09:58
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-18 08:24:53
+entity jpa --class ~.json.JsonRequestPromotionInstance 
+field string promotionInstanceId 
+field date --type java.util.Date --fieldName fromDate
+field date --type java.util.Date --fieldName toDate
+json add 
+entity jpa --class ~.json.JsonResponsePromotionInstance
+field string promotionDescription
+field string businessEstablishmentId
+field date --type java.util.Date --fieldName validDate
+json add 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-18 11:19:56
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-19 09:29:55
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-19 10:00:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-20 12:58:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 13:57:09
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-21 08:46:55
