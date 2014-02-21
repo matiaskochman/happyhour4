@@ -8,14 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
-import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionInstanceProcessed;
-import com.happyhour.entity.PromotionRequest;
 import com.happyhour.entity.PromotionRequestProcessed;
 import com.happyhour.entity.Usuario;
 
-@Service
+@Service("PromotionInstanceProcessedService")
 @Transactional
 public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceProcessedService {
 	
