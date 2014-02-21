@@ -231,3 +231,10 @@ json add
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-20 12:58:28
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 13:57:09
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-21 08:46:55
+interface --class ~.email.NotificationService
+class --class ~.email.NotificationServiceImpl
+email sender setup --hostServer smtp.gmail.com --protocol SMTP --port 587 --username happyhourUser --password happyhour
+properties list --name email.properties --path SPRING_CONFIG_ROOT
+email template setup --from happyhour@happyhour.com --subject "Registration Confirmation"
+field email template --fieldName mailTemplate --class ~.email.NotificationServiceImpl
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-21 09:19:25
