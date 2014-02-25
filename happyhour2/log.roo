@@ -238,3 +238,30 @@ properties list --name email.properties --path SPRING_CONFIG_ROOT
 email template setup --from happyhour@happyhour.com --subject "Registration Confirmation"
 field email template --fieldName mailTemplate --class ~.email.NotificationServiceImpl
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-21 09:19:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-25 08:38:49
+entity jpa --class com.happyhour.entity.Client
+field string email
+field string name
+field string surname
+field string gender
+json add 
+field list --type ~.entity.Client --fieldName friendList
+field string telephoneNumber
+field string telephoneId
+web mvc controller --class ~.controller.ClientController
+web mvc all --package ~.controller
+web mvc json all 
+entity jpa --class com.happyhour.entity.Client
+field string email
+field string firstname
+field string lastname
+field string gender
+field string telephoneNumber
+field string telephoneId
+field list --type ~.entity.Client --fieldName friendList
+json add 
+web mvc scaffold --class ~.controller.ClientController
+hint
+hint web mvc
+hint topics
+hint relationships
