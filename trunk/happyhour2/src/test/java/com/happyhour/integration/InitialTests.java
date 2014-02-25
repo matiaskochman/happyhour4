@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.happyhour.email.NotificationService;
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
 import com.happyhour.entity.PromotionDescription;
@@ -49,7 +50,9 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
     
 	@Autowired
 	private TokenCreationServiceImpl tokenCreationServiceImpl;
-    
+
+	@Autowired
+	private NotificationService notificationService;	
     
     @Test
     @Transactional
@@ -63,6 +66,7 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         a2.setRoleName("ROLE_USER");
         a2.persist();
         
+        notificationService.sendMessage("matiaskochman@yopmail.com", "the test has started.");
         
         createBusinessEstablishment(a1, "a", "promo_a", "business_a");
         createBusinessEstablishment(a2, "b", "promo_b", "business_b");
@@ -117,6 +121,8 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         createPromotionRequest("5", "5", "0000000013", new Date());
         createPromotionRequest("5", "5", "0000000014", new Date());
         createPromotionRequest("5", "5", "0000000015", new Date());
+        
+        
         
     }
     
