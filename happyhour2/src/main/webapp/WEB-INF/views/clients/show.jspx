@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_happyhour_entity_Client" object="${client}" path="/clients" z="xqQDEvVlq2+sGGQ0VwI8ovVghqU=">
+        <field:display field="email" id="s_com_happyhour_entity_Client_email" object="${client}" z="zwYdYhXgVSJQAklHBxQIywxbQKo="/>
+        <field:display field="firstname" id="s_com_happyhour_entity_Client_firstname" object="${client}" z="0GZ6vB5JDIY4EKEKPxma5mKdYgc="/>
+        <field:display field="lastname" id="s_com_happyhour_entity_Client_lastname" object="${client}" z="pymInQQHhRfdfGscOXuACOvGXGk="/>
+        <field:display field="gender" id="s_com_happyhour_entity_Client_gender" object="${client}" z="gWwDRtF3zFYTjfDaXiezANH1Eeo="/>
+        <field:display field="telephoneNumber" id="s_com_happyhour_entity_Client_telephoneNumber" object="${client}" z="rBFa4hhJboyi4Q+UoSUN+5Csm5U="/>
+        <field:display field="telephoneId" id="s_com_happyhour_entity_Client_telephoneId" object="${client}" z="0Q8HAMD2NK/nF9O2ZwiXj7026zM="/>
+        <field:display field="friendList" id="s_com_happyhour_entity_Client_friendList" object="${client}" z="pLIF5VFelqlUjUAnOyK/qrin6Lw="/>
+    </page:show>
+</div>

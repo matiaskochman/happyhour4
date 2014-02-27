@@ -265,3 +265,15 @@ hint
 hint web mvc
 hint topics
 hint relationships
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-27 08:38:06
+entity jpa --class com.happyhour.entity.Client
+field string email
+field string firstname
+field string lastname
+field string gender
+field string telephoneNumber
+field string telephoneId
+field list --type ~.entity.Client --fieldName friendList
+json add 
+web mvc scaffold --class ~.controller.ClientController
+service type --interface ~.service.ClientService --entity ~.entity.Client

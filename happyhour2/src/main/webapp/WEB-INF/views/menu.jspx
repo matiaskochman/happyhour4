@@ -48,5 +48,9 @@
             <menu:item id="i_promotioninstanceprocessed_new" messageCode="global_menu_new" url="/promotioninstanceprocesseds?form" z="vhZ7WrEw8R6xOADdWeOEbZaPyN8="/>
             <menu:item id="i_promotioninstanceprocessed_list" messageCode="global_menu_list" url="/promotioninstanceprocesseds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Ze+ltVgmjtTVocxZGb7YRKEI+e4="/>
         </menu:category>
+        <menu:category id="c_client" z="TjeLu8x0oS98tSiRzdPNDOc8U+c=">
+            <menu:item id="i_client_new" messageCode="global_menu_new" url="/clients?form" z="0rEWYB2Yq6qokJif3zv05zcXpXk="/>
+            <menu:item id="i_client_list" messageCode="global_menu_list" url="/clients?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/DxsyzfFyvp93UEW0WcXvtjs4zo="/>
+        </menu:category>
     </menu:menu>
 </div>
