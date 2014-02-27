@@ -4,9 +4,7 @@
 package com.happyhour.controller;
 
 import com.happyhour.controller.ApplicationConversionServiceFactoryBean;
-import com.happyhour.entity.Client;
 import com.happyhour.entity.PromotionInstanceProcessed;
-import com.happyhour.service.ClientService;
 import com.happyhour.service.PromotionInstanceProcessedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -17,34 +15,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
     
     @Autowired
-    ClientService ApplicationConversionServiceFactoryBean.clientService;
-    
-    @Autowired
     PromotionInstanceProcessedService ApplicationConversionServiceFactoryBean.promotionInstanceProcessedService;
-    
-    public Converter<Client, String> ApplicationConversionServiceFactoryBean.getClientToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.happyhour.entity.Client, java.lang.String>() {
-            public String convert(Client client) {
-                return new StringBuilder().append(client.getEmail()).append(' ').append(client.getFirstname()).append(' ').append(client.getLastname()).append(' ').append(client.getGender()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, Client> ApplicationConversionServiceFactoryBean.getIdToClientConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.happyhour.entity.Client>() {
-            public com.happyhour.entity.Client convert(java.lang.Long id) {
-                return clientService.findClient(id);
-            }
-        };
-    }
-    
-    public Converter<String, Client> ApplicationConversionServiceFactoryBean.getStringToClientConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.happyhour.entity.Client>() {
-            public com.happyhour.entity.Client convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), Client.class);
-            }
-        };
-    }
     
     public Converter<PromotionInstanceProcessed, String> ApplicationConversionServiceFactoryBean.getPromotionInstanceProcessedToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.happyhour.entity.PromotionInstanceProcessed, java.lang.String>() {
