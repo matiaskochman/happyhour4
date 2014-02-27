@@ -8,6 +8,7 @@ import org.springframework.roo.addon.web.mvc.controller.converter.RooConversionS
 
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.BusinessEstablishment;
+import com.happyhour.entity.Client;
 import com.happyhour.entity.PromotionDescription;
 import com.happyhour.entity.PromotionInstance;
 import com.happyhour.entity.PromotionRequest;
@@ -15,6 +16,7 @@ import com.happyhour.entity.PromotionRequestProcessed;
 import com.happyhour.entity.Usuario;
 import com.happyhour.service.AuthorityService;
 import com.happyhour.service.BusinessEstablishmentService;
+import com.happyhour.service.ClientService;
 import com.happyhour.service.PromotionDescriptionService;
 import com.happyhour.service.PromotionInstanceService;
 import com.happyhour.service.PromotionRequestService;
@@ -44,6 +46,8 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
     @Autowired
     UsuarioService usuarioService;
 	
+    @Autowired
+    ClientService clientService;
 	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
@@ -79,15 +83,19 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         registry.addConverter(getAuthorityToStringConverter());
         registry.addConverter(getIdToAuthorityConverter());
         registry.addConverter(getStringToAuthorityConverter());
+        
         registry.addConverter(getBusinessEstablishmentToStringConverter());
         registry.addConverter(getIdToBusinessEstablishmentConverter());
         registry.addConverter(getStringToBusinessEstablishmentConverter());
+        
         registry.addConverter(getPromotionDescriptionToStringConverter());
         registry.addConverter(getIdToPromotionDescriptionConverter());
         registry.addConverter(getStringToPromotionDescriptionConverter());
+        
         registry.addConverter(getPromotionInstanceToStringConverter());
         registry.addConverter(getIdToPromotionInstanceConverter());
         registry.addConverter(getStringToPromotionInstanceConverter());
+        
         registry.addConverter(getPromotionRequestToStringConverter());
         registry.addConverter(getIdToPromotionRequestConverter());
         registry.addConverter(getStringToPromotionRequestConverter());
@@ -99,6 +107,11 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         registry.addConverter(getUsuarioToStringConverter());
         registry.addConverter(getIdToUsuarioConverter());
         registry.addConverter(getStringToUsuarioConverter());
+        
+        registry.addConverter(getClientToStringConverter());
+        registry.addConverter(getIdToClientConverter());
+        registry.addConverter(getStringToClientConverter());
+        
     }
     
     
@@ -239,12 +252,37 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
     }
     
     public Converter<String, Usuario> getStringToUsuarioConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.happyhour.entity.Usuario>() {
-            public com.happyhour.entity.Usuario convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), Usuario.class);
+    	return new org.springframework.core.convert.converter.Converter<java.lang.String, com.happyhour.entity.Usuario>() {
+    		public com.happyhour.entity.Usuario convert(String id) {
+    			return getObject().convert(getObject().convert(id, Long.class), Usuario.class);
+    		}
+    	};
+    }
+    
+    public Converter<String, Client> getStringToClientConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.happyhour.entity.Client>() {
+            public com.happyhour.entity.Client convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Client.class);
             }
         };
     }
+
+    public Converter<Client, String> getClientToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.happyhour.entity.Client, java.lang.String>() {
+            public String convert(Client client) {
+                return new StringBuilder().append(client.getFirstname()).append(' ').append(client.getFirstname()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Client> getIdToClientConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.happyhour.entity.Client>() {
+            public com.happyhour.entity.Client convert(java.lang.Long id) {
+                return clientService.findClient(id);
+            }
+        };
+    }
+    
     
     
     public void afterPropertiesSet() {
