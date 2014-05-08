@@ -2,6 +2,7 @@ package com.happyhour.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,8 @@ public class Usuario {
 
     private String email;
 
+    @Basic
+    @Column(name = "enabled", columnDefinition = "BIT", length = 1)    
     private Boolean enabled;
 
     @Id
