@@ -2,6 +2,7 @@ package com.happyhour.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -56,6 +57,9 @@ public class PromotionRequestProcessed {
     private String businessEstablishmentId;
     private String clientTelephone;
     private String token;
+    
+    @Basic
+    @Column(name = "delivered", columnDefinition = "BIT", length = 1)    
     private Boolean delivered = false;
     
     @Temporal(TemporalType.TIMESTAMP)
