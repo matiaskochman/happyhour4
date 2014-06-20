@@ -47,6 +47,7 @@
         <context:exclude-filter expression=".*_Roo_.*" type="regex"/>
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>
+    
     <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="mysql1">
         <property name="driverClassName" value="${database.driverClassName}"/>
         <property name="url" value="${database.tests.url}"/>
@@ -60,14 +61,18 @@
         <property name="minEvictableIdleTimeMillis" value="1800000"/>
         <property name="validationQuery" value="SELECT 1"/>
     </bean>
+    
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
+    
     <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>
+    
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="persistence-tests"/>
         <property name="dataSource" ref="mysql1"/>
     </bean>
+    
     <bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
         <property name="host" value="${email.host}"/>
         <property name="protocol" value="${email.protocol}"/>
@@ -81,6 +86,7 @@
             </props>
         </property>
     </bean>
+    
     <bean class="org.springframework.mail.SimpleMailMessage" id="templateMessage">
         <property name="from" value="${email.from}"/>
         <property name="subject" value="${email.subject}"/>

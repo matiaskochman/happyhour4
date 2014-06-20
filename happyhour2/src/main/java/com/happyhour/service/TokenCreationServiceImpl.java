@@ -101,7 +101,6 @@ public class TokenCreationServiceImpl {
 		Integer rand = rn.nextInt(n + 1);
 		rand++;
 		
-		//randomList.add(rand);
 		return rand.toString();
 	}	
 	private synchronized String getSymbol(String position){
@@ -169,13 +168,14 @@ public class TokenCreationServiceImpl {
 		orderNumber.append(readablePart);
 		orderNumber.append("-");
 		
+		orderNumber.append(getCodeMap().get(month.toString()));
+		orderNumber.append(getCodeMap().get(day.toString()));
+		orderNumber.append(getCodeMap().get(hour.toString()));
+		orderNumber.append("-");
 		orderNumber.append(getCodeMap().get(getRandomFrom1to36()));
 		orderNumber.append(getCodeMap().get(getRandomFrom1to36()));
 		orderNumber.append(getCodeMap().get(getRandomFrom1to36()));
 		
-		orderNumber.append(getCodeMap().get(month.toString()));
-		orderNumber.append(getCodeMap().get(day.toString()));
-		orderNumber.append(getCodeMap().get(hour.toString()));
 		
 		promotionInstance.getTokenSet().add(orderNumber.toString());
 		promotionInstance.setTokenIndex(orderNumber.toString().substring(0, 1));
