@@ -17,6 +17,9 @@
         <intercept-url pattern="/promotionrequests/json/**" access="permitAll" />
         <intercept-url pattern="/promotionrequestprocesseds/json/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" requires-channel="https"/>
+        <!-- 
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+         -->
     </http>
     <!-- Configure Authentication mechanism -->
     <authentication-manager >
