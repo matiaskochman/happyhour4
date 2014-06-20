@@ -27,7 +27,7 @@ import com.happyhour.service.PromotionRequestService;
 import com.happyhour.service.TokenCreationServiceImpl;
 import com.happyhour.service.UsuarioService;
 
-@ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml" })
+@ContextConfiguration(locations = { "/META-INF/spring/applicationContext-tests.xml" })
 public class InitialTests extends AbstractJUnit4SpringContextTests{
         
     @Autowired
