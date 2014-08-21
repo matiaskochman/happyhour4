@@ -8,5 +8,6 @@
         <field:display field="email" id="s_com_happyhour_entity_Usuario_email" object="${usuario}" z="nH+sWFlbCLpz7cW51J0AZOBZJYw="/>
         <field:display field="enabled" id="s_com_happyhour_entity_Usuario_enabled" object="${usuario}" z="zE3XwOxPe8IEw8NFXgmuBvltuC0="/>
         <field:display field="rolesList" id="s_com_happyhour_entity_Usuario_rolesList" object="${usuario}" z="OsIrDynEfYXfLuZCKlVEPkg8naY="/>
+        <field:display field="businessEstablishment" id="s_com_happyhour_entity_Usuario_businessEstablishment" object="${usuario}" z="Y7z1sojkeReyIWGmW+8BzoTRpIk="/>
     </page:show>
 </div>

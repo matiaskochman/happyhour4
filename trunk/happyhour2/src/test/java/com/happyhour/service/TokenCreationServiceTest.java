@@ -27,7 +27,7 @@ public class TokenCreationServiceTest extends AbstractJUnit4SpringContextTests{
 	private TokenCreationServiceImpl tokenCreationServiceImpl;
 	
     @Autowired
-    BusinessEstablishmentService businessEstablishmentService;
+    private BusinessEstablishmentService businessEstablishmentService;
 	
 	private PromotionRequest promotionRequest;
 

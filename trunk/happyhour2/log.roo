@@ -277,3 +277,15 @@ field list --type ~.entity.Client --fieldName friendList
 json add 
 web mvc scaffold --class ~.controller.ClientController
 service type --interface ~.service.ClientService --entity ~.entity.Client
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-08 12:47:29
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-08 22:36:07
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-17 11:08:15
+hint
+hint log
+hint loggin
+logging setup --level DEBUG 
+logging setup --level INFO 
+logging setup --level DEBUG 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-24 13:06:49
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-04 14:12:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-20 11:33:30

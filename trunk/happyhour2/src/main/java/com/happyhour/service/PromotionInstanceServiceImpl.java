@@ -17,6 +17,8 @@ import com.happyhour.entity.Usuario;
 @Transactional
 public class PromotionInstanceServiceImpl implements PromotionInstanceService {
 	
+	private static String ROLE_ADMIN = "ROLE_ADMIN";
+	
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -69,7 +71,7 @@ public class PromotionInstanceServiceImpl implements PromotionInstanceService {
     	String username = usuarioService.getLoggedUserName();
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority authority = null;
-		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		authority =  Authority.findAuthoritysByRoleNameEquals(ROLE_ADMIN).getSingleResult();
 
 		List<PromotionInstance> list = null;
 		

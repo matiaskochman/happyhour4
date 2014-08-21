@@ -9,6 +9,7 @@
             <table:column id="c_com_happyhour_entity_Usuario_email" property="email" z="YI55U13oCKMrxtfqIxOqOlAHlqA="/>
             <table:column id="c_com_happyhour_entity_Usuario_enabled" property="enabled" z="azKofO6tKm4mILcIzDErUlJ1RDk="/>
             <table:column id="c_com_happyhour_entity_Usuario_rolesList" property="rolesList" z="StSyS9thuK0ckXJ0oBl7gIyGof8="/>
+            <table:column id="c_com_happyhour_entity_Usuario_businessEstablishment" property="businessEstablishment" z="MHcN7yGQ/UMDcr7kYmHQ6cy9+t4="/>
         </table:table>
     </page:list>
 </div>

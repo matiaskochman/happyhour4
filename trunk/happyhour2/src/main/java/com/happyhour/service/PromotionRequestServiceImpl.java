@@ -16,6 +16,9 @@ import com.happyhour.exception.BusinessException;
 @Transactional
 public class PromotionRequestServiceImpl implements PromotionRequestService {
 	
+	private static String ROLE_ADMIN = "ROLE_ADMIN";
+	
+	
 	@Autowired
 	private TokenCreationServiceImpl tokenCreationServiceImpl;
 	
@@ -112,7 +115,7 @@ public class PromotionRequestServiceImpl implements PromotionRequestService {
 	    List<PromotionRequest> list = null;
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority adminAuthority = null;
-		adminAuthority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		adminAuthority =  Authority.findAuthoritysByRoleNameEquals(ROLE_ADMIN).getSingleResult();
 		
 		if(usuarioService.getLoggedUserAuthorities().contains(adminAuthority)){
 			

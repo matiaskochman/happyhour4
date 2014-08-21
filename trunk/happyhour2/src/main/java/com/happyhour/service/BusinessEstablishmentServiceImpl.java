@@ -16,6 +16,9 @@ import com.happyhour.entity.Usuario;
 @Transactional
 public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentService {
 	
+	private static String ROLE_ADMIN = "ROLE_ADMIN";
+	
+	
 	@Autowired
 	private UsuarioService usuarioService;
 	
@@ -71,7 +74,7 @@ public class BusinessEstablishmentServiceImpl implements BusinessEstablishmentSe
 	    List<BusinessEstablishment> list = null;
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority authority = null;
-		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		authority =  Authority.findAuthoritysByRoleNameEquals(ROLE_ADMIN).getSingleResult();
 		if(usuarioService.getLoggedUserAuthorities().contains(authority)){
 			
 			list = BusinessEstablishment.findBusinessEstablishmentEntries(firstResult, maxResults);
