@@ -24,7 +24,7 @@ import org.springframework.web.util.WebUtils;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    private UsuarioService usuarioService;
 	
 	
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")

@@ -17,6 +17,8 @@ import com.happyhour.entity.Usuario;
 @Transactional
 public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceProcessedService {
 	
+	private static String ROLE_ADMIN = "ROLE_ADMIN";
+	
 	@Autowired
 	private PromotionRequestProcessedService promotionRequestProcessedService;
 
@@ -114,7 +116,7 @@ public class PromotionInstanceProcessedServiceImpl implements PromotionInstanceP
     	String username = usuarioService.getLoggedUserName();
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority authority = null;
-		authority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		authority =  Authority.findAuthoritysByRoleNameEquals(ROLE_ADMIN).getSingleResult();
 
 		List<PromotionInstanceProcessed> list = null;
 		

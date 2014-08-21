@@ -17,6 +17,9 @@ import com.happyhour.entity.Usuario;
 @Transactional
 public class PromotionRequestProcessedServiceImpl implements PromotionRequestProcessedService {
 	
+	private static String ROLE_ADMIN = "ROLE_ADMIN";
+	
+	
 	@Autowired
 	PromotionRequestService promotionRequestService;
 
@@ -93,6 +96,10 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 		
 	}
 	
+	/**
+	 * when a promotion instance is processed, the promotion requests wich haven't been processed as delivered
+	 * should be processed as not delivered
+	 */
 	@Override
 	public void processPromotionRequestCollectionNotDelivered(PromotionInstance instance) {
 		
@@ -131,7 +138,7 @@ public class PromotionRequestProcessedServiceImpl implements PromotionRequestPro
 	    List<PromotionRequestProcessed> list = null;
 		Usuario usuario = usuarioService.findUsuariosByUserNameEquals(username);
 		Authority adminAuthority = null;
-		adminAuthority =  Authority.findAuthoritysByRoleNameEquals("ROLE_ADMIN").getSingleResult();
+		adminAuthority =  Authority.findAuthoritysByRoleNameEquals(ROLE_ADMIN).getSingleResult();
 		
 		if(usuarioService.getLoggedUserAuthorities().contains(adminAuthority)){
 			
