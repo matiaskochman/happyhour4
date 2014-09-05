@@ -60,5 +60,8 @@
       </div>
     </form>
   </util:panel>
+		<div>ip address: ${param.ipaddress}</div>
+	<c:if test="${not empty param.ipaddress}">
+	</c:if>
 </div>
 
