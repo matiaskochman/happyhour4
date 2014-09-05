@@ -1,5 +1,7 @@
 package com.happyhour.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +21,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLoginPage(@RequestParam(value="error", required=false) boolean error, 
-			ModelMap model) {
+			ModelMap model, HttpServletRequest request) {
 		logger.debug("Received request to show login page");
 
 		// Add an error message to the model if login is unsuccessful
@@ -38,6 +40,7 @@ public class LoginController {
 			model.put("error", "");
 		}
 		
+		model.put("ipaddress", request.getRemoteAddr());
 		// This will resolve to /WEB-INF/jsp/loginpage.jsp
 		return "login";
 	}
