@@ -30,6 +30,7 @@ import com.happyhour.entity.PromotionRequest;
 import com.happyhour.exception.BusinessException;
 import com.happyhour.service.PromotionRequestProcessedService;
 import com.happyhour.service.PromotionRequestService;
+import com.happyhour.utils.TextEncryptionUtils;
 
 @RequestMapping("/promotionrequests")
 @Controller
@@ -44,7 +45,26 @@ public class PromotionRequestController {
     PromotionRequestProcessedService promotionRequestProcessedService;
 
     @RequestMapping(value = "/json/create",method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<String> createFromJson(@RequestBody String json) {
+    public ResponseEntity<String> createFromJson(@RequestBody String json,@RequestParam String token) {
+    	
+    	String decoded = null;
+    	if(token!=null){
+    		
+    		try {
+				//String encoded = TextEncryptionUtils.encrypt("100056");
+				
+				decoded = TextEncryptionUtils.decrypt(token);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		if(decoded.equals("matias")){
+    			
+    			System.out.println("Excelente matias!");
+    		}
+    	}
+    	
         HttpHeaders headers = new HttpHeaders();
         PromotionRequest promotionRequest = PromotionRequest.fromJsonToPromotionRequest(json);
         promotionRequest.setCreationTimeStamp(new Date());

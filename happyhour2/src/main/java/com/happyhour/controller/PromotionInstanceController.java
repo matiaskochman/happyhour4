@@ -230,7 +230,7 @@ public class PromotionInstanceController {
         return new ResponseEntity<String>(headers, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "processPromotionInstance/{id}")
+    @RequestMapping(value = "/{id}")
     public String processPromotionInstance(@PathVariable("id") Long id){
     	
     	promotionInstanceProcessedService.processPromotionInstance(id);
