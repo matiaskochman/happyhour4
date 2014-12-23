@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd                 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd                 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
                 
     <!-- The controllers are autodetected POJOs labeled with the @Controller annotation. -->
     <context:component-scan base-package="com.happyhour" use-default-filters="false">
@@ -12,8 +17,14 @@
     
 
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources -->
+    <!-- 
+     -->
     <mvc:resources location="/, classpath:/META-INF/web-resources/" mapping="/resources/**"/>
 
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources -->
+	<mvc:resources mapping="/bootstrap/**" location="/bootstrap/" />
+	
+	
     <!-- Allows for mapping the DispatcherServlet to "/" by forwarding static resource 
     requests to the container's default Servlet -->
     <mvc:default-servlet-handler/>
@@ -61,19 +72,33 @@
         </property>
     </bean>
 
+	<bean class="com.happyhour.controller.ApplicationConversionServiceFactoryBean" id="applicationConversionService"/>
     <!-- Enable this for integration of file upload functionality -->
     <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"/>
-<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
-    <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
-  </bean>
+    
+	<!-- 
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	    <property name="prefix" value="/WEB-INF/bootstrap-views/"/>
+	    <property name="suffix" value=".jsp"/>
+	</bean>  	
+	    
+	 -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
+    	<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+  	</bean>
+  
     <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
     <property name="definitions">
       <list>
         <value>/WEB-INF/layouts/layouts.xml</value>
         <!-- Scan views directory for Tiles configurations -->
+        <!-- 
         <value>/WEB-INF/views/**/views.xml</value>
+         -->
+        <value>/WEB-INF/bootstrap-views/**/views.xml</value>
+         
       </list>
     </property>
   </bean>
-<bean class="com.happyhour.controller.ApplicationConversionServiceFactoryBean" id="applicationConversionService"/>
 </beans>
