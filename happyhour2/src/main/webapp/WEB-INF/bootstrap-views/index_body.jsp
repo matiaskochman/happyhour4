@@ -311,7 +311,5 @@
             </div>
         </div>
     </div>
-                            <!-- 
-                             -->
-    
 </div>
+<jsp:directive.include file="/bootstrap/lib/index_js_imports.jsp" />
