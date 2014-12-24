@@ -108,4 +108,9 @@ public class UsuarioController {
         }
         return pathSegment;
     }
+    
+    @RequestMapping(value = "/list", produces = "text/html")
+    private String redirectTo(){
+    	return "usuarios/list";
+    }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+  <definition extends="bootstrap" name="usuarios/list">
+    <put-attribute name="header" value="/WEB-INF/bootstrap-views/header-bootstrap.jsp"/>
+    <put-attribute name="menu" value="/WEB-INF/bootstrap-views/menu-bootstrap.jsp"/>
+    <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/user-list.jsp"/>
+  </definition>    
+    
+    
+<definition extends="bootstrap" name="usuarios/show">
+        <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/show.jspx"/>
+    </definition>
+<definition extends="bootstrap" name="usuarios/create">
+        <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/create.jspx"/>
+    </definition>
+<definition extends="bootstrap" name="usuarios/update">
+        <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/update.jspx"/>
+    </definition>
+</tiles-definitions>

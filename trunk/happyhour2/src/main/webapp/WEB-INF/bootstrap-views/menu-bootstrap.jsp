@@ -25,7 +25,8 @@
                    <i class="icon-chevron-down"></i>
                </a>
                <ul class="submenu">
-                   <li><a href="user-list.html">User list</a></li>
+               		<spring:url value="/usuarios/list" var="usuarios_list_url"/>
+                   <li><a href="${usuarios_list_url}">User list</a></li>
                    <li><a href="new-user.html">New user form</a></li>
                    <li><a href="user-profile.html">User profile</a></li>
                </ul>
