@@ -12,7 +12,8 @@
                <span class="icon-bar"></span>
            </button>
            <a class="navbar-brand" href="index.html">
-	        <img  src="/happyhour2/bootstrap/img/logo.png"  />
+			<spring:url value="/resources/bootstrap/img/logo.png" var="logo"/>
+	       	<img  src="${logo}"  />
            </a>
        </div>
        <ul class="nav navbar-nav pull-right hidden-xs">
@@ -74,10 +75,8 @@
                        <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
                        <div class="messages">
                            <a href="#" class="item">
-                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  class="display" alt="user" />
-                           	<!-- 
-			        <img  src="${contact-img}" class="display" alt="user" />
-                         	 -->
+							<spring:url value="/resources/bootstrap/img/contact-img.png" var="contact-img"/>
+			        		<img  src="${contact-img}" class="display" alt="user" />
                              <div class="name">Alejandra Galván</div>
                              <div class="msg">
                                  There are many variations of available, but the majority have suffered alterations.
@@ -85,7 +84,8 @@
                              <span class="time"><i class="icon-time"></i> 13 min.</span>
                          </a>
                          <a href="#" class="item">
-                         	<img src="/happyhour2/bootstrap/img/contact-img2.png"  class="display" alt="user" />
+							<spring:url value="/resources/bootstrap/img/contact-img2.png" var="contact-img2"/>
+			        		<img  src="${contact-img2}" class="display" alt="user" />
                              <div class="name">Alejandra Galván</div>
                              <div class="msg">
                                  There are many variations of available, have suffered alterations.
@@ -93,7 +93,9 @@
                              <span class="time"><i class="icon-time"></i> 26 min.</span>
                          </a>
                          <a href="#" class="item last">
-                         	<img src="/happyhour2/bootstrap/img/contact-img.png"  class="display" alt="user" />
+							<spring:url value="/resources/bootstrap/img/contact-img.png" var="contact-img"/>
+			        		<img  src="${contact-img}" class="display" alt="user" />
+                         
                              <div class="name">Alejandra Galván</div>
                              <div class="msg">
                                  There are many variations of available, but the majority have suffered alterations.

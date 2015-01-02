@@ -21,6 +21,8 @@
     <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
   </definition>
   
-  
+  <definition name="bootstrap_login" template="/WEB-INF/layouts/signin_bootstrap.jsp">
+    <put-attribute name="body" value="/WEB-INF/bootstrap-views/signin.jsp" />
+  </definition>  
 
 </tiles-definitions>
