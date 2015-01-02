@@ -87,7 +87,9 @@
                     <!-- row -->
                     <tr class="first">
                         <td>
-                            <img src="img/contact-img.png" alt="contact" class="img-circle avatar hidden-phone" />
+                        <!-- 
+                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
+                         -->
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -104,7 +106,9 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img2.png" alt="contact" class="img-circle avatar hidden-phone" />
+                        <!-- 
+                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
+                         -->
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -121,7 +125,9 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img.png" alt="contact" class="img-circle avatar hidden-phone" />
+                        <!-- 
+                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
+                         -->
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -138,7 +144,9 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img2.png" alt="contact" class="img-circle avatar hidden-phone" />
+                        <!-- 
+                           	<img src="/happyhour2/bootstrap/img/contact-img2.png"  alt="contact" class="img-circle avatar hidden-phone" />
+                         -->
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -155,7 +163,7 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img.png" alt="contact" class="img-circle avatar hidden-phone" />
+                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -172,7 +180,7 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img2.png" alt="contact" class="img-circle avatar hidden-phone" />
+                           	<img src="/happyhour2/bootstrap/img/contact-img2.png"  alt="contact" class="img-circle avatar hidden-phone" />
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -189,7 +197,7 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img.png" alt="contact" class="img-circle avatar hidden-phone" />
+                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -206,7 +214,7 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img2.png" alt="contact" class="img-circle avatar hidden-phone" />
+                           	<img src="/happyhour2/bootstrap/img/contact-img2.png"  alt="contact" class="img-circle avatar hidden-phone" />
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -223,7 +231,7 @@
                     <!-- row -->
                     <tr>
                         <td>
-                            <img src="img/contact-img.png" alt="contact" class="img-circle avatar hidden-phone" />
+                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>

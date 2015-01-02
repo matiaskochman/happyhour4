@@ -3,21 +3,22 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
     
 <div id="sidebar-nav">
-	
-	
        <ul id="dashboard-menu">
            <li>                
-               <a href="index.html">
+				<spring:url value="/" var="index_url"/>
+               <a href="${index_url}">
                    <i class="icon-home"></i>
                    <span>Home</span>
                </a>
            </li>
+           <%--
            <li>
                <a href="chart-showcase.html">                    
                    <i class="icon-signal"></i>
                    <span>Charts</span>
                </a>
            </li>
+            --%>
            <li>
                <a class="dropdown-toggle" href="#">
                    <i class="icon-group"></i>
@@ -52,12 +53,14 @@
                    <span>Gallery</span>
                </a>
            </li>
+           <%--
            <li>
                <a href="calendar.html">                    
                    <i class="icon-calendar-empty"></i>
                    <span>Calendar</span>
                </a>
            </li>
+            --%>
            <li>
                <a class="dropdown-toggle" href="tables.html">
                    <i class="icon-th-large"></i>
@@ -69,6 +72,7 @@
                    <li><a href="datatables.html">DataTables</a></li>
                </ul>
            </li>
+           <%--
             <sec:authorize access="hasRole('ROLE_ADMIN')">
            <li>
                <a class="dropdown-toggle ui-elements" href="#">
@@ -88,6 +92,7 @@
                    <span>My Info</span>
                </a>
            </li>
+            --%>
            <li>
                <a class="dropdown-toggle" href="#">
                    <i class="icon-share-alt"></i>
