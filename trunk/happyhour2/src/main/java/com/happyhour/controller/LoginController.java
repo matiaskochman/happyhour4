@@ -40,7 +40,7 @@ public class LoginController {
 			model.put("error", "");
 		}
 		
-		model.put("ipaddress", request.getRemoteAddr());
+		request.getSession().setAttribute("ipAddressUser", request.getRemoteAddr());		
 		// This will resolve to /WEB-INF/jsp/loginpage.jsp
 		return "login";
 	}

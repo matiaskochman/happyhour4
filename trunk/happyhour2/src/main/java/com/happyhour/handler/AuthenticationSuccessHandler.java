@@ -25,8 +25,9 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 			throws IOException, ServletException {
 		
 		String user = service.getLoggedUserName();
+		String ip = request.getRemoteAddr();
+		request.getSession().setAttribute("ipUser", ip);
 		request.getSession().setAttribute("loggedUserId", user);
-		
 		super.onAuthenticationSuccess(request, response, auth);
 	}
 }

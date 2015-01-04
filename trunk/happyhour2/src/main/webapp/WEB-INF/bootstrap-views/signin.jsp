@@ -50,11 +50,13 @@
     </div>
 
 
+	<spring:url value="/resources/bootstrap/img/logo-white.png" var="logo_white"/>
     <div class="login-wrapper">
+		<img src="${logo_white}" class="logo" alt="logo"/>
+		<%--
         <a href="index.html">
-			<spring:url value="/resources/bootstrap/img/logo-white.png" var="logo-white"/>
-			<img src="${logo-white}" alt="logo"/>
         </a>
+		 --%>
 
         <div class="box">
             <div class="content-wrap">
@@ -72,8 +74,16 @@
 	                    <input id="remember-me" type="checkbox">
 	                    <label for="remember-me">Remember me</label>
 	                </div>
-			        <input id="proceed" class="btn-glow primary login" type="submit" value="Log In" />
 	                
+			        <input id="proceed" class="btn-glow primary login" type="submit" value="Log In" />
+			        <br/>
+			        <br/>
+			        
+					<div class="mar-btm"><em>- or -</em></div>
+			        <br/>
+					<button class="btn btn-primary btn-lg btn-block" type="button">
+						<i class="fa fa-facebook fa-fw"></i> Login with Facebook
+					</button>	                
 	            </form>
             </div>
         </div>
