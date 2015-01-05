@@ -27,6 +27,7 @@ import com.happyhour.service.PromotionRequestService;
 import com.happyhour.service.TokenCreationServiceImpl;
 import com.happyhour.service.UsuarioService;
 
+//@ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml" })
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext-tests.xml" })
 public class InitialTests extends AbstractJUnit4SpringContextTests{
         
@@ -66,13 +67,13 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
         a2.setRoleName("ROLE_USER");
         a2.persist();
         
-        notificationService.sendMessage("matiaskochman@yopmail.com", "the test has started.");
+        //notificationService.sendMessage("matiaskochman@yopmail.com", "the test has started.");
         
-        createBusinessEstablishment(a1, "a", "promo_a", "business_a");
-        createBusinessEstablishment(a2, "b", "promo_b", "business_b");
-        createBusinessEstablishment(a2, "c", "promo_c", "business_c");
-        createBusinessEstablishment(a2, "d", "promo_d", "business_d");
-        createBusinessEstablishment(a2, "f", "promo_f", "business_f");
+        createBusinessEstablishment(a1, "a","a@email.com" ,"promo_a", "business_a");
+        createBusinessEstablishment(a2, "b","b@email.com", "promo_b", "business_b");
+        createBusinessEstablishment(a2, "c","c@email.com", "promo_c", "business_c");
+        createBusinessEstablishment(a2, "d","d@email.com", "promo_d", "business_d");
+        createBusinessEstablishment(a2, "f","f@email.com", "promo_f", "business_f");
      
         createPromotionRequest("1", "1", "0000000001", new Date());
         createPromotionRequest("1", "1", "0000000002", new Date());
@@ -127,13 +128,13 @@ public class InitialTests extends AbstractJUnit4SpringContextTests{
     }
     
     
-    private void createBusinessEstablishment(Authority authority,String username,String promoDescriptionName,String businessEstablishmentName){
+    private void createBusinessEstablishment(Authority authority,String username,String email,String promoDescriptionName,String businessEstablishmentName){
     	
     	
         Usuario u1 = new Usuario();
         u1.setUserName(username);
         u1.setPassword(username);
-        u1.setEmail(username);
+        u1.setEmail(email);
         u1.setEnabled(true);
         u1.getRolesList().add(authority);
         u1.persist();
