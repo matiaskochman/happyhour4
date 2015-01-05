@@ -1,7 +1,10 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.Usuario;
 import com.happyhour.service.UsuarioService;
@@ -110,7 +113,21 @@ public class UsuarioController {
     }
     
     @RequestMapping(value = "/list", produces = "text/html")
-    private String redirectTo(){
+    private String redirectTo(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,Model uiModel){
+        if (page != null || size != null) {
+            int sizeNo = size == null ? 10 : size.intValue();
+            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            List<Usuario> usuariosList = Usuario.findUsuarioEntries(firstResult, sizeNo);
+            uiModel.addAttribute("usuarios", usuariosList);
+            
+            Long countUsuarios = Usuario.countUsuarios();
+            float nrOfPages = (float)  countUsuarios / sizeNo;
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+        } else {
+        	List<Usuario> usuariosList = Usuario.findAllUsuarios();
+            uiModel.addAttribute("usuarios", usuariosList);
+        }    	
+    	
     	return "usuarios/list";
     }
 }

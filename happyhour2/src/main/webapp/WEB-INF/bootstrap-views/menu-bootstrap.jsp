@@ -26,12 +26,13 @@
                    <i class="icon-chevron-down"></i>
                </a>
                <ul class="submenu">
-               		<spring:url value="/usuarios/list" var="usuarios_list_url"/>
+               		<spring:url value="/usuarios/list?page=1&amp;size=${empty param.size ? 10 : param.size}" var="usuarios_list_url"/>
                    <li><a href="${usuarios_list_url}">User list</a></li>
                    <li><a href="new-user.html">New user form</a></li>
                    <li><a href="user-profile.html">User profile</a></li>
                </ul>
            </li>
+           <%--
            <li>
                <a class="dropdown-toggle" href="#">
                    <i class="icon-edit"></i>
@@ -53,7 +54,6 @@
                    <span>Gallery</span>
                </a>
            </li>
-           <%--
            <li>
                <a href="calendar.html">                    
                    <i class="icon-calendar-empty"></i>
@@ -61,6 +61,7 @@
                </a>
            </li>
             --%>
+           <%--
            <li>
                <a class="dropdown-toggle" href="tables.html">
                    <i class="icon-th-large"></i>
@@ -72,7 +73,6 @@
                    <li><a href="datatables.html">DataTables</a></li>
                </ul>
            </li>
-           <%--
             <sec:authorize access="hasRole('ROLE_ADMIN')">
            <li>
                <a class="dropdown-toggle ui-elements" href="#">
@@ -92,7 +92,6 @@
                    <span>My Info</span>
                </a>
            </li>
-            --%>
            <li>
                <a class="dropdown-toggle" href="#">
                    <i class="icon-share-alt"></i>
@@ -106,5 +105,6 @@
                    <li><a href="signup.html">Sign up</a></li>
                </ul>
            </li>
+            --%>
        </ul>
   </div>
