@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!-- main container -->
 <div class="content">
     
@@ -87,9 +89,7 @@
                     <!-- row -->
                     <tr class="first">
                         <td>
-                        <!-- 
                            	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                         -->
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -103,160 +103,53 @@
                             <a href="#">alejandra@canvas.com</a>
                         </td>
                     </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                        <!-- 
-                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                         -->
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Jun 03, 2012
-                        </td>
-                        <td>
-                            $ 549.99
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                        <!-- 
-                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                         -->
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Mar 01, 2013
-                        </td>
-                        <td>
-                            $ 30.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                        <!-- 
-                           	<img src="/happyhour2/bootstrap/img/contact-img2.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                         -->
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Jan 28, 2012
-                        </td>
-                        <td>
-                            $ 1,320.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            May 16, 2012
-                        </td>
-                        <td>
-                            $ 89.99
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                           	<img src="/happyhour2/bootstrap/img/contact-img2.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Sep 06, 2012
-                        </td>
-                        <td>
-                            $ 344.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Jul 13, 2012
-                        </td>
-                        <td>
-                            $ 800.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                           	<img src="/happyhour2/bootstrap/img/contact-img2.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Feb 13, 2013
-                        </td>
-                        <td>
-                            $ 250.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
-                            <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Feb 27, 2013
-                        </td>
-                        <td>
-                            $ 1,300.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
+					<c:forEach items="${usuarios}" var="usuario">
+	                    <tr>
+	                        <td>
+	                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
+	                            <a href="user-profile.html" class="name">${usuario.userName}</a>
+	                            <span class="subtext">Graphic Design</span>
+	                        </td>
+	                        <td>
+	                            Jun 03, 2012
+	                        </td>
+	                        <td>
+	                            $ 549.99
+	                        </td>
+	                        <td class="align-right">
+	                            <a href="#">${usuario.email}</a>
+	                        </td>
+	                    </tr>
+					</c:forEach>                    
+
                     </tbody>
                 </table>
             </div>                
         </div>
+        <spring:url value="/usuarios/list?page=2&amp;size=${empty param.size ? 10 : param.size}" var="usuarios_list_url_2"/>
+        <spring:url value="/usuarios/list?page=3&amp;size=${empty param.size ? 10 : param.size}" var="usuarios_list_url_3"/>
+        <spring:url value="/usuarios/list?page=4&amp;size=${empty param.size ? 10 : param.size}" var="usuarios_list_url_4"/>
+        <spring:url value="/usuarios/list?page=5&amp;size=${empty param.size ? 10 : param.size}" var="usuarios_list_url_5"/>
         <ul class="pagination pull-right">
             <li><a href="#">&#8249;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&#8250;</a></li>
+            <li class="active">
+            	<a href="#">1</a>
+            </li>
+            <li>
+            	<a href="${usuarios_list_url_2}">2</a>
+            </li>
+            <li>
+            	<a href="${usuarios_list_url_3}">3</a>
+            </li>
+            <li>
+            	<a href="${usuarios_list_url_4}">4</a>
+            </li>
+            <li>
+            	<a href="${usuarios_list_url_5}">5</a>
+            </li>
+            <li>
+            	<a href="#">&#8250;</a>
+            </li>
         </ul>
         <!-- end users table -->
     </div>
