@@ -89,7 +89,11 @@
                     <!-- row -->
                     <tr class="first">
                         <td>
+                        <%--
+                        <!-- 
                            	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
+                         -->
+                         --%>
                             <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                             <span class="subtext">Graphic Design</span>
                         </td>
@@ -106,7 +110,11 @@
 					<c:forEach items="${usuarios}" var="usuario">
 	                    <tr>
 	                        <td>
+	                        <%--
+	                        <!--
 	                           	<img src="/happyhour2/bootstrap/img/contact-img.png"  alt="contact" class="img-circle avatar hidden-phone" />
+	                           	-->
+	                         --%>
 	                            <a href="user-profile.html" class="name">${usuario.userName}</a>
 	                            <span class="subtext">Graphic Design</span>
 	                        </td>
