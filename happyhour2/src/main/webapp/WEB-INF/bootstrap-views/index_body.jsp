@@ -215,7 +215,9 @@
                                 <td>
                                     <input type="checkbox"/>
                                     <div class="img">
+                                    <%--
 										<spring:url value="/resources/bootstrap/img/table-img.png" var="table-img"/>
+                                     --%>
 										<img src="${table-img}" class="display" alt="user" /> 								        
                                     </div>
                                     <a href="#">Internet tend</a>
