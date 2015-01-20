@@ -8,7 +8,12 @@
     <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/user-list.jsp"/>
   </definition>    
     
-    
+   <definition extends="bootstrap" name="usuarios/create">
+    <put-attribute name="header" value="/WEB-INF/bootstrap-views/header-bootstrap.jsp"/>
+    <put-attribute name="menu" value="/WEB-INF/bootstrap-views/menu-bootstrap.jsp"/>
+    <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/new-user.jsp"/>
+  </definition>  
+<!-- 
 <definition extends="bootstrap" name="usuarios/show">
         <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/show.jspx"/>
     </definition>
@@ -18,4 +23,5 @@
 <definition extends="bootstrap" name="usuarios/update">
         <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/update.jspx"/>
     </definition>
+ -->   
 </tiles-definitions>

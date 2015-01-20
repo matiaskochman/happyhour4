@@ -27,8 +27,9 @@
                </a>
                <ul class="submenu">
                		<spring:url value="/usuarios/list?page=1&amp;size=${empty param.size ? 10 : param.size}" var="usuarios_list_url"/>
+               		<spring:url value="/usuarios/new-user-bootstrap" var="new_user_url"/>
                    <li><a href="${usuarios_list_url}">User list</a></li>
-                   <li><a href="new-user.html">New user form</a></li>
+                   <li><a href="${new_user_url}">New user form</a></li>
                    <li><a href="user-profile.html">User profile</a></li>
                </ul>
            </li>

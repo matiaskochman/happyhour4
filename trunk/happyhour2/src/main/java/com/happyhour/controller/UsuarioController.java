@@ -130,4 +130,9 @@ public class UsuarioController {
     	
     	return "usuarios/list";
     }
+    @RequestMapping(value="new-user-bootstrap",produces="text/html")
+    private String newUser(){
+    	
+    	return "usuarios/create";
+    }
 }
