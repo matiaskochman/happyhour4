@@ -217,8 +217,8 @@
                                     <div class="img">
                                     <%--
 										<spring:url value="/resources/bootstrap/img/table-img.png" var="table-img"/>
-                                     --%>
 										<img src="${table-img}" class="display" alt="user" /> 								        
+                                     --%>
                                     </div>
                                     <a href="#">Internet tend</a>
                                 </td>
@@ -240,8 +240,10 @@
                                 <td>
                                     <input type="checkbox"/>
                                     <div class="img">
+                                    <%--
 										<spring:url value="/resources/bootstrap/img/table-img.png" var="table-img"/>
 										<img src="${table-img}" class="display" alt="user" /> 								        
+                                     --%>
                                     </div>
                                     <a href="#">Many desktop publishing </a>
                                 </td>
@@ -263,8 +265,10 @@
                                 <td>
                                     <input type="checkbox"/>
                                     <div class="img">
+                                    <%--
 										<spring:url value="/resources/bootstrap/img/table-img.png" var="table-img"/>
 										<img src="${table-img}" class="display" alt="user" /> 								        
+                                     --%>
                                     </div>
                                     <a href="#">Generate Lorem </a>
                                 </td>
@@ -287,8 +291,10 @@
                                 <td>
                                     <input type="checkbox"/>
                                     <div class="img">
+                                    <%--
 										<spring:url value="/resources/bootstrap/img/table-img.png" var="table-img"/>
 										<img src="${table-img}" class="display" alt="user" /> 								        
+                                     --%>
                                     </div>
                                     <a href="#">Internet tend</a>
                                 </td>
@@ -318,5 +324,6 @@
         </div>
     </div>
 </div>
-
+<%--
 <jsp:directive.include file="/bootstrap/lib/index_js_imports.jsp" />
+ --%>

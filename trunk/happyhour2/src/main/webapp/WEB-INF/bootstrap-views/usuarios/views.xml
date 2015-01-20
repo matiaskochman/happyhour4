@@ -6,6 +6,7 @@
     <put-attribute name="header" value="/WEB-INF/bootstrap-views/header-bootstrap.jsp"/>
     <put-attribute name="menu" value="/WEB-INF/bootstrap-views/menu-bootstrap.jsp"/>
     <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/user-list.jsp"/>
+    <put-attribute name="scripts" value="/bootstrap/lib/user_list_js_imports.jsp"/>
     <put-attribute name="CSS_BODY" value="/happyhour2/bootstrap/css/compiled/user-list.css" type="string" />
   </definition>    
     
@@ -13,6 +14,7 @@
     <put-attribute name="header" value="/WEB-INF/bootstrap-views/header-bootstrap.jsp"/>
     <put-attribute name="menu" value="/WEB-INF/bootstrap-views/menu-bootstrap.jsp"/>
     <put-attribute name="body" value="/WEB-INF/bootstrap-views/usuarios/new-user.jsp"/>
+    <put-attribute name="scripts" value="/bootstrap/lib/new_user_js_imports.jsp"/>
     <put-attribute name="CSS_BODY" value="/happyhour2/bootstrap/css/compiled/new-user.css" type="string" />
   </definition>
   
