@@ -122,6 +122,7 @@
             </div>
 
             <!-- side right column -->
+            <!-- 
             <div class="col-md-3 form-sidebar">
                 <div class="alert alert-info">
                     <i class="icon-lightbulb pull-left"></i>
@@ -136,6 +137,7 @@
                     <li><a href="#">Import from an Excel file</a></li>
                 </ul>
             </div>
+             -->
         </div>
     </div>
 </div>

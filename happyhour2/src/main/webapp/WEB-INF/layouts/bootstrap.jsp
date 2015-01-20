@@ -9,9 +9,7 @@
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<jsp:directive.include file="/bootstrap/lib/index_css_imports.jsp" />
-		<jsp:directive.include file="/bootstrap/lib/user_list_css_imports.jsp" />
-		<jsp:directive.include file="/bootstrap/lib/new_user_css_imports.jsp" />
-		
+		<link type="text/css" rel="stylesheet" href="<tiles:getAsString name="CSS_BODY"/>"/>		
 	</head>
 	
   	<body>

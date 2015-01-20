@@ -6,6 +6,7 @@
     <put-attribute name="header" value="/WEB-INF/bootstrap-views/header-bootstrap.jsp"/>
     <put-attribute name="menu" value="/WEB-INF/bootstrap-views/menu-bootstrap.jsp"/>
     <put-attribute name="body" value="/WEB-INF/bootstrap-views/index_body.jsp"/>
+    <put-attribute name="CSS_BODY" value=""/>
   </definition>
 
   <definition extends="public" name="dataAccessFailure">
