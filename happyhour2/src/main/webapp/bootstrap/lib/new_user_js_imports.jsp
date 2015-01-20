@@ -6,4 +6,3 @@
 <script src="${jquery}" type="text/javascript"><!-- required for FF3 and Opera --></script>	  
 <script src="${bootstrap_js}" type="text/javascript"><!-- required for FF3 and Opera --></script>	  
 <script src="${theme}" type="text/javascript"><!-- required for FF3 and Opera --></script>	  
-    

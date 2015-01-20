@@ -163,4 +163,6 @@
     </div>
 </div>
 <!-- end main container -->
+<%--
 <jsp:directive.include file="/bootstrap/lib/user_list_js_imports.jsp" />
+ --%>
