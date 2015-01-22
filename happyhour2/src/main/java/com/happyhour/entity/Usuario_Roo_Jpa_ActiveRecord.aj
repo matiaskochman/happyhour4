@@ -14,6 +14,8 @@ privileged aspect Usuario_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Usuario.entityManager;
     
+    public static final List<String> Usuario.fieldNames4OrderClauseFilter = java.util.Arrays.asList("userName", "password", "email", "enabled", "id", "creationDate", "businessEstablishment", "rolesList");
+    
     public static final EntityManager Usuario.entityManager() {
         EntityManager em = new Usuario().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect Usuario_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM Usuario o", Usuario.class).getResultList();
     }
     
+    public static List<Usuario> Usuario.findAllUsuarios(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM Usuario o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, Usuario.class).getResultList();
+    }
+    
     public static Usuario Usuario.findUsuario(Long id) {
         if (id == null) return null;
         return entityManager().find(Usuario.class, id);
@@ -35,6 +48,17 @@ privileged aspect Usuario_Roo_Jpa_ActiveRecord {
     
     public static List<Usuario> Usuario.findUsuarioEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Usuario o", Usuario.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<Usuario> Usuario.findUsuarioEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM Usuario o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, Usuario.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

@@ -9,10 +9,33 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Usuario_Roo_Finder {
     
+    public static Long Usuario.countFindUsuariosByUserNameEquals(String userName) {
+        if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
+        EntityManager em = Usuario.entityManager();
+        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Usuario AS o WHERE o.userName = :userName", Long.class);
+        q.setParameter("userName", userName);
+        return ((Long) q.getSingleResult());
+    }
+    
     public static TypedQuery<Usuario> Usuario.findUsuariosByUserNameEquals(String userName) {
         if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
         EntityManager em = Usuario.entityManager();
         TypedQuery<Usuario> q = em.createQuery("SELECT o FROM Usuario AS o WHERE o.userName = :userName", Usuario.class);
+        q.setParameter("userName", userName);
+        return q;
+    }
+    
+    public static TypedQuery<Usuario> Usuario.findUsuariosByUserNameEquals(String userName, String sortFieldName, String sortOrder) {
+        if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
+        EntityManager em = Usuario.entityManager();
+        String jpaQuery = "SELECT o FROM Usuario AS o WHERE o.userName = :userName";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        TypedQuery<Usuario> q = em.createQuery(jpaQuery, Usuario.class);
         q.setParameter("userName", userName);
         return q;
     }
