@@ -20,7 +20,7 @@
     	<tiles:insertAttribute name="scripts" ignore="true" />
 		<script>
 		 
-
+/*
 			window.onbeforeunload = function(e) {
 				
 				$.ajax({
@@ -31,7 +31,8 @@
 					});
 				
 			  return 'Texto de aviso';
-			};		 
+			};
+		*/
 		</script>    	
 	</body>	
 		
