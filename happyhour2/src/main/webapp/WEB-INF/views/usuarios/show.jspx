@@ -9,5 +9,6 @@
         <field:display field="enabled" id="s_com_happyhour_entity_Usuario_enabled" object="${usuario}" z="zE3XwOxPe8IEw8NFXgmuBvltuC0="/>
         <field:display field="rolesList" id="s_com_happyhour_entity_Usuario_rolesList" object="${usuario}" z="OsIrDynEfYXfLuZCKlVEPkg8naY="/>
         <field:display field="businessEstablishment" id="s_com_happyhour_entity_Usuario_businessEstablishment" object="${usuario}" z="Y7z1sojkeReyIWGmW+8BzoTRpIk="/>
+        <field:display date="true" dateTimePattern="${usuario_creationdate_date_format}" field="creationDate" id="s_com_happyhour_entity_Usuario_creationDate" object="${usuario}" z="3W0Co8cY9gh47nrZn0+AAyakh2o="/>
     </page:show>
 </div>
