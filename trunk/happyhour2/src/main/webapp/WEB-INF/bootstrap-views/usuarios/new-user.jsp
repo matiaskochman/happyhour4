@@ -58,6 +58,22 @@
                          --%>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="userType" class="col-md-2 control-label">User Type</label>
+                        <div class="col-md-8">
+                            <form:select id="userType" path="authorityFormValue">
+					           <form:option value="NONE" label="--- Select ---" />
+					           <form:options items="${authorityList}" itemValue="value" itemLabel="label"/>
+					         </form:select>
+							<form:errors path="authorityFormValue" cssclass="error"></form:errors>                            
+                        <%--
+                          <input type="text" class="form-control" id="inputEmail1" placeholder="Email">
+                         --%>
+                        </div>
+                    </div>
+                    
+              
+                    
                         <%--
                     <div class="form-group">
                         <label for="inputPhone1" class="col-md-2 control-label">Phone</label>

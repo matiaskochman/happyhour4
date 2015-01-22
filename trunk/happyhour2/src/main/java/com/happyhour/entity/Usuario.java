@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @RooJavaBean
 @RooToString
@@ -55,7 +57,22 @@ public class Usuario {
     @DateTimeFormat(pattern = "dd/MM/yyyy")    
     private Date creationDate;
     
-    public Long getId() {
+    /**
+     * this is just to use as backing Object in spring mvc post
+     */
+    @Transient
+    private String authorityFormValue;
+    
+    
+    public String getAuthorityFormValue() {
+		return authorityFormValue;
+	}
+
+	public void setAuthorityFormValue(String authorityFormValue) {
+		this.authorityFormValue = authorityFormValue;
+	}
+
+	public Long getId() {
         return this.id;
     }
 

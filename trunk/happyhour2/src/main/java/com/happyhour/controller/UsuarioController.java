@@ -1,25 +1,28 @@
 package com.happyhour.controller;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
-import com.happyhour.entity.Authority;
-import com.happyhour.entity.Usuario;
-import com.happyhour.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
+
+import com.happyhour.entity.Authority;
+import com.happyhour.entity.Usuario;
+import com.happyhour.service.AuthorityService;
+import com.happyhour.service.UsuarioService;
 
 @RequestMapping("/usuarios")
 @Controller
@@ -29,6 +32,8 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 	
+    @Autowired
+    private AuthorityService authorityService;
 	
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -133,6 +138,19 @@ public class UsuarioController {
     @RequestMapping(value="new-user-bootstrap",produces="text/html")
     private String newUser(Model uiModel){
         populateEditForm(uiModel, new Usuario());
+        
+        List<Authority> authorityList = authorityService.findAllAuthoritys();
+        List<LabelValue> list = new ArrayList<LabelValue>();
+        
+        for (Authority authority : authorityList) {
+        	LabelValue lv = new LabelValue();
+        	lv.setLable(authority.getRoleName());
+        	lv.setValue(authority.getId());
+        	list.add(lv);
+		}
+        
+        uiModel.addAttribute("authorityList", list);
+        
         return "usuarios/create";
     }
     
@@ -140,12 +158,46 @@ public class UsuarioController {
     public String createUsuario(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, usuario);
+            
+            List<Authority> authorityList = authorityService.findAllAuthoritys();
+            List<LabelValue> list = new ArrayList<LabelValue>();
+            
+            for (Authority authority : authorityList) {
+            	LabelValue lv = new LabelValue();
+            	lv.setLable(authority.getRoleName());
+            	lv.setValue(authority.getId());
+            	list.add(lv);
+    		}
+            
+            uiModel.addAttribute("authorityList", list);
+            
             return "usuarios/create";
         }
         uiModel.asMap().clear();
+        
+        Authority auth =  authorityService.findAuthority(new Long(usuario.getAuthorityFormValue()));
+        usuario.getRolesList().add(auth);
         usuario.persist();
         return "redirect:/usuarios/list";
     }
-
+    class LabelValue{
+    	
+    	 private String label;
+    	 private Long value;
+    	 
+		public String getLabel() {
+			return label;
+		}
+		public void setLable(String label) {
+			this.label = label;
+		}
+		public Long getValue() {
+			return value;
+		}
+		public void setValue(Long value) {
+			this.value = value;
+		}    	
+    	 
+    }
     
 }
