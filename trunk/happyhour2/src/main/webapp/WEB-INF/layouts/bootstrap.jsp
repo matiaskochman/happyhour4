@@ -13,11 +13,26 @@
 		<link type="text/css" rel="stylesheet" href="<tiles:getAsString name="CSS_BODY"/>"/>		
 	</head>
 	
-  	<body>
+  	<body">
 	    <tiles:insertAttribute name="header"/>
 	    <tiles:insertAttribute name="menu" />   
     	<tiles:insertAttribute name="body" ignore="true" />
     	<tiles:insertAttribute name="scripts" ignore="true" />
+		<script>
+		 
+
+			window.onbeforeunload = function(e) {
+				
+				$.ajax({
+					  url: "resources/j_spring_security_logout",
+					  context: document.body
+					}).done(function() {
+					  $( this ).addClass( "done" );
+					});
+				
+			  return 'Texto de aviso';
+			};		 
+		</script>    	
 	</body>	
 		
 </html>
