@@ -8,8 +8,8 @@
             <table:column id="c_com_happyhour_entity_Usuario_password" property="password" z="2ynGeNZAdxKKC8kaPFGoPHYXUTs="/>
             <table:column id="c_com_happyhour_entity_Usuario_email" property="email" z="YI55U13oCKMrxtfqIxOqOlAHlqA="/>
             <table:column id="c_com_happyhour_entity_Usuario_enabled" property="enabled" z="azKofO6tKm4mILcIzDErUlJ1RDk="/>
-            <table:column id="c_com_happyhour_entity_Usuario_rolesList" property="rolesList" z="StSyS9thuK0ckXJ0oBl7gIyGof8="/>
             <table:column id="c_com_happyhour_entity_Usuario_businessEstablishment" property="businessEstablishment" z="MHcN7yGQ/UMDcr7kYmHQ6cy9+t4="/>
+            <table:column date="true" dateTimePattern="${usuario_creationdate_date_format}" id="c_com_happyhour_entity_Usuario_creationDate" property="creationDate" z="JdHm1Tp6qfslUDFnwIXtob3N2KM="/>
         </table:table>
     </page:list>
 </div>

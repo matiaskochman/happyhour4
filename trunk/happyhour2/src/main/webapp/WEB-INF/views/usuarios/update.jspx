@@ -9,5 +9,6 @@
         <field:checkbox field="enabled" id="c_com_happyhour_entity_Usuario_enabled" z="zOqFJlN/yKiC+8qQFKqDY/f+NbI="/>
         <field:select field="rolesList" id="c_com_happyhour_entity_Usuario_rolesList" itemValue="id" items="${authoritys}" multiple="true" path="/authoritys" z="JQVDWi9a7VTsM+p7YRx/K65/Cig="/>
         <field:select field="businessEstablishment" id="c_com_happyhour_entity_Usuario_businessEstablishment" itemValue="id" items="${businessestablishments}" path="/businessestablishments" z="BnXoTRq9F27nCxy8NBjVgyVCDpk="/>
+        <field:datetime dateTimePattern="${usuario_creationdate_date_format}" field="creationDate" id="c_com_happyhour_entity_Usuario_creationDate" z="iyPhiAOmdeAsh+n5+6q8Jdkdifw="/>
     </form:update>
 </div>
