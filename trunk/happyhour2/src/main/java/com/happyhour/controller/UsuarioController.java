@@ -131,8 +131,21 @@ public class UsuarioController {
     	return "usuarios/list";
     }
     @RequestMapping(value="new-user-bootstrap",produces="text/html")
-    private String newUser(){
-    	
-    	return "usuarios/create";
+    private String newUser(Model uiModel){
+        populateEditForm(uiModel, new Usuario());
+        return "usuarios/create";
     }
+    
+    @RequestMapping(value = "/createUsuario",method = RequestMethod.POST, produces = "text/html")
+    public String createUsuario(@Valid Usuario usuario, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, usuario);
+            return "usuarios/create";
+        }
+        uiModel.asMap().clear();
+        usuario.persist();
+        return "redirect:/usuarios/list";
+    }
+
+    
 }

@@ -5,6 +5,7 @@ package com.happyhour.entity;
 
 import com.happyhour.entity.Authority;
 import com.happyhour.entity.Usuario;
+import java.util.Date;
 import java.util.Set;
 
 privileged aspect Usuario_Roo_JavaBean {
@@ -39,6 +40,14 @@ privileged aspect Usuario_Roo_JavaBean {
     
     public void Usuario.setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+    
+    public Date Usuario.getCreationDate() {
+        return this.creationDate;
+    }
+    
+    public void Usuario.setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
     
     public Set<Authority> Usuario.getRolesList() {

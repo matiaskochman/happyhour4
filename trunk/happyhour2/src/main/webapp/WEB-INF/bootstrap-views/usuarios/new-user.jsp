@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- main container -->
 <div class="content">
     
@@ -21,49 +23,85 @@
         <div class="row form-wrapper">
             <!-- left column -->
             <div class="col-md-9 with-sidebar">
+      			<spring:url value="/usuarios/createUsuario" var="form_url"/>
+				<form:form action="${form_url}" method="POST" class="form-horizontal" modelAttribute="usuario">
+				<%--
                 <form class="form-horizontal" role="form">
+				 --%>
                     <div class="form-group">
                         <label for="inputName1" class="col-md-2 control-label">Name</label>
                         <div class="col-md-8">
+                        	<%--
                             <input type="text" class="form-control" id="inputName1" placeholder="Name">
+                        	 --%>
+                            <form:input path="userName" id="nameInput" type="text" class="form-control" placeholder="Name"></form:input>
+							<form:errors path="userName" cssclass="error"></form:errors>                            
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail1" class="col-md-2 control-label">Email</label>
                         <div class="col-md-8">
+                            <form:input path="email" id="inputEmail1" type="text" class="form-control" placeholder="Email"></form:input>
+							<form:errors path="email" cssclass="error"></form:errors>                            
+                        <%--
                           <input type="text" class="form-control" id="inputEmail1" placeholder="Email">
+                         --%>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-2 control-label">Password</label>
+                        <div class="col-md-8">
+                            <form:input path="password" id="password" type="text" class="form-control" placeholder="Password"></form:input>
+							<form:errors path="password" cssclass="error"></form:errors>                            
+                        <%--
+                          <input type="text" class="form-control" id="inputEmail1" placeholder="Email">
+                         --%>
+                        </div>
+                    </div>
+                        <%--
                     <div class="form-group">
                         <label for="inputPhone1" class="col-md-2 control-label">Phone</label>
                         <div class="col-md-8">
                           <input type="text" class="form-control" id="inputPhone1" placeholder="Phone">
                         </div>
                     </div>
+                         --%>
+                        <%--
                     <div class="form-group">
                         <label for="inputWebsite1" class="col-md-2 control-label">Website</label>
                         <div class="col-md-8">
                           <input type="text" class="form-control" id="inputWebsite1" placeholder="Website">
                         </div>
                     </div>
+                         --%>
+                        <%--
                     <div class="form-group">
                         <label for="inputAddress1" class="col-md-2 control-label">Address</label>
                         <div class="col-md-8">
                           <input type="text" class="form-control" id="inputAddress1" placeholder="Address">
                         </div>
                     </div>
+                         --%>
+                        <%--
                     <div class="form-group">
                         <label for="inputContent1" class="col-md-2 control-label">Content</label>
                         <div class="col-md-8">
                           <textarea id="inputContent1" class="form-control" placeholder="Content" rows="5"></textarea>
                         </div>
                     </div>
+                         --%>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-8">
-                          <button type="submit" class="btn btn-default">Sign in</button>
+							<input id="proceed" type="submit" value="Create"/>
+							<%--
+                        	<button type="submit" class="btn btn-default">Create</button>
+							 --%>
                         </div>
                     </div>
+                    <%--
                 </form>
+                     --%>
+				</form:form>           
                 <!-- <form class="new_user_form">
                     <div class="col-md-12 field-box">
                         <label>Name:</label>
