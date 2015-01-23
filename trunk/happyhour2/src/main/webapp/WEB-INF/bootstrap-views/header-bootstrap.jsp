@@ -16,6 +16,7 @@
 	       	<img  src="${logo}"  />
            </a>
        </div>
+       <%-- 
        <ul class="nav navbar-nav pull-right hidden-xs">
            <li class="hidden-xs hidden-sm">
                <input class="search" type="text"/>
@@ -76,9 +77,7 @@
                        <div class="messages">
                            <a href="#" class="item">
 							<spring:url value="/resources/bootstrap/img/contact-img.png" var="contact-img"/>
-							<%--
 			        		<img  src="${contact-img}" class="display" alt="user" />
-							 --%>
                              <div class="name">Alejandra Galván</div>
                              <div class="msg">
                                  There are many variations of available, but the majority have suffered alterations.
@@ -87,9 +86,7 @@
                          </a>
                          <a href="#" class="item">
 							<spring:url value="/resources/bootstrap/img/contact-img2.png" var="contact-img2"/>
-							<%--
 			        		<img  src="${contact-img2}" class="display" alt="user" />
-							 --%>
                              <div class="name">Alejandra Galván</div>
                              <div class="msg">
                                  There are many variations of available, have suffered alterations.
@@ -98,9 +95,7 @@
                          </a>
                          <a href="#" class="item last">
 							<spring:url value="/resources/bootstrap/img/contact-img.png" var="contact-img"/>
-							<%--
 			        		<img  src="${contact-img}" class="display" alt="user" />
-							 --%>
                          
                              <div class="name">Alejandra Galván</div>
                              <div class="msg">
@@ -138,5 +133,7 @@
                  <i class="icon-share-alt"></i>
              </a>
          </li>
+         
      </ul>
+       --%>
  </header>
