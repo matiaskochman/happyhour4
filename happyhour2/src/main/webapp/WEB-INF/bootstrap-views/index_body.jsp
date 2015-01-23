@@ -76,11 +76,12 @@
              -->
             <!-- end statistics chart -->
 
+                <%--
             <!-- UI Elements section -->
             <div class="row section ui-elements">
                 <div class="col-md-12">
                     <h4>UI Elements</h4>
-                </div>                
+                </div>               
                 <div class="col-md-5 knobs">
                     <div class="knob-wrapper">
                         <div style="display:inline;width:150px;height:200px;"><canvas width="150" height="200px"></canvas><input style="width: 79px; height: 50px; position: absolute; vertical-align: middle; margin-top: 50px; margin-left: -114px; border: 0px none; background: none repeat scroll 0% 0% transparent; font: bold 30px Arial; text-align: center; color: rgb(51, 51, 51); padding: 0px;" value="50" class="knob" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#30a1ec" data-bgcolor="#d4ecfd" data-width="150" type="text"/></div>
@@ -142,13 +143,14 @@
                     </div>
                 </div>
             </div>
-            <!-- 
-             -->
+                 --%>
             <!-- end UI elements section -->
 
             <!-- table sample -->
             <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
             <div class="table-products section">
+            
+            <%--
                 <div class="row head">
                     <div class="col-md-12">
                         <h4>Products <small>Table sample</small></h4>
@@ -168,6 +170,7 @@
                         <a class="btn-flat new-product">+ Add product</a>
                     </div>
                 </div>
+             --%>
 
                 <div class="row">
                     <table class="table table-hover">
