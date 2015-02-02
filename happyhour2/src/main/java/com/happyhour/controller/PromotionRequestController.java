@@ -44,6 +44,7 @@ public class PromotionRequestController {
     @Autowired
     PromotionRequestProcessedService promotionRequestProcessedService;
 
+    //http://localhost:8080/happyhour2/promotionrequests/json/create?token=oum3rKXpsEfUFrWINZRAHA==
     @RequestMapping(value = "/json/create",method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJson(@RequestBody String json,@RequestParam String token) {
     	
