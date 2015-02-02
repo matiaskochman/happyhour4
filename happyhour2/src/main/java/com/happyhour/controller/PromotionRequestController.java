@@ -49,43 +49,73 @@ public class PromotionRequestController {
     public ResponseEntity<String> createFromJson(@RequestBody String json,@RequestParam String token) {
     	
     	String decoded = null;
+    	HttpHeaders headers = new HttpHeaders();
     	if(token!=null){
     		
     		try {
-				//String encoded = TextEncryptionUtils.encrypt("100056");
-				
-				decoded = TextEncryptionUtils.decrypt(token);
-				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    		if(decoded.equals("matias")){
+    			decoded = TextEncryptionUtils.decrypt(token);
     			
-    			System.out.println("Excelente matias!");
-    		}
+        		if("matias".equals(decoded)){
+        			System.out.println("decoded token: matias");
+        		}else{
+        			return new ResponseEntity<String>(headers, HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);			
+        			
+        		}
+        		
+    			PromotionRequest promotionRequest = PromotionRequest.fromJsonToPromotionRequest(json);
+    			promotionRequest.setCreationTimeStamp(new Date());
+    			promotionRequestService.createToken(promotionRequest);
+    			promotionRequestService.savePromotionRequest(promotionRequest);
+    			headers.add("Content-Type", "application/json");
+    			headers.add("token", promotionRequest.getToken());
+    			
+    		} catch (BusinessException e) {
+    			e.printStackTrace();
+    			e.getMessage();
+    			return new ResponseEntity<String>(e.getMessage(), headers, HttpStatus.I_AM_A_TEAPOT);
+    		} catch (RuntimeException e) {
+    			e.printStackTrace();
+    			e.getMessage();
+    		} catch (Exception e) {
+				e.printStackTrace();
+    			return new ResponseEntity<String>(e.getMessage(), headers, HttpStatus.I_AM_A_TEAPOT);
+			}
+    		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+    	}else{
+			return new ResponseEntity<String>(headers, HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+    		
     	}
     	
-        HttpHeaders headers = new HttpHeaders();
-        PromotionRequest promotionRequest = PromotionRequest.fromJsonToPromotionRequest(json);
-        promotionRequest.setCreationTimeStamp(new Date());
-        try {
-            promotionRequestService.createToken(promotionRequest);
-            promotionRequestService.savePromotionRequest(promotionRequest);
-            headers.add("Content-Type", "application/json");
-            headers.add("token", promotionRequest.getToken());
-        } catch (BusinessException e) {
-            e.printStackTrace();
-            e.getMessage();
-            return new ResponseEntity<String>(e.getMessage(), headers, HttpStatus.I_AM_A_TEAPOT);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            e.getMessage();
-        }
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/json/list",headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> listJson(@RequestParam(value = "token", required = false) String token) {
+    	String decoded = null;
+    	HttpHeaders headers = new HttpHeaders();
+    	
+    	if(token!=null){
+			try {
+				decoded = TextEncryptionUtils.decrypt(token);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+    			return new ResponseEntity<String>(headers, HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);			
+				
+			}
+			
+    		if("matias".equals(decoded)){
+    			System.out.println("decoded token: matias");
+    		}else{
+    			return new ResponseEntity<String>(headers, HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);			
+    		}
+    	}
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        List<PromotionRequest> result = promotionRequestService.findAllPromotionRequests();
+        return new ResponseEntity<String>(PromotionRequest.toJsonArray(result), headers, HttpStatus.OK);
+    }
+
+    //@RequestMapping(value = "/json/list",headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> listJson() {
         HttpHeaders headers = new HttpHeaders();
@@ -93,7 +123,6 @@ public class PromotionRequestController {
         List<PromotionRequest> result = promotionRequestService.findAllPromotionRequests();
         return new ResponseEntity<String>(PromotionRequest.toJsonArray(result), headers, HttpStatus.OK);
     }
-
     
     
     void addDateTimeFormatPatterns(Model uiModel) {
