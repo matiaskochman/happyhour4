@@ -1,4 +1,5 @@
 package com.happyhour.entity;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
+
+import flexjson.JSONSerializer;
 
 @RooJavaBean
 @RooToString
@@ -106,5 +109,8 @@ public class PromotionRequest {
 		return true;
 	}
     
+    public static String toJsonArray(Collection<PromotionRequest> collection) {
+        return new JSONSerializer().exclude("*.class","entityManager").serialize(collection);
+    }	
     
 }

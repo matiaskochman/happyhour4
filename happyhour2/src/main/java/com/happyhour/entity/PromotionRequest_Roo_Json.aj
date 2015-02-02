@@ -24,9 +24,7 @@ privileged aspect PromotionRequest_Roo_Json {
         return new JSONDeserializer<PromotionRequest>().use(null, PromotionRequest.class).deserialize(json);
     }
     
-    public static String PromotionRequest.toJsonArray(Collection<PromotionRequest> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
-    }
+
     
     public static String PromotionRequest.toJsonArray(Collection<PromotionRequest> collection, String[] fields) {
         return new JSONSerializer().include(fields).exclude("*.class").serialize(collection);
