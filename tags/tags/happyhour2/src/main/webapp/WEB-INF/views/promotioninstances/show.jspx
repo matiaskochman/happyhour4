@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:html="http://www.w3.org/TR/html4/" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_happyhour_entity_PromotionInstance" object="${promotioninstance}" path="/promotioninstances" z="S4ZlYgsV2/2pWtNKCvJFYHVdwjA=">
+        <field:display field="promotionDescription" id="s_com_happyhour_entity_PromotionInstance_promotionDescription" object="${promotioninstance}" z="DoGw8fI5vT+urMdnY4AqcwYOuo0="/>
+        <field:display field="promoRequestList" id="s_com_happyhour_entity_PromotionInstance_promoRequestList" object="${promotioninstance}" z="WfSsf4LrVw71crnlk9GLqdHD4ao="/>
+        <field:display field="businessEstablishment" id="s_com_happyhour_entity_PromotionInstance_businessEstablishment" object="${promotioninstance}" z="vjweDYwXS9vqUx7/IFs9fbCItt8="/>
+        <field:display date="true" dateTimePattern="${promotionInstance_promotionvaliddate_date_format}" field="promotionValidDate" id="s_com_happyhour_entity_PromotionInstance_promotionValidDate" object="${promotioninstance}" z="fB8tEpyomvZqqG9fSa14RAIQit8="/>
+        <field:display field="maxClientsAllowed" id="s_com_happyhour_entity_PromotionInstance_maxClientsAllowed" object="${promotioninstance}" z="HMED7igQ+QkczsEzItB2/jezfhU="/>
+        <field:display field="promotionRequestProcessedList" id="s_com_happyhour_entity_PromotionInstance_promotionRequestProcessedList" object="${promotioninstance}" z="hHmqhEh1LpPb+C5SzkhyUIwZxq4="/>
+        <!-- 
+        <field:display field="tokenSet" id="s_com_happyhour_entity_PromotionInstance_tokenSet" object="${promotioninstance}" z="9Xe6h/0dMTrtf2wiuoeFNkwlYG0="/>
+        <field:display field="tokenIndex" id="s_com_happyhour_entity_PromotionInstance_tokenIndex" object="${promotioninstance}" z="Bu7ReIXgVLXneEofvyTPXYP3gIM="/>
+         -->
+    </page:show>
+    <div>
+        <spring:url value="processPromotionInstance/${itemId}" var="show_form_url"/>
+        <spring:url value="/resources/images/show.png" var="show_image_url"/>
+        <spring:message arguments="${typeName}" code="entity_show" htmlEscape="false" var="show_label"/>
+        <a alt="${fn:escapeXml(show_label)}" href="${show_form_url}" title="${fn:escapeXml(show_label)}">Process</a>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_happyhour_entity_Client" items="${clients}" z="qzybN++NfZoepLayqDnCshaBj2s=">
+        <table:table data="${clients}" id="l_com_happyhour_entity_Client" path="/clients" z="2rWyY1gA9jTQKVTmKxWyOCLUjCg=">
+            <table:column id="c_com_happyhour_entity_Client_email" property="email" z="pqUsd3R8qbTBDp2uRvDcWa4gHTg="/>
+            <table:column id="c_com_happyhour_entity_Client_firstname" property="firstname" z="AnBl59oNQLuWkGzglr2j4mLZQp0="/>
+            <table:column id="c_com_happyhour_entity_Client_lastname" property="lastname" z="WSNVijGNC1VelZR8tIKGhJ8SrP0="/>
+            <table:column id="c_com_happyhour_entity_Client_gender" property="gender" z="Wc8/eIUdMTgAZsx76q+pNR2xhaw="/>
+            <table:column id="c_com_happyhour_entity_Client_telephoneNumber" property="telephoneNumber" z="kQg4v1qS6nBytw4kzze2xmDQoQA="/>
+            <table:column id="c_com_happyhour_entity_Client_telephoneId" property="telephoneId" z="IqKH8VL5hOnDaesfuVhhacNCEJY="/>
+        </table:table>
+    </page:list>
+</div>

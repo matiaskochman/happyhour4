@@ -1,0 +1,297 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-01 09:36:19
+project --topLevelPackage com.happyhour --projectName happyhour2 --java 6 --packaging WAR
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-01 09:36:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-01 09:36:29
+hint
+jpa setup --database HYPERSONIC_PERSISTENT --provider HIBERNATE 
+entity jpa --class com.happyhour.entity.BusinessEstablishment
+field string --fieldName name --unique --nullRequired 
+entity jpa --class ~.entity.Promotion 
+entity jpa --class ~.entity.PromotionDescription
+entity jpa --class ~.entity.PromotionInstance
+entity jpa --class ~.entity.PromotionRequest
+focus --class ~.entity.PromotionDescription
+field string --fieldName description --notNull 
+focus --class ~.entity.PromotionRequest
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+focus --class ~.entity.BusinessEstablishment
+field reference --fieldName promotionInstanceList --type ~.entity.PromotionInstance
+field set --fieldName promotionInstanceList --type ~.entity.PromotionInstance
+focus --class ~.entity.PromotionInstance
+field reference --fieldName promotionDescription --type ~.entity.PromotionDescription
+field set --fieldName promoRequestList --type ~.entity.PromotionRequest
+field reference --fieldName businessEstablishment --type ~.entity.BusinessEstablishment
+json all 
+web mvc setup 
+web mvc all --package ~.controller
+web mvc json all
+focus --class ~.entity.BusinessEstablishment
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-01 10:41:02
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-01 10:41:12
+service type --interface ~.service.BusinessEstablishmentService --entity ~.entity.BusinessEstablishment
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-01 10:56:56
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-01 10:57:11
+service type --interface ~.service.PromotionDescriptionService --entity ~.entity.PromotionDescription
+service type --interface ~.service.PromotionInstanceService --entity ~.entity.PromotionInstance
+service type --interface ~.service.PromotionRequestService --entity ~.entity.PromotionRequest
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-03 09:54:19
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-03 09:55:56
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-03 09:57:05
+entity jpa --class ~.entity.Authority
+field string --fieldName roleName
+security setup
+entity jpa --class ~.entity.Usuario
+field string --fieldName userName
+field string --fieldName password
+field string --fieldName email
+field boolean --fieldName enabled
+field set --fieldName rolesList --type ~.entity.Authority
+finder list 
+finder add --finderName findUsuariosByUserNameEquals
+web mvc all --package ~.controller
+service type --interface ~.service.UsuarioService --entity ~.entity.Usuario
+service type --interface ~.service.AuthorityService --entity ~.entity.Authority
+focus --class ~.entity.PromotionInstance
+field date --fieldName promotionValidDate --type java.util.Date
+field number --fieldName maxClientsAllowed --type java.lang.Integer
+jpa setup --database MYSQL --provider HIBERNATE 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-03 10:27:53
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-03 11:10:39
+jpa setup --database MYSQL --provider HIBERNATE 
+logging setup --level DEBUG 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-03 11:20:43
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-03 11:20:53
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-03 11:31:36
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-03 12:51:17
+focus --class ~.entity.PromotionRequest
+field string --fieldName token
+field date --fieldName creationTimeStamp --type java.util.Date
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-03 13:31:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-04 08:52:10
+selenium test --controller ~.controller.PromotionRequestController
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-07 14:02:38
+focus --class ~.entity.Usuario
+// [failed] field set --type ~.entity.BusinessEstablishment --fieldName businessEstablishmentList 
+// [failed] field set --type ~.entity.BusinessEstablishment --fieldName businessEstablishmentList 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-07 14:12:02
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-07 14:12:11
+focus --class ~.entity.Usuario
+// [failed] field set --fieldName businessEstablishmentList --type ~.entity.BusinessEstablishment
+// [failed] field boolean isAdministrator 
+focus --class ~.entity.Usuario
+// [failed] field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-07 14:30:40
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-07 14:31:16
+focus --class ~.entity.Usuario
+// [failed] field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment
+// [failed] field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-08 15:30:10
+finder add --finderName findUsuariosByUserNameEquals// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-28 10:33:47
+focus --class ~.entity.Authority
+finder list 
+finder add findAuthoritysByRoleNameEquals
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-30 15:29:17
+focus --class ~.entity.BusinessEstablishment
+field set --type ~.entity.PromotionDescription --fieldName promotionDescriptionList 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-30 16:18:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-12-31 10:05:12
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-12-31 10:55:15
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-06 09:15:09
+entity jpa --class ~.entity.PromotionInstanceProcessed
+field reference --type ~.entity.PromotionDescription --fieldName promotionDescription --fetch 
+field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment --fetch 
+field date --type java.util.Date --fieldName promotionValidDate
+field number --type java.lang.Integer --fieldName maxClientsAllowed 
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionInstanceProcessed --fieldName promotionInstanceProcessedList --fetch 
+focus --class ~.entity.PromotionRequestProcessed
+web mvc controller ~.controller.PromotionRequestProcessedController
+service type --interface ~.service.PromoRequestProcessedService --entity ~.entity.PromotionRequestProcessed
+focus --class ~.entity.PromotionInstanceProcessed
+web mvc controller --class ~.controller.PromotionInstanceProcessedController
+service type --interface ~.service.PromotionInstanceProcessedService --entity ~.entity.PromotionInstanceProcessed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-06 11:52:59
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 08:55:20
+web mvc all --package com.happyhour.controller
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+web mvc all --package com.happyhour.controller
+web mvc all --package com.happyhour.controller
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 09:24:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 09:24:29
+web mvc all --package com.happyhour.controller
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+web mvc all --package com.happyhour.controller
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+web mvc all --package com.happyhour.controller
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 09:49:34
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 13:01:03
+entity jpa --class ~.entity.PromotionRequestProcessed
+field string --fieldName promoId
+web mvc all --package com.happyhour.controller
+focus --class ~.entity.PromotionRequestProcessed
+field string --fieldName businessEstablishmentId
+field string --fieldName clientTelephone
+field string --fieldName token
+field date --type java.util.Date --fieldName creationTimeStamp
+entity jpa --class ~.entity.PromotionInstanceProcessed
+field reference --type ~.entity.PromotionDescription --fieldName promotionDescription 
+web mvc all --package com.happyhour.controller
+focus --class ~.entity.PromotionInstanceProcessed
+field reference --type ~.entity.BusinessEstablishment --fieldName businessEstablishment 
+field date --type java.util.Date --fieldName promotionValidDate
+field number --type java.lang.Integer --fieldName maxClientsAllowed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 20:36:35
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 20:52:45
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 20:53:55
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+field string --fieldName mm
+web mvc all --package com.happyhour.controller
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 21:03:14
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 21:03:30
+focus --class ~.entity.PromotionInstanceProcessed
+field list --class ~.entity.PromotionRequestProcessed --fieldName promolist --type ~.entity.PromotionRequestProcessed
+focus --class ~.entity.PromotionInstanceProcessed
+field list --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+web mvc all --package com.happyhour.controller
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-01-07 21:29:41
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-07 21:29:53
+focus --class ~.entity.PromotionInstanceProcessed
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-09 09:43:51
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-01-13 13:24:50
+service type --interface ~.service.PromotionInstanceProcessedService --entity ~.entity.PromotionInstanceProcessed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-04 08:36:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-04 08:43:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-04 08:44:45
+focus --class ~.entity.PromotionRequestProcessed
+json add 
+focus --class ~.entity.PromotionInstanceProcessed
+json add 
+web mvc json all
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-05 09:07:31
+focus --class ~.entity.PromotionInstanceProcessed
+field set --fieldName promotionRequestProcessedDeliveredList --type ~.entity.PromotionRequestProcessed
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-05 09:48:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-05 12:55:50
+focus --class ~.entity.PromotionInstance
+field set --type ~.entity.PromotionRequestProcessed --fieldName promotionRequestProcessedList
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-05 14:02:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-07 08:33:20
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-07 13:50:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-11 08:20:10
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-12 13:53:32
+focus --class ~.entity.PromotionInstance
+// [failed] field set --type java.lang.String --fieldName tokenSet
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-12 17:56:52
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-13 08:21:43
+focus --class ~.entity.PromotionInstance
+// [failed] field string --fieldName lastIndex
+// [failed] field string --fieldName lastIndex 
+// [failed] field string --fieldName tokenIndex
+field string --fieldName tokenIndex
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-13 10:09:58
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-18 08:24:53
+entity jpa --class ~.json.JsonRequestPromotionInstance 
+field string promotionInstanceId 
+field date --type java.util.Date --fieldName fromDate
+field date --type java.util.Date --fieldName toDate
+json add 
+entity jpa --class ~.json.JsonResponsePromotionInstance
+field string promotionDescription
+field string businessEstablishmentId
+field date --type java.util.Date --fieldName validDate
+json add 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-18 11:19:56
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-19 09:29:55
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-19 10:00:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-20 12:58:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 13:57:09
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-21 08:46:55
+interface --class ~.email.NotificationService
+class --class ~.email.NotificationServiceImpl
+email sender setup --hostServer smtp.gmail.com --protocol SMTP --port 587 --username happyhourUser --password happyhour
+properties list --name email.properties --path SPRING_CONFIG_ROOT
+email template setup --from happyhour@happyhour.com --subject "Registration Confirmation"
+field email template --fieldName mailTemplate --class ~.email.NotificationServiceImpl
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-21 09:19:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-25 08:38:49
+entity jpa --class com.happyhour.entity.Client
+field string email
+field string name
+field string surname
+field string gender
+json add 
+field list --type ~.entity.Client --fieldName friendList
+field string telephoneNumber
+field string telephoneId
+web mvc controller --class ~.controller.ClientController
+web mvc all --package ~.controller
+web mvc json all 
+entity jpa --class com.happyhour.entity.Client
+field string email
+field string firstname
+field string lastname
+field string gender
+field string telephoneNumber
+field string telephoneId
+field list --type ~.entity.Client --fieldName friendList
+json add 
+web mvc scaffold --class ~.controller.ClientController
+hint
+hint web mvc
+hint topics
+hint relationships
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-27 08:38:06
+entity jpa --class com.happyhour.entity.Client
+field string email
+field string firstname
+field string lastname
+field string gender
+field string telephoneNumber
+field string telephoneId
+field list --type ~.entity.Client --fieldName friendList
+json add 
+web mvc scaffold --class ~.controller.ClientController
+service type --interface ~.service.ClientService --entity ~.entity.Client
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-08 12:47:29
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-08 22:36:07
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-17 11:08:15
+hint
+hint log
+hint loggin
+logging setup --level DEBUG 
+logging setup --level INFO 
+logging setup --level DEBUG 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-24 13:06:49
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-04 14:12:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-20 11:33:30
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2015-01-07 11:36:20
+hint
+hint fields
+hint entities
+focus --class ~.entity.Usuario
+field date --fieldName creationDate --type java.util.Date

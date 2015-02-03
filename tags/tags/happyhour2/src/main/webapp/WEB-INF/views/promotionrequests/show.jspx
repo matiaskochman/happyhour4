@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:spring="http://www.springframework.org/tags" 
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" 
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" 
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_happyhour_entity_PromotionRequest" object="${promotionrequest}" path="/promotionrequests" z="xB8EWfBVWzoclwCPYYicXU0NnV0=">
+        <field:display field="promoId" id="s_com_happyhour_entity_PromotionRequest_promoId" object="${promotionrequest}" z="ehb/qjigPgp2yu68l6c03beNtbs="/>
+        <field:display field="businessEstablishmentId" id="s_com_happyhour_entity_PromotionRequest_businessEstablishmentId" object="${promotionrequest}" z="w842HBggkUDNULInzV0lcTtYXAk="/>
+        <field:display field="clientTelephone" id="s_com_happyhour_entity_PromotionRequest_clientTelephone" object="${promotionrequest}" z="Bp+ZTAt82SOJUV5bkhymS2O7C7o="/>
+        <field:display field="token" id="s_com_happyhour_entity_PromotionRequest_token" object="${promotionrequest}" z="E7euyEkyQDK+9oSwRN8YY2xhVf4="/>
+        <field:display date="true" dateTimePattern="${promotionRequest_creationtimestamp_date_format}" field="creationTimeStamp" id="s_com_happyhour_entity_PromotionRequest_creationTimeStamp" object="${promotionrequest}" z="dk0WMaSfjYmBbvxE8rjf0fkAOzA="/>
+        
+        <div>
+            <spring:url value="processPromotionRequest?id=${itemId}&amp;page=${param.page}&amp;size=${param.size}" var="show_form_url" />
+            <spring:url value="/resources/images/show.png" var="show_image_url" />
+            <spring:message arguments="${typeName}" code="entity_show" var="show_label" htmlEscape="false" />
+            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}" title="${fn:escapeXml(show_label)}">Process</a>
+        </div>
+    </page:show>
+</div>
