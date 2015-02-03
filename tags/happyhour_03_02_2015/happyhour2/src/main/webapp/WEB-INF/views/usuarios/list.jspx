@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_happyhour_entity_Usuario" items="${usuarios}" z="hu8m7oJ0Z0UozkehKUCA9CD5vDU=">
+        <table:table data="${usuarios}" id="l_com_happyhour_entity_Usuario" path="/usuarios" z="BHeKeb4JO7hX9A80lQe4oYE9Q6o=">
+            <table:column id="c_com_happyhour_entity_Usuario_userName" property="userName" z="ClsACPpI7BIVgbg7ptSDnBL3+7Q="/>
+            <table:column id="c_com_happyhour_entity_Usuario_password" property="password" z="2ynGeNZAdxKKC8kaPFGoPHYXUTs="/>
+            <table:column id="c_com_happyhour_entity_Usuario_email" property="email" z="YI55U13oCKMrxtfqIxOqOlAHlqA="/>
+            <table:column id="c_com_happyhour_entity_Usuario_enabled" property="enabled" z="azKofO6tKm4mILcIzDErUlJ1RDk="/>
+            <table:column id="c_com_happyhour_entity_Usuario_businessEstablishment" property="businessEstablishment" z="MHcN7yGQ/UMDcr7kYmHQ6cy9+t4="/>
+            <table:column date="true" dateTimePattern="${usuario_creationdate_date_format}" id="c_com_happyhour_entity_Usuario_creationDate" property="creationDate" z="JdHm1Tp6qfslUDFnwIXtob3N2KM="/>
+        </table:table>
+    </page:list>
+</div>

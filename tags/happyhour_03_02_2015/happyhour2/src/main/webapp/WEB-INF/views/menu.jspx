@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+    
+        <menu:category id="c_promotioninstance" z="1v7OWC88TIjsrntBgDVINIzDeiY=">
+            <menu:item id="i_promotioninstance_new" messageCode="global_menu_new" url="/promotioninstances?form" z="ewH9uBYlrPUkfwcmJuMa926HxTk="/>
+            <menu:item id="i_promotioninstance_list" messageCode="global_menu_list" url="/promotioninstances?page=1&amp;size=${empty param.size ? 10 : param.size}" z="A3L0LEnOWAFE2IeeXPxIwCIKXcI="/>
+        </menu:category>
+        
+        <menu:category id="c_promotionrequest" z="1R3EDSCQwWhDpdQTLwzcvNaeUTE=">
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <menu:item id="i_promotionrequest_new" messageCode="global_menu_new" url="/promotionrequests?form" z="jIHq/AxPFs18YcHyqNFmSJO5/tg="/>
+            </sec:authorize>
+            <menu:item id="i_promotionrequest_list" messageCode="global_menu_list" url="/promotionrequests/list?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        
+        <menu:category id="c_promotiondescription" z="EnXJz3tcSlGtgpbOj/FWZXxUfvs=">
+            <menu:item id="i_promotiondescription_new" messageCode="global_menu_new" url="/promotiondescriptions?form" z="iVXCK+tVyO4FukYNArq7/qaR63w="/>
+            <menu:item id="i_promotiondescription_list" messageCode="global_menu_list" url="/promotiondescriptions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="uWureQK+rLxpuWluX89nR6rbSXY="/>
+        </menu:category>
+        
+        <menu:category id="c_businessestablishment" z="pTw+z8DPPdmEBwI8ZQkd6AmiUHk=">
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <menu:item id="i_businessestablishment_new" messageCode="global_menu_new" url="/businessestablishments?form" z="QIjyG8N/DaHfv5rOHKKSWcxkv1o="/>
+            </sec:authorize>
+            <menu:item id="i_businessestablishment_list" messageCode="global_menu_list" url="/businessestablishments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="AtuTEB7pukR5aiyDRbIOySbTlCk="/>
+        </menu:category>
+        
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <menu:category id="c_authority" z="GIU2CEy7lITDknErfBZQNPQ7WFs=">
+                <menu:item id="i_authority_new" messageCode="global_menu_new" url="/authoritys?form" z="/7YzNX8tdj/Mea7IbryfB4TtHN8="/>
+                <menu:item id="i_authority_list" messageCode="global_menu_list" url="/authoritys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="KoNMAjv7I2DALzQEzYF1AO4FR+E="/>
+            </menu:category>
+        </sec:authorize>
+        
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <menu:category id="c_usuario" z="g6oG0656PcsmmvUYeBtpgiQROck=">
+                <menu:item id="i_usuario_new" messageCode="global_menu_new" url="/usuarios?form" z="RG1gCsiZQjg1HLDzXbHKht6yDkw="/>
+                <menu:item id="i_usuario_list" messageCode="global_menu_list" url="/usuarios?page=1&amp;size=${empty param.size ? 10 : param.size}" z="P7ZIPrcTTBR41JYD0QldbYgsZrM="/>
+            </menu:category>
+        </sec:authorize>
+        
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
+                <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
+            </menu:category>
+        </sec:authorize>
+        
+        <menu:category id="c_promotionrequestprocessed" z="S1n/msVxqwsnRMgKyHdBtKGbPRQ=">
+            <menu:item id="i_promotionrequestprocessed_new" messageCode="global_menu_new" url="/promotionrequestprocesseds?form" z="FrlBuxF54FfiwLqTsURqnWW4MF0="/>
+            <menu:item id="i_promotionrequestprocessed_list" messageCode="global_menu_list" url="/promotionrequestprocesseds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="qVy3FgGEop94UvRrsoa0aZfjXKo="/>
+        </menu:category>
+        
+        <menu:category id="c_promotioninstanceprocessed" z="IchwIkYL/7fP7TBjxrpj7u0TmGM=">
+            <menu:item id="i_promotioninstanceprocessed_new" messageCode="global_menu_new" url="/promotioninstanceprocesseds?form" z="vhZ7WrEw8R6xOADdWeOEbZaPyN8="/>
+            <menu:item id="i_promotioninstanceprocessed_list" messageCode="global_menu_list" url="/promotioninstanceprocesseds?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Ze+ltVgmjtTVocxZGb7YRKEI+e4="/>
+        </menu:category>
+        
+        <menu:category id="c_client" z="TjeLu8x0oS98tSiRzdPNDOc8U+c=">
+            <menu:item id="i_client_new" messageCode="global_menu_new" url="/clients?form" z="0rEWYB2Yq6qokJif3zv05zcXpXk="/>
+            <menu:item id="i_client_list" messageCode="global_menu_list" url="/clients?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/DxsyzfFyvp93UEW0WcXvtjs4zo="/>
+        </menu:category>
+    </menu:menu>
+</div>

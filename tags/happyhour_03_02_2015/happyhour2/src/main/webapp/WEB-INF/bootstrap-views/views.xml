@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+  <definition extends="bootstrap" name="index">
+    <put-attribute name="header" value="/WEB-INF/bootstrap-views/header-bootstrap.jsp"/>
+    <put-attribute name="menu" value="/WEB-INF/bootstrap-views/menu-bootstrap.jsp"/>
+    <put-attribute name="body" value="/WEB-INF/bootstrap-views/index_body.jsp"/>
+    <put-attribute name="scripts" value="/bootstrap/lib/index_js_imports.jsp"/>
+    <put-attribute name="CSS_BODY" value=""/>
+  </definition>
+
+  <definition extends="public" name="dataAccessFailure">
+    <put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jspx"/>
+  </definition>
+
+  <definition extends="public" name="resourceNotFound">
+    <put-attribute name="body" value="/WEB-INF/views/resourceNotFound.jspx"/>
+  </definition>
+
+  <definition extends="public" name="uncaughtException">
+    <put-attribute name="body" value="/WEB-INF/views/uncaughtException.jspx"/>
+  </definition>
+  <!-- 
+	<definition extends="public" name="login">
+        <put-attribute name="body" value="/WEB-INF/views/login.jspx"/>
+    </definition>
+   -->
+    
+	<definition extends="bootstrap_login" name="login">
+        <put-attribute name="body" value="/WEB-INF/bootstrap-views/signin.jsp"/>
+    </definition>
+    
+</tiles-definitions>

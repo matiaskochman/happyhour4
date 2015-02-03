@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 	
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <sec:authorize access="hasRole('ROLE_USER')">
+	    <c:set var="updateDesc" value="false" />
+	    <c:set var="deleteDesc" value="false" />
+	</sec:authorize>
+	
+    <page:list id="pl_com_happyhour_entity_BusinessEstablishment" items="${businessestablishments}" z="HRWxaNhy87XdA0EwtbbEjgYqzKE=">
+        <table:table data="${businessestablishments}" update="${updateDesc}" delete="${deleteDesc}" id="l_com_happyhour_entity_BusinessEstablishment" path="/businessestablishments" z="S3sO+yecIDzcuna4oqmgpkXsQHo=">
+            <table:column id="c_com_happyhour_entity_BusinessEstablishment_name" property="name" z="AFULbqsXKk+M85wJG79t9L6715I="/>
+            <table:column id="c_com_happyhour_entity_BusinessEstablishment_promotionInstanceList" property="promotionInstanceList" z="1gq2rTOCo9s3hazvuW9l5P9QzOM="/>
+            <table:column id="c_com_happyhour_entity_BusinessEstablishment_promotionDescriptionList" property="promotionDescriptionList" z="25T/Pu2zLGjxy6NTP6wBSn7uozM="/>
+        </table:table>
+    </page:list>
+</div>

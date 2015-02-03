@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_happyhour_entity_PromotionRequest" modelAttribute="promotionRequest" path="/promotionrequests" versionField="Version" z="7Lg7cr9vLJDxTWpMk4ASu3dSWKA=">
+        <field:input field="promoId" id="c_com_happyhour_entity_PromotionRequest_promoId" z="nqxjucD7cbkhQOSugZrxfvX2yMc="/>
+        <field:input field="businessEstablishmentId" id="c_com_happyhour_entity_PromotionRequest_businessEstablishmentId" z="eKEIAzjC73zh8MMVgpI9TQo5xVA="/>
+        <field:input field="clientTelephone" id="c_com_happyhour_entity_PromotionRequest_clientTelephone" z="slVcirQ3LkH5QcRVTkaB8SdJmKU="/>
+        <field:input field="token" id="c_com_happyhour_entity_PromotionRequest_token" z="L8twwhAJJfprU7J57dFu7Ew2N7s="/>
+        <field:datetime dateTimePattern="${promotionRequest_creationtimestamp_date_format}" field="creationTimeStamp" id="c_com_happyhour_entity_PromotionRequest_creationTimeStamp" z="dNSzn3pytxHEwov7x4egAkr0oSA="/>
+    </form:update>
+</div>
