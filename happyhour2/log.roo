@@ -298,4 +298,4 @@ field date --fieldName creationDate --type java.util.Date
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2015-02-09 14:02:34
 backup
 exit
-// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2015-02-09 14:03:47
+
